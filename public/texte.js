@@ -109,6 +109,7 @@ const DE = {
     kaputt: "Der gespeicherte Himmel ließ sich nicht laden und wurde verworfen.", keinHimmel: "Das ist kein gespeicherter Resonanz-Himmel.",
     geladen: (n) => `Himmel aus „${n}“ geladen.`, lese: (n, mb) => `Lese ${n} (${mb} MB) …`,
     zipFertig: (v) => `${zahl(v.streams)} Streams gelesen, ${Math.round(v.stunden)} Stunden Musik. Die Verlaufs-Kapitel stehen jetzt im Rückblick.`,
+    uebersprungen: (n) => `${n} ${n === 1 ? "Datei war" : "Dateien waren"} nicht lesbar und ${n === 1 ? "wurde" : "wurden"} übersprungen.`,
     gingNicht: (m) => "Das ging nicht: " + m, ablageGanz: "Datei loslassen: Streaming-Verlauf (ZIP, CSV, JSON) oder gespeicherter Himmel",
     quellenH: "Andere Dienste: Apple Music, Last.fm, YouTube Music",
     quellenHilfe: [
@@ -233,6 +234,7 @@ const EN = {
     kaputt: "The saved sky could not be loaded and was discarded.", keinHimmel: "This is not a saved Resonanz sky.",
     geladen: (n) => `Sky loaded from “${n}”.`, lese: (n, mb) => `Reading ${n} (${mb} MB) …`,
     zipFertig: (v) => `${zahl(v.streams)} streams read, ${Math.round(v.stunden)} hours of music. The history chapters are now in the retrospective.`,
+    uebersprungen: (n) => `${n} ${n === 1 ? "file was" : "files were"} unreadable and skipped.`,
     gingNicht: (m) => "That did not work: " + m, ablageGanz: "Drop the file: streaming history (ZIP, CSV, JSON) or a saved sky",
     quellenH: "Other services: Apple Music, Last.fm, YouTube Music",
     quellenHilfe: [
