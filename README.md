@@ -59,7 +59,7 @@ The demo shows my artists and listening weights, less than a public Spotify Wrap
 ## Licences
 
 - **Code:** MIT, see [`LICENSE`](LICENSE). The MIT licence covers the source code only, not the data below.
-- **Genre tags and countries** in `data/snapshot.json` (and in your own sky after sign-in) come from [MusicBrainz](https://musicbrainz.org) and are licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) ([MusicBrainz data licence](https://musicbrainz.org/doc/About/Data_License)): attribution, non-commercial, share alike. This project is non-commercial; if you reuse the tags, the same terms apply to you.
+- **Genre tags** in `data/snapshot.json` (and in your own sky after sign-in) come from [MusicBrainz](https://musicbrainz.org) and are licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) ([MusicBrainz data licence](https://musicbrainz.org/doc/About/Data_License)): attribution, non-commercial, share alike. The countries are MusicBrainz core data (CC0). This project is non-commercial; if you reuse the tags, the same terms apply to you.
 - **Artist names and rank lists** come from the Spotify Web API. This is a private project, not affiliated with or endorsed by Spotify or MusicBrainz. Following the [Spotify Developer Terms](https://developer.spotify.com/terms), the public snapshot stores no song data and no cover art, and the page loads nothing from Spotify's image servers.
 - **three.js** is vendored in `public/vendor/` (MIT, see `three.LICENSE`); no CDN at runtime.
 - **Fonts:** Bricolage Grotesque and Azeret Mono (SIL OFL 1.1, texts in `public/fonts/`), self-hosted.
