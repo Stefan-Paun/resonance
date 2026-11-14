@@ -20,3 +20,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+---------------------------------------------------------------------------
+
+Scope of this licence
+
+The MIT License above applies to the source code in this repository only.
+It does not apply to:
+
+- the genre tags and countries in data/snapshot.json, which come from
+  MusicBrainz (https://musicbrainz.org) and are licensed under the Creative
+  Commons Attribution-NonCommercial-ShareAlike 3.0 licence (CC BY-NC-SA 3.0,
+  https://creativecommons.org/licenses/by-nc-sa/3.0/), see
+  https://musicbrainz.org/doc/About/Data_License;
+- artist names and rank lists obtained from the Spotify Web API, which remain
+  subject to the Spotify Developer Terms and the rights of their owners;
+- public/vendor/three.module.min.js (three.js, MIT, see public/vendor/three.LICENSE);
+- the fonts in public/fonts/ (SIL Open Font License 1.1, see the OFL-*.txt files there).

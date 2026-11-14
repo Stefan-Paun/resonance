@@ -1,11 +1,17 @@
 """Sammler: holt Hörgewohnheiten aus Spotify und Genres/Herkunft aus MusicBrainz,
 schreibt data/snapshot.json (anonym: kein Anzeigename, keine Playlists, keine E-Mail).
 
+Der Schnappschuss ist öffentlich und enthält deshalb keine Spotify-Inhalte, die nicht gebraucht werden
+(Spotify Developer Terms: Inhalte nicht dauerhaft speichern): keine Songtitel, Song-IDs, Alben, Cover,
+Künstlerbilder, Dauer, Erscheinungsdaten und keine zuletzt gehörten Songs. Es bleiben Künstlernamen, der
+Link zum Künstler auf Spotify, die Ränge je Zeitraum und pro Top-Song nur eine eigene laufende Nummer mit
+den beteiligten Künstlern (daraus rechnet die Seite Gewicht und Sternbilder). Siehe oeffentlich().
+
     python3 tools/sammeln.py login     Browser-Login per PKCE, Token in tools/token.json (gitignored)
     python3 tools/sammeln.py           Schnappschuss ziehen (nutzt den gespeicherten Token)
     python3 tools/sammeln.py --ohne-mb Schnappschuss ohne MusicBrainz (schneller, keine Genres)
-    python3 tools/sammeln.py --mit-zeiten  Uhrzeiten der zuletzt gehörten Songs behalten (Standard: weg, öffentlich zu privat)
-    python3 tools/sammeln.py --nur-ueberschreiben  data/ueberschreibungen.json neu anwenden, ohne Netz
+    python3 tools/sammeln.py --nur-ueberschreiben  data/ueberschreibungen.json neu anwenden und den
+                                       vorhandenen Schnappschuss kürzen, ohne Netz
 
 Client-ID: Umgebungsvariable SPOTIFY_CLIENT_ID. Die ID gehört nie ins Repo.
 Nur Standardbibliothek, läuft mit Python 3.9+.
@@ -32,7 +38,7 @@ SNAPSHOT = os.path.join(WURZEL, "data", "snapshot.json")
 MB_CACHE = os.path.join(WURZEL, "data", "roh", "musicbrainz-cache.json")
 
 REDIRECT = "http://127.0.0.1:8888/callback"
-SCOPES = "user-top-read user-read-recently-played"
+SCOPES = "user-top-read"
 API = "https://api.spotify.com/v1"
 UA = "Resonanz/0.1 (https://github.com/Stefan-Paun/resonanz)"
 ZEITRAEUME = {"short_term": "4w", "medium_term": "6m", "long_term": "1y"}
@@ -138,27 +144,35 @@ def spotify(pfad: str, **params):
     return _json("GET", url, kopf={"Authorization": "Bearer " + token()})
 
 
-# ---------------------------------------------------------------- Spotify → Rohdaten
+# ---------------------------------------------------------------- Spotify → Schnappschuss
 
-def _bild(images: list) -> str | None:
-    """Kleinstes Bild ab 160 px, sonst das kleinste vorhandene (Spotify-CDN, nur verlinkt)."""
-    if not images:
-        return None
-    passend = [i for i in images if (i.get("width") or 0) >= 160]
-    return (min(passend, key=lambda i: i["width"]) if passend else images[-1])["url"]
+def oeffentlich(daten: dict) -> dict:
+    """Kürzt einen Schnappschuss auf das, was die Seite braucht. Auch auf alte, volle Schnappschüsse anwendbar
+    und idempotent: Songs werden in Reihenfolge des ersten Auftretens zu s1, s2, … durchnummeriert."""
+    nummern: dict = {}
+
+    def song(s: dict) -> dict:
+        nr = nummern.setdefault(s["id"], f"s{len(nummern) + 1}")
+        return {"id": nr, "kuenstler": [{"id": k["id"]} for k in s.get("kuenstler", [])]}
+
+    zeitraeume = {
+        kurz: {"kuenstler": list(z.get("kuenstler", [])), "songs": [song(s) for s in z.get("songs", [])]}
+        for kurz, z in daten.get("zeitraeume", {}).items()
+    }
+    kuenstler = {
+        kid: {"name": k["name"], "url": k.get("url"), "tags": k.get("tags", []), "land": k.get("land")}
+        for kid, k in daten.get("kuenstler", {}).items()
+    }
+    return {"erstellt": daten.get("erstellt"), "quelle": daten.get("quelle", "spotify+musicbrainz"),
+            "zeitraeume": zeitraeume, "kuenstler": kuenstler, "zuletzt": []}
 
 
 def _track(t: dict) -> dict:
-    return {
-        "id": t["id"], "name": t["name"],
-        "kuenstler": [{"id": a["id"], "name": a["name"]} for a in t["artists"]],
-        "album": t["album"]["name"], "cover": _bild(t["album"].get("images", [])),
-        "dauer_ms": t["duration_ms"], "erschienen": t["album"].get("release_date"),
-        "url": t["external_urls"].get("spotify"),
-    }
+    """Nur was oeffentlich() braucht: Spotify-ID (fällt dort weg) und die beteiligten Künstler."""
+    return {"id": t["id"], "kuenstler": [{"id": a["id"], "name": a["name"]} for a in t["artists"]]}
 
 
-def sammeln(mit_mb: bool = True, mit_zeiten: bool = False) -> dict:
+def sammeln(mit_mb: bool = True) -> dict:
     out: dict = {"erstellt": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "quelle": "spotify+musicbrainz",
                  "zeitraeume": {}, "kuenstler": {}, "zuletzt": []}
     for rng, kurz in ZEITRAEUME.items():
@@ -169,20 +183,15 @@ def sammeln(mit_mb: bool = True, mit_zeiten: bool = False) -> dict:
             "songs": [_track(x) for x in t],
         }
         for x in a:
-            out["kuenstler"].setdefault(x["id"], {"name": x["name"], "bild": _bild(x.get("images", [])),
-                                                   "url": x["external_urls"].get("spotify")})
+            out["kuenstler"].setdefault(x["id"], {"name": x["name"], "url": x["external_urls"].get("spotify")})
         for x in t:
             for k in x["artists"]:
-                out["kuenstler"].setdefault(k["id"], {"name": k["name"], "bild": None, "url": None})
+                out["kuenstler"].setdefault(k["id"], {"name": k["name"], "url": None})
         print(f"  {kurz}: {len(a)} Künstler, {len(t)} Songs")
-    rp = spotify("/me/player/recently-played", limit=50)["items"]
-    # Uhrzeiten verraten den Tagesrhythmus; öffentlich bleibt nur die Songliste.
-    out["zuletzt"] = [{"song": _track(x["track"]), "um": x["played_at"] if mit_zeiten else None} for x in rp]
-    print(f"  zuletzt gehört: {len(rp)}")
     if mit_mb:
         musicbrainz_ergaenzen(out["kuenstler"])
     ueberschreibungen_anwenden(out["kuenstler"])
-    return out
+    return oeffentlich(out)
 
 
 # ---------------------------------------------------------------- MusicBrainz
@@ -256,9 +265,10 @@ def main(argv: list[str]) -> None:
     if "--nur-ueberschreiben" in argv:  # Überschreibungen ohne Netz neu auf den Schnappschuss anwenden
         daten = json.load(open(SNAPSHOT, encoding="utf-8"))
         ueberschreibungen_anwenden(daten["kuenstler"])
+        daten = oeffentlich(daten)
     else:
         print("Sammle …")
-        daten = sammeln(mit_mb="--ohne-mb" not in argv, mit_zeiten="--mit-zeiten" in argv)
+        daten = sammeln(mit_mb="--ohne-mb" not in argv)
     os.makedirs(os.path.dirname(SNAPSHOT), exist_ok=True)
     tmp = SNAPSHOT + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:

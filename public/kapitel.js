@@ -82,6 +82,11 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
       schluss: true,
     },
   ];
+  // Jahrgänge und „Zuletzt“ brauchen Songtitel; der öffentliche Schnappschuss hat keine, dann fallen sie weg.
+  for (const [id, leer] of [["jahrgaenge", !jg.gesamt], ["zuletzt", !zl.anzahl]]) {
+    const i = kapitel.findIndex((k) => k.id === id);
+    if (leer && i >= 0) kapitel.splice(i, 1);
+  }
   if (vergleich) {
     // Im Vergleich zählt nur, was beide Himmel hergeben: Welten, „Ihr zwei“, Schluss
     const behalten = kapitel.filter((k) => k.id === "welten" || k.id === "schluss");
@@ -102,7 +107,8 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
         ${k.links ? `<p class="links">${k.links.map(([h, t, attr]) => attr ? `<a href="${h}" ${attr}>${t}</a>` : `<a href="${h}" target="_blank" rel="noopener">${t}</a>`).join("")}</p>` : ""}
         ${k.heat ? heatmap(k.heat, T) : ""}
         ${k.monate ? monate(k.monate, T) : ""}
-        ${k.schluss ? `<p class="klein">${esc(T.schluss.klein)}</p>` : ""}
+        ${k.schluss ? `<p class="klein">${esc(T.schluss.klein)}</p>
+        <footer class="recht">${T.schluss.recht.map(([h, t]) => `<a href="${esc(h)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("")}</footer>` : ""}
       </div>
     </section>`).join("");
 

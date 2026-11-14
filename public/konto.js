@@ -59,8 +59,8 @@ async function spotify(tok, pfad, params) {
   return r.json();
 }
 
-const bild = (images) => { if (!images?.length) return null; const p = images.filter((i) => (i.width || 0) >= 160); return (p.length ? p.reduce((a, b) => (a.width < b.width ? a : b)) : images[images.length - 1]).url; };
-const track = (t) => ({ id: t.id, name: t.name, kuenstler: t.artists.map((a) => ({ id: a.id, name: a.name })), album: t.album?.name || "", cover: bild(t.album?.images), dauer_ms: t.duration_ms, erschienen: t.album?.release_date || null, url: t.external_urls?.spotify || null });
+// Ohne Cover- und Künstlerbild-URLs: die Seite zeigt keine Bilder von Spotify (alte Himmel im Speicher dürfen sie noch haben, sie werden ignoriert).
+const track = (t) => ({ id: t.id, name: t.name, kuenstler: t.artists.map((a) => ({ id: a.id, name: a.name })), album: t.album?.name || "", dauer_ms: t.duration_ms, erschienen: t.album?.release_date || null, url: t.external_urls?.spotify || null });
 
 /** Zieht denselben Schnappschuss wie tools/sammeln.py, nur im Browser. fortschritt(text) meldet den Stand. */
 export async function snapshotHolen(tok, fortschritt = () => {}) {
@@ -69,8 +69,8 @@ export async function snapshotHolen(tok, fortschritt = () => {}) {
     fortschritt(TK().top(kurz));
     const [a, t] = await Promise.all([spotify(tok, "/me/top/artists", { limit: 50, time_range: rng }), spotify(tok, "/me/top/tracks", { limit: 50, time_range: rng })]);
     out.zeitraeume[kurz] = { kuenstler: a.items.map((x) => x.id), songs: t.items.map(track) };
-    for (const x of a.items) out.kuenstler[x.id] ??= { name: x.name, bild: bild(x.images), url: x.external_urls?.spotify || null, tags: [], land: null };
-    for (const x of t.items) for (const k of x.artists) out.kuenstler[k.id] ??= { name: k.name, bild: null, url: null, tags: [], land: null };
+    for (const x of a.items) out.kuenstler[x.id] ??= { name: x.name, url: x.external_urls?.spotify || null, tags: [], land: null };
+    for (const x of t.items) for (const k of x.artists) out.kuenstler[k.id] ??= { name: k.name, url: null, tags: [], land: null };
   }
   fortschritt(TK().zuletzt);
   const rp = await spotify(tok, "/me/player/recently-played", { limit: 50 });

@@ -25,7 +25,7 @@ Kein Jahresrückblick, den ein Konzern für einen rechnet, sondern ein eigener, 
 ## Operating Context
 
 - Datenquelle 1: Spotify Web API im Development Mode (Top-Künstler/-Songs für 4 Wochen, 6 Monate, 1 Jahr; letzte 50 Songs). Seit Februar 2026 ohne Genres, Popularität, Vorschauen; App-Besitzer braucht Premium, maximal 5 Testnutzer.
-- Datenquelle 2: MusicBrainz (frei) für Genre-Tags und Herkunftsland; Deezer (frei) für 30-Sekunden-Vorschauen, wenn vorhanden.
+- Datenquelle 2: MusicBrainz (CC BY-NC-SA 3.0 für Tags) für Genre-Tags und Herkunftsland. Deezer-Hörproben am 14.11.2026 ausgebaut (Deezer-API-Bedingungen, fremdes Skript in der Seite).
 - Datenquelle 3 (geplant): Spotifys „Erweiterter Streaming-Verlauf“ als ZIP/JSON, vom Nutzer angefordert, im Browser per Drag & Drop eingelesen.
 - Öffentliche Demo zeigt einen eingefrorenen Schnappschuss von Stefans Daten (`data/snapshot.json`).
 - Veröffentlichung über GitHub Pages, verlinkt von stefanpaun.page.
@@ -37,7 +37,7 @@ Kein Jahresrückblick, den ein Konzern für einen rechnet, sondern ein eigener, 
 - Client-ID nie im Repo; Tokens nur lokal.
 - Spotify-Richtlinien: Metadaten nur anzeigen, Spotify nennen, zu Spotify verlinken, keine Daten weiterverkaufen.
 - Sprache der Oberfläche: Deutsch zuerst, Englisch geplant. Code, Kommentare, Commits auf Deutsch.
-- Offen: ob die Demo Cover-Bilder von Spotifys CDN einbettet oder nur auf Antippen lädt.
+- Entschieden 14.11.2026: keine Cover und keine Spotify-Songdaten im öffentlichen Schnappschuss (Spotify Developer Terms: keine dauerhafte Speicherung); die Sternkarte zeigt einen Platzhalter.
 
 ## Brand Commitments
 
