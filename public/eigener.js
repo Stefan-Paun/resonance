@@ -181,8 +181,9 @@ async function dateiLaden(datei) {
       const a = await verlaufAusZip(await datei.arrayBuffer());
       await verlaufUebernehmen(a);
       eigenerAktiv = eigenerAktiv || false;
-      fortschritt(TE().zipFertig(a));
-      dlg.close();
+      const skip = a.uebersprungeneDateien?.length || 0;
+      fortschritt(TE().zipFertig(a) + (skip ? " " + TE().uebersprungen(skip) : ""), !!skip);
+      if (!skip) dlg.close(); // bei übersprungenen Dateien offen lassen, damit der Hinweis gelesen wird
     } else {
       fortschritt(TE().lese(datei.name, (datei.size / 1048576).toFixed(1)));
       const text = await datei.text();
