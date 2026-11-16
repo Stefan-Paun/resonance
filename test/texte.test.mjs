@@ -57,7 +57,7 @@ const BEISPIELE = {
   "kapitel.monate.text": [{ name: "Mai", jahr: 2023, stunden: 80.4 }, 50],
   "kapitel.hoerzeit.text": [{ topKuenstler: [{ name: "A", stunden: 12.3 }], topSongs: [{ name: "S", n: 99 }] }, 15],
   "ui.ladefehler": ["404"],
-  "karte.vorschau": ["Song"],
+  "karte.nurAnzahl": [3],
   "eigener.verlaufStand": [verlauf],
   "eigener.zipFertig": [verlauf],
   "eigener.lese": ["datei.zip", 12],
@@ -69,6 +69,7 @@ const BEISPIELE = {
 const ZUSAETZE = [
   ["kapitel.gerade.text", [[{ name: "A", jahr: 90, jetzt: 3 }]]],
   ["kapitel.zuletzt.text", [{ anzahl: 50 }]],
+  ["karte.nurAnzahl", [1]],
   ["kapitel.uhrzeiten.text", [{ spitze: { name: "Mo", stunde: 22 } }, 5]],
   ["kapitel.uhrzeiten.text", [{ spitze: { name: "Mo", stunde: 22 } }, 15]],
   ["kapitel.hoerzeit.text", [{ topKuenstler: [], topSongs: [] }, null]],

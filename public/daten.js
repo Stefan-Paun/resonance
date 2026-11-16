@@ -54,7 +54,7 @@ export function sterne(snapshot) {
       songs.push(s);
     }
     return { id, name: k.name, welt: welten.get(id) || "streulicht", land: k.land || null, tags: k.tags || [],
-      bild: k.bild || null, url: k.url || null, gewicht: gesamt, je, songs };
+      url: k.url || null, gewicht: gesamt, je, songs };
   });
   const max = Math.max(...liste.map((s) => s.gewicht), 0.0001);
   for (const s of liste) s.gewicht = s.gewicht / max;

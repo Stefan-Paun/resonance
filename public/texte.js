@@ -73,7 +73,8 @@ const DE = {
       text: "Alles hier ist im Browser gerechnet: Top-Listen aus der Spotify-API, Genres und Herkunft aus MusicBrainz. Nichts wird hochgeladen. Der Himmel ist ein Schnappschuss, kein Live-Bild.",
       textEigen: "Dieser Himmel ist deiner: gerechnet in deinem Browser aus deinem Spotify-Konto oder deiner Datei, Genres und Herkunft von MusicBrainz. Nichts wurde hochgeladen; er liegt nur in diesem Browser.",
       code: "Code auf GitHub", eigen: "Dein eigener Himmel",
-      klein: "Metadaten und Cover gehören Spotify und den Rechteinhabern. Diese Seite ist ein privates Projekt und steht in keiner Verbindung zu Spotify." },
+      klein: "Künstlernamen und Ranglisten stammen von Spotify, Genres (CC BY-NC-SA 3.0) und Herkunft von MusicBrainz. Diese Seite ist ein privates, nicht kommerzielles Projekt und steht in keiner Verbindung zu Spotify oder MusicBrainz.",
+      recht: [["https://stefanpaun.page/impressum.html", "Impressum"], ["https://stefanpaun.page/datenschutz.html", "Datenschutz"], ["https://musicbrainz.org/doc/About/Data_License", "MusicBrainz-Lizenz"]] },
     verlauf: { titel: "Dein Verlauf.", spalten: ["Messwert", ""],
       text: (v) => `${zahl(v.streams)} Streams zwischen ${datum(v.von)} und ${datum(v.bis)}, davon ${zahl(v.gezaehlt)} länger als 30 Sekunden. Zusammen ${zahl(Math.round(v.stunden))} Stunden Musik an ${zahl(v.tage)} Tagen. Längste Serie ohne stillen Tag: ${v.laengsteSerie} Tage.`,
       zeilen: (v) => [["Streams", zahl(v.streams)], ["Gezählt (über 30 s)", zahl(v.gezaehlt)], ["Stunden", zahl(Math.round(v.stunden))], ["Tage mit Musik", zahl(v.tage)], ["Längste Serie", v.laengsteSerie + " Tage"]] },
@@ -88,8 +89,7 @@ const DE = {
   },
   karte: {
     schliessen: "Karte schließen", keineSongs: "Keine Top-Songs im Schnappschuss, nur als Künstler gehört.", aufSpotify: "Auf Spotify öffnen",
-    vorschauHinweis: "Vorschau: 30 s von Deezer, erst beim Antippen geladen.", vorschau: (n) => `30 Sekunden Vorschau von ${n} abspielen (lädt sie von Deezer)`,
-    anhalten: "Vorschau anhalten", keineVorschau: "Keine Vorschau bei Deezer",
+    nurAnzahl: (n) => `${n === 1 ? "Ein Song" : `${n} Songs`} in den Top-Listen. Titel speichert der öffentliche Himmel nicht, nur wer darauf zu hören ist.`,
   },
   eigener: {
     titel: "Dein eigener Himmel", schliessen: "Schließen",
@@ -197,7 +197,8 @@ const EN = {
       text: "Everything here is computed in the browser: top lists from the Spotify API, genres and origin from MusicBrainz. Nothing is uploaded. The sky is a snapshot, not a live view.",
       textEigen: "This sky is yours: computed in your browser from your Spotify account or your file, genres and origin from MusicBrainz. Nothing was uploaded; it lives only in this browser.",
       code: "Code on GitHub", eigen: "Your own sky",
-      klein: "Metadata and cover art belong to Spotify and the rights holders. This page is a private project and is not affiliated with Spotify." },
+      klein: "Artist names and rankings come from Spotify, genres (CC BY-NC-SA 3.0) and origin from MusicBrainz. This page is a private, non-commercial project and is not affiliated with Spotify or MusicBrainz.",
+      recht: [["https://stefanpaun.page/en/legal-notice.html", "Legal notice"], ["https://stefanpaun.page/en/privacy.html", "Privacy"], ["https://musicbrainz.org/doc/About/Data_License", "MusicBrainz licence"]] },
     verlauf: { titel: "Your history.", spalten: ["Measure", ""],
       text: (v) => `${zahl(v.streams)} streams between ${datum(v.von)} and ${datum(v.bis)}, ${zahl(v.gezaehlt)} of them longer than 30 seconds. Together ${zahl(Math.round(v.stunden))} hours of music on ${zahl(v.tage)} days. Longest streak without a silent day: ${v.laengsteSerie} days.`,
       zeilen: (v) => [["Streams", zahl(v.streams)], ["Counted (over 30 s)", zahl(v.gezaehlt)], ["Hours", zahl(Math.round(v.stunden))], ["Days with music", zahl(v.tage)], ["Longest streak", v.laengsteSerie + " days"]] },
@@ -212,8 +213,7 @@ const EN = {
   },
   karte: {
     schliessen: "Close card", keineSongs: "No top songs in the snapshot, only heard as an artist.", aufSpotify: "Open on Spotify",
-    vorschauHinweis: "Preview: 30 s from Deezer, loaded only when you press play.", vorschau: (n) => `Play a 30-second preview of ${n} (loads it from Deezer)`,
-    anhalten: "Pause preview", keineVorschau: "No preview on Deezer",
+    nurAnzahl: (n) => `${n === 1 ? "One song" : `${n} songs`} in the top lists. The public sky does not store titles, only who is on them.`,
   },
   eigener: {
     titel: "Your own sky", schliessen: "Close",

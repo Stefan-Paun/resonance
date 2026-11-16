@@ -1,18 +1,18 @@
-// Sternkarte: die Karte zu einem Künstler (Plätze, Songs, Cover, Vorschau über Deezer auf Wunsch).
+// Sternkarte: die Karte zu einem Künstler (Plätze, Songs, Link zu Spotify).
+// Bewusst ohne Cover und ohne Hörprobe: keine Inhalte von Spotify-Servern, kein fremdes Skript in der Seite.
 import { welt } from "./welten.js";
 import { ZEITRAEUME, dauerText } from "./daten.js";
 import { tx, weltName, landName } from "./texte.js";
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const ZEIT_NAME = () => ({ "4w": tx().ui.z4w, "6m": tx().ui.z6m, "1y": tx().ui.z1y });
-/** Nur https-Links auf erlaubte Hosts (Spotify, Spotify-CDN); alles andere wird verworfen. */
+/** Nur https-Links auf erlaubte Hosts (Spotify); alles andere wird verworfen. */
 function sichereUrl(u, hosts) {
   try { const x = new URL(u); return x.protocol === "https:" && hosts.some((h) => x.hostname === h || x.hostname.endsWith("." + h)) ? x.href : null; } catch { return null; }
 }
 const spotifyUrl = (u) => sichereUrl(u, ["open.spotify.com", "spotify.com"]);
-const coverUrl = (u) => sichereUrl(u, ["i.scdn.co", "scdn.co"]);
 
-let el, audio, aktuellerSong = null, zuletztFokus = null, beimSchliessen = null;
+let el, zuletztFokus = null, beimSchliessen = null;
 
 function anlegen() {
   el = document.createElement("aside");
@@ -21,32 +21,23 @@ function anlegen() {
   el.setAttribute("aria-modal", "false");
   el.hidden = true;
   document.body.appendChild(el);
-  audio = new Audio();
-  audio.preload = "none";
-  audio.addEventListener("ended", () => vorschauStopp());
-  audio.addEventListener("timeupdate", () => {
-    if (!aktuellerSong) return;
-    const b = el.querySelector(`[data-song="${CSS.escape(aktuellerSong)}"] .lauf i`);
-    if (b && audio.duration) b.style.transform = `scaleX(${audio.currentTime / audio.duration})`;
-  });
-  el.addEventListener("click", (e) => {
-    const zu = e.target.closest("[data-zu]"); if (zu) { karteSchliessen(); return; }
-    const v = e.target.closest("[data-vorschau]"); if (v) vorschau(v);
-  });
+  el.addEventListener("click", (e) => { if (e.target.closest("[data-zu]")) karteSchliessen(); });
   addEventListener("keydown", (e) => { if (e.key === "Escape" && !el.hidden) karteSchliessen(); });
 }
 
 /** Öffnet die Karte für einen Stern. rang(z, id) liefert den Platz im Zeitraum oder null. */
 export function karteOeffnen(stern, { rang, beimSchliessen: cb } = {}) {
   if (!el) anlegen();
-  vorschauStopp();
   beimSchliessen = cb || null;
   zuletztFokus = document.activeElement;
   const w = welt(stern.welt);
   const TK = tx().karte, ZN = ZEIT_NAME();
   const plaetze = ZEITRAEUME.map((z) => [ZN[z], rang ? rang(z, stern.id) : null]);
   const tags = (stern.tags || []).filter((t) => !/^\d{4}s$|^(german|germany|english|american|austrian|spanish)$/.test(t)).slice(0, 4);
-  const songs = (stern.songs || []).slice(0, 6);
+  // Der öffentliche Schnappschuss hat nur anonyme Songs (Nummer + Künstler); Titel gibt es nur im eigenen Himmel.
+  const alleSongs = stern.songs || [];
+  const benannt = alleSongs.filter((s) => typeof s.name === "string" && s.name);
+  const songs = benannt.slice(0, 6), anonym = alleSongs.length - benannt.length;
   el.innerHTML = `
     <button type="button" class="zu" data-zu aria-label="${esc(TK.schliessen)}"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M2 2l10 10M12 2 2 12" stroke="currentColor" stroke-width="1.3" fill="none"/></svg></button>
     <h2 id="stern-h">${esc(stern.name)}</h2>
@@ -54,13 +45,12 @@ export function karteOeffnen(stern, { rang, beimSchliessen: cb } = {}) {
     ${tags.length ? `<p class="tags">${tags.map(esc).join(" · ")}</p>` : ""}
     <dl class="plaetze">${plaetze.map(([n, p]) => `<div><dt>${n}</dt><dd>${p ? `<span class="nr">${p}</span>` : "<span class='leer'>–</span>"}</dd></div>`).join("")}</dl>
     ${songs.length ? `<ol class="songs">${songs.map((s) => `
-      <li data-song="${esc(s.id)}">
-        ${coverUrl(s.cover) ? `<img src="${esc(coverUrl(s.cover))}" alt="" width="40" height="40" loading="lazy" decoding="async">` : `<span class="kein-cover" aria-hidden="true"></span>`}
-        <span class="song-t"><b>${esc(s.name)}</b><small>${esc(s.album)}${s.erschienen ? ` · ${esc(String(s.erschienen).slice(0, 4))}` : ""}</small><span class="lauf" aria-hidden="true"><i></i></span></span>
-        <span class="song-d">${dauerText(s.dauer_ms)}</span>
-        <button type="button" class="play" data-vorschau data-titel="${esc(s.name)}" data-kuenstler="${esc(s.kuenstler[0]?.name || stern.name)}" aria-label="${esc(TK.vorschau(s.name))}"><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path class="p" d="M2.5 1.5v9l8-4.5z" fill="currentColor"/><path class="s" d="M2 2h3v8H2zM7 2h3v8H7z" fill="currentColor"/></svg></button>
-      </li>`).join("")}</ol>` : `<p class="tags">${esc(TK.keineSongs)}</p>`}
-    <p class="fuss">${spotifyUrl(stern.url) ? `<a href="${esc(spotifyUrl(stern.url))}" target="_blank" rel="noopener">${esc(TK.aufSpotify)}</a>` : ""}<span>${esc(TK.vorschauHinweis)}</span></p>`;
+      <li>
+        <span class="kein-cover" aria-hidden="true"></span>
+        <span class="song-t"><b>${esc(s.name)}</b><small>${esc(s.album || "")}${s.erschienen ? `${s.album ? " · " : ""}${esc(String(s.erschienen).slice(0, 4))}` : ""}</small></span>
+        <span class="song-d">${Number.isFinite(s.dauer_ms) ? dauerText(s.dauer_ms) : ""}</span>
+      </li>`).join("")}</ol>` : anonym ? `<p class="tags">${esc(TK.nurAnzahl(anonym))}</p>` : `<p class="tags">${esc(TK.keineSongs)}</p>`}
+    ${spotifyUrl(stern.url) ? `<p class="fuss"><a href="${esc(spotifyUrl(stern.url))}" target="_blank" rel="noopener">${esc(TK.aufSpotify)}</a></p>` : ""}`;
   el.setAttribute("aria-labelledby", "stern-h");
   el.hidden = false;
   el.tabIndex = -1;
@@ -71,7 +61,6 @@ export function karteOeffnen(stern, { rang, beimSchliessen: cb } = {}) {
 
 export function karteSchliessen() {
   if (!el || el.hidden) return;
-  vorschauStopp();
   el.classList.remove("da");
   el.hidden = true;
   document.body.classList.remove("karte-offen");
@@ -82,53 +71,3 @@ export function karteSchliessen() {
 
 export function karteOffen() { return !!el && !el.hidden; }
 export function karteElement() { return el; }
-
-// ---------------------------------------------------------------- Vorschau (Deezer, JSONP, nur auf Wunsch)
-const deezerCache = new Map();
-function deezerSuche(titel, kuenstler) {
-  const sauber = titel.replace(/\s*[-–(].*(sped up|slowed|remix|feat\.?|live|version|edit).*$/i, "").trim();
-  const key = sauber.toLowerCase() + "|" + kuenstler.toLowerCase();
-  if (deezerCache.has(key)) return deezerCache.get(key);
-  const p = new Promise((aufloesen) => {
-    const cb = "dz" + Math.random().toString(36).slice(2);
-    const s = document.createElement("script");
-    const timer = setTimeout(() => { fertig(null); }, 8000);
-    const fertig = (d) => { clearTimeout(timer); delete window[cb]; s.remove(); aufloesen(d); };
-    window[cb] = (d) => {
-      const liste = (d && d.data) || [];
-      const k = kuenstler.toLowerCase();
-      const treffer = liste.find((t) => t.artist && t.artist.name.toLowerCase() === k) || liste.find((t) => t.artist && (t.artist.name.toLowerCase().includes(k) || k.includes(t.artist.name.toLowerCase())));
-      fertig(treffer && treffer.preview ? { url: treffer.preview, titel: treffer.title, kuenstler: treffer.artist.name } : null);
-    };
-    s.onerror = () => fertig(null);
-    s.src = "https://api.deezer.com/search?" + new URLSearchParams({ q: `${sauber} ${kuenstler}`, limit: "5", output: "jsonp", callback: cb });
-    document.head.appendChild(s);
-  });
-  deezerCache.set(key, p);
-  p.then((d) => { if (!d) deezerCache.delete(key); }); // Fehlschläge nicht merken, beim nächsten Klick neu versuchen
-  return p;
-}
-
-async function vorschau(btn) {
-  const li = btn.closest("li"), id = li.dataset.song;
-  if (aktuellerSong === id && !audio.paused) { vorschauStopp(); return; }
-  vorschauStopp();
-  li.classList.add("laedt"); btn.disabled = true;
-  const t = await deezerSuche(btn.dataset.titel, btn.dataset.kuenstler);
-  li.classList.remove("laedt"); btn.disabled = false;
-  if (!t) { li.classList.add("ohne"); const h = li.querySelector(".song-t small"); if (h && !h.dataset.alt) { h.dataset.alt = h.textContent; h.textContent = tx().karte.keineVorschau; } return; }
-  aktuellerSong = id;
-  audio.src = t.url;
-  try { await audio.play(); li.classList.add("spielt"); btn.setAttribute("aria-label", tx().karte.anhalten); }
-  catch { aktuellerSong = null; li.classList.add("ohne"); }
-}
-
-function vorschauStopp() {
-  if (!audio) return;
-  audio.pause();
-  if (aktuellerSong && el) {
-    const li = el.querySelector(`[data-song="${CSS.escape(aktuellerSong)}"]`);
-    if (li) { li.classList.remove("spielt"); const b = li.querySelector(".lauf i"); if (b) b.style.transform = "scaleX(0)"; }
-  }
-  aktuellerSong = null;
-}

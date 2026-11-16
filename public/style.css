@@ -160,6 +160,9 @@ body.tastatur .nur-tastatur { display: block; }
 .tafel .links { margin-top: 16px; display: flex; gap: 18px; }
 .tafel .links a { color: var(--bernstein); text-decoration: none; border-bottom: 1px solid var(--bernstein-dunkel); padding-bottom: 1px; }
 .tafel .links a:hover { border-bottom-color: var(--bernstein); }
+.tafel .recht { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 12px; }
+.tafel .recht a { color: var(--text-2); text-decoration: none; border-bottom: 1px solid var(--linie); }
+.tafel .recht a:hover { color: var(--bernstein); border-bottom-color: var(--bernstein); }
 .leise { color: var(--text-3); }
 .stern-link { color: var(--text); border-bottom: 1px solid var(--linie); padding-bottom: 1px; }
 .stern-link:hover { color: var(--bernstein); border-bottom-color: var(--bernstein); }
@@ -221,24 +224,13 @@ body.tastatur .nur-tastatur { display: block; }
 .plaetze dd { margin-top: 2px; font-family: var(--mono); font-size: 18px; color: var(--rot); font-variant-numeric: tabular-nums; }
 .plaetze dd .leer { color: var(--text-3); }
 .songs { margin-top: 6px; }
-.songs li { position: relative; display: grid; grid-template-columns: 40px 1fr auto 28px; gap: 0 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--gitter); }
+.songs li { position: relative; display: grid; grid-template-columns: 40px 1fr auto; gap: 0 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--gitter); }
 .songs li:last-child { border-bottom: 0; }
-.songs img, .kein-cover { width: 40px; height: 40px; display: block; background: var(--grund-2); object-fit: cover; }
+.kein-cover { width: 40px; height: 40px; display: block; background: var(--grund-2); }
 .song-t { min-width: 0; position: relative; }
 .song-t b { display: block; font-weight: 500; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .song-t small { display: block; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.lauf { position: absolute; left: 0; right: 0; bottom: -8px; height: 1px; background: var(--gitter); opacity: 0; }
-.lauf i { display: block; height: 100%; background: var(--bernstein); transform: scaleX(0); transform-origin: left; }
-.spielt .lauf { opacity: 1; }
 .song-d { font-family: var(--mono); font-size: 12px; color: var(--text-3); font-variant-numeric: tabular-nums; }
-.play { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--linie); color: var(--text-2); }
-.play:hover { color: var(--bernstein); border-color: var(--bernstein); }
-.play .s { display: none; }
-.spielt .play { color: var(--bernstein); border-color: var(--bernstein); }
-.spielt .play .p { display: none; } .spielt .play .s { display: block; }
-.laedt .play { opacity: .5; animation: puls 1s ease-in-out infinite; }
-@keyframes puls { 50% { opacity: 1; } }
-.ohne .play { opacity: .35; }
 .stern .fuss { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: baseline; font-size: 12px; color: var(--text-3); }
 .stern .fuss a { color: var(--bernstein); text-decoration: none; border-bottom: 1px solid var(--bernstein-dunkel); }
 .label.klick { pointer-events: auto; cursor: pointer; }

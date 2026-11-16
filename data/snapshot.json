@@ -1,0 +1,3805 @@
+{
+ "erstellt": "2026-10-31T20:15:19Z",
+ "quelle": "spotify+musicbrainz",
+ "zeitraeume": {
+  "4w": {
+   "kuenstler": [
+    "4WZGDpNwrC0vNQyl9QzF7d",
+    "6h1s4i4XKIYv4ErDelLDN0",
+    "4Yttlv9ndGjCDCVLqM7ACq",
+    "1aS5tqEs9ci5P9KD9tZWa6",
+    "6piO5Ac23WJnRQifD42dfv",
+    "34LetYSjEuG2fBb4Z8PwPg",
+    "1RIDuulMVv3vmkanZeYVq4",
+    "6iiirBwETShwklU7hG6tXn",
+    "4PvnP3yCzrT289cX3wCdOx",
+    "1qQLhymHXFPtP5U8KNKsm6",
+    "6hFz7qfv7dt2sgRuGBYnP1",
+    "0Dvx6p8JDyzeOPGmaCIH1L",
+    "5WLsGgfxV206tL7KD41Ft1",
+    "3TVkH7YFaAKAjU9s0HgZtl",
+    "4lDiJcOJ2GLCK6p9q5BgfK",
+    "5pVRwX5ZQR7hfJ18w8ZYkl",
+    "5INjqkS1o8h1imAzPqGZBb",
+    "3fMbdgg4jU18AjLCKBhRSm",
+    "1SUu1Bi7ev9HbOzyVC77qD",
+    "4q3ewBCX7sLwd24euuV69X",
+    "5yczwlOmRZG3wUEtvLiGBg",
+    "18ISxWwWjV6rPLoVCXf1dz",
+    "3drqpTL4sQOckmAfF9i1wg",
+    "711MCceyCBcFnzjGY4Q7Un",
+    "3c96G4d2lUOxhomM2mby5S",
+    "4rCSOIelSj4xsI1Zo5WM23",
+    "39KEQQAG9JhIt71g9NEVhh",
+    "1XKjtpH5P81gpOXDB91IEB",
+    "1Xyo4u8uXC1ZmMpatF05PJ",
+    "5hzJL6bebayheeXXnPmv1I",
+    "07SFzTMeYf5P8Rd32a9Zzw",
+    "7rBed6Ya7Hwa2fXbh5btJE",
+    "2jku7tDXc6XoB6MO2hFuqg",
+    "3CJKkU0XuElRT1z8rEtIYg",
+    "3scHMUcB85BflinC8FclbI",
+    "5p7mWeX4RlvqBCxylfiXdE",
+    "5sRQkVexJlax2iISuqL8cV",
+    "5y9wg9qkGBl0n9v9RzaPKu",
+    "5nWYvcpaqKtp08cYxjOfFr",
+    "6ynopZPMBXcIGBI9M02Un5",
+    "0LEDohWJbpNV65CY3acjUS",
+    "3pVfscwg2QxhdHtk966inb",
+    "3pjq2pDV9RR6VY55wBjVnp",
+    "4VuARVJiWGsH2msKTdsKdQ",
+    "58lQAzmAxDD6di02MvAWkv"
+   ],
+   "songs": [
+    {
+     "id": "s1",
+     "kuenstler": [
+      {
+       "id": "3scHMUcB85BflinC8FclbI"
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "kuenstler": [
+      {
+       "id": "0KaA8HctO3Rt7xjMSu3YUk"
+      }
+     ]
+    },
+    {
+     "id": "s3",
+     "kuenstler": [
+      {
+       "id": "6eUKZXaKkcviH0Ku9w2n3V"
+      }
+     ]
+    },
+    {
+     "id": "s4",
+     "kuenstler": [
+      {
+       "id": "3scHMUcB85BflinC8FclbI"
+      }
+     ]
+    },
+    {
+     "id": "s5",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s6",
+     "kuenstler": [
+      {
+       "id": "1EfwyuCzDQpCslZc8C9gkG"
+      },
+      {
+       "id": "0ydBtmgupeHnGowYxRo6tq"
+      },
+      {
+       "id": "0860MVRZC3Llgf1mFvnd1R"
+      }
+     ]
+    },
+    {
+     "id": "s7",
+     "kuenstler": [
+      {
+       "id": "2tHtwM1edk5g3zqMCPOfb6"
+      },
+      {
+       "id": "6SGVQ8bD0Hab6BItkqWVuJ"
+      },
+      {
+       "id": "5SsiJy8NJMzYowqe2sN58e"
+      }
+     ]
+    },
+    {
+     "id": "s8",
+     "kuenstler": [
+      {
+       "id": "6GfiCQDFYANz5wUkSmb3Dr"
+      }
+     ]
+    },
+    {
+     "id": "s9",
+     "kuenstler": [
+      {
+       "id": "3YwK1Kk8VSAtowOX2lRO0c"
+      },
+      {
+       "id": "6dXL3SnQlCGX9LCUAyin6a"
+      }
+     ]
+    },
+    {
+     "id": "s10",
+     "kuenstler": [
+      {
+       "id": "4kI8Ie27vjvonwaB2ePh8T"
+      }
+     ]
+    },
+    {
+     "id": "s11",
+     "kuenstler": [
+      {
+       "id": "73sIBHcqh3Z3NyqHKZ7FOL"
+      }
+     ]
+    },
+    {
+     "id": "s12",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      }
+     ]
+    },
+    {
+     "id": "s13",
+     "kuenstler": [
+      {
+       "id": "0gQDOj4OisQbTq7FUEziea"
+      },
+      {
+       "id": "58imfUscPVwuhuHt1MpBDA"
+      },
+      {
+       "id": "2XsKhGOiMsoOmHgckUMpZa"
+      }
+     ]
+    },
+    {
+     "id": "s14",
+     "kuenstler": [
+      {
+       "id": "6nJEMDVNcq7fduXgk7EdGG"
+      },
+      {
+       "id": "6l8dHVPkuEFzpQjhCH4xXT"
+      },
+      {
+       "id": "0EG0El2Ozcdnw0xJA77DyO"
+      }
+     ]
+    },
+    {
+     "id": "s15",
+     "kuenstler": [
+      {
+       "id": "18ISxWwWjV6rPLoVCXf1dz"
+      }
+     ]
+    },
+    {
+     "id": "s16",
+     "kuenstler": [
+      {
+       "id": "6k9e4mFFVtEAAhGdvJBtqB"
+      },
+      {
+       "id": "1ZPGzmbFTn8GRjqTqnLiFE"
+      },
+      {
+       "id": "0rKRcoCpKA2jLHuIXXn80i"
+      },
+      {
+       "id": "1UEipeDjRtS1qnuhmKgmXg"
+      },
+      {
+       "id": "4anaTI5qQtKKp5D6I5sgDp"
+      }
+     ]
+    },
+    {
+     "id": "s17",
+     "kuenstler": [
+      {
+       "id": "3fMbdgg4jU18AjLCKBhRSm"
+      }
+     ]
+    },
+    {
+     "id": "s18",
+     "kuenstler": [
+      {
+       "id": "1U1el3k54VvEUzo3ybLPlM"
+      }
+     ]
+    },
+    {
+     "id": "s19",
+     "kuenstler": [
+      {
+       "id": "4PvnP3yCzrT289cX3wCdOx"
+      },
+      {
+       "id": "18ISxWwWjV6rPLoVCXf1dz"
+      }
+     ]
+    },
+    {
+     "id": "s20",
+     "kuenstler": [
+      {
+       "id": "7cYEt1pqMgXJdq00hAwVpT"
+      }
+     ]
+    },
+    {
+     "id": "s21",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s22",
+     "kuenstler": [
+      {
+       "id": "5wTdspmxzb8V4ZjvDodpBo"
+      },
+      {
+       "id": "0PEfbjTw85CAN5G0lz9n3p"
+      }
+     ]
+    },
+    {
+     "id": "s23",
+     "kuenstler": [
+      {
+       "id": "4Ck46WZxqzpKUInvcgVF1C"
+      }
+     ]
+    },
+    {
+     "id": "s24",
+     "kuenstler": [
+      {
+       "id": "0sKY9AcBdiGx4FbFbQsXoX"
+      },
+      {
+       "id": "2ISiyx4DLCMAMBCvPesCoq"
+      }
+     ]
+    },
+    {
+     "id": "s25",
+     "kuenstler": [
+      {
+       "id": "05MQiIv63Y3WL4AXG1Zo3E"
+      }
+     ]
+    },
+    {
+     "id": "s26",
+     "kuenstler": [
+      {
+       "id": "7dGJo4pcD2V6oG8kP0tJRR"
+      },
+      {
+       "id": "1Oa0bMld0A3u5OTYfMzp5h"
+      }
+     ]
+    },
+    {
+     "id": "s27",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "5pVRwX5ZQR7hfJ18w8ZYkl"
+      }
+     ]
+    },
+    {
+     "id": "s28",
+     "kuenstler": [
+      {
+       "id": "1aS5tqEs9ci5P9KD9tZWa6"
+      },
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      }
+     ]
+    },
+    {
+     "id": "s29",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "7rBed6Ya7Hwa2fXbh5btJE"
+      }
+     ]
+    },
+    {
+     "id": "s30",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s31",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s32",
+     "kuenstler": [
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s33",
+     "kuenstler": [
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      }
+     ]
+    },
+    {
+     "id": "s34",
+     "kuenstler": [
+      {
+       "id": "1aS5tqEs9ci5P9KD9tZWa6"
+      },
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      },
+      {
+       "id": "0b62itBWBdLgiecXjXCqKC"
+      }
+     ]
+    },
+    {
+     "id": "s35",
+     "kuenstler": [
+      {
+       "id": "5kp4UMsrN5oZxPnsef59iQ"
+      }
+     ]
+    },
+    {
+     "id": "s36",
+     "kuenstler": [
+      {
+       "id": "3rJe1nJEEuzdmuGSPy8teM"
+      }
+     ]
+    },
+    {
+     "id": "s37",
+     "kuenstler": [
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s38",
+     "kuenstler": [
+      {
+       "id": "7pqZmXaLL4eqW60I0XgTTF"
+      }
+     ]
+    },
+    {
+     "id": "s39",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s40",
+     "kuenstler": [
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      }
+     ]
+    },
+    {
+     "id": "s41",
+     "kuenstler": [
+      {
+       "id": "4F84IBURUo98rz4r61KF70"
+      }
+     ]
+    },
+    {
+     "id": "s42",
+     "kuenstler": [
+      {
+       "id": "2JwyRtuXf2l6sTnSnGVIa1"
+      },
+      {
+       "id": "6gto7HVNhu4ARE3P3g8Y5Y"
+      }
+     ]
+    },
+    {
+     "id": "s43",
+     "kuenstler": [
+      {
+       "id": "0r0R5nIjDY04TfxRM10Bcb"
+      },
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s44",
+     "kuenstler": [
+      {
+       "id": "1qQLhymHXFPtP5U8KNKsm6"
+      }
+     ]
+    },
+    {
+     "id": "s45",
+     "kuenstler": [
+      {
+       "id": "65WfmKecS1GdKkxURvvY1s"
+      }
+     ]
+    },
+    {
+     "id": "s46",
+     "kuenstler": [
+      {
+       "id": "4J86DBDnC5acWsN0dpZe3j"
+      }
+     ]
+    },
+    {
+     "id": "s47",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      },
+      {
+       "id": "6quRLJ5SiWHgcVMoE9TEJj"
+      }
+     ]
+    },
+    {
+     "id": "s48",
+     "kuenstler": [
+      {
+       "id": "0OzU60O3MzXXLfoigoqB1N"
+      }
+     ]
+    },
+    {
+     "id": "s49",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s50",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    }
+   ]
+  },
+  "6m": {
+   "kuenstler": [
+    "34LetYSjEuG2fBb4Z8PwPg",
+    "4Yttlv9ndGjCDCVLqM7ACq",
+    "4WZGDpNwrC0vNQyl9QzF7d",
+    "6h1s4i4XKIYv4ErDelLDN0",
+    "1Xyo4u8uXC1ZmMpatF05PJ",
+    "0EmeFodog0BfCgMzAIvKQp",
+    "0Dvx6p8JDyzeOPGmaCIH1L",
+    "1aS5tqEs9ci5P9KD9tZWa6",
+    "3fMbdgg4jU18AjLCKBhRSm",
+    "1qQLhymHXFPtP5U8KNKsm6",
+    "4q3ewBCX7sLwd24euuV69X",
+    "18ISxWwWjV6rPLoVCXf1dz",
+    "39KEQQAG9JhIt71g9NEVhh",
+    "6ynopZPMBXcIGBI9M02Un5",
+    "5pVRwX5ZQR7hfJ18w8ZYkl",
+    "4lDiJcOJ2GLCK6p9q5BgfK",
+    "6piO5Ac23WJnRQifD42dfv",
+    "711MCceyCBcFnzjGY4Q7Un",
+    "1RIDuulMVv3vmkanZeYVq4",
+    "3drqpTL4sQOckmAfF9i1wg",
+    "1ul8iLt2WnFe2UIyovjg7q",
+    "6dBBpd1zW3iywDqNt0UVOk",
+    "6iiirBwETShwklU7hG6tXn",
+    "1E8mXBWN7AXZCOPYbOky4J",
+    "5gSXA0ofbOM1wGaqItyGg9",
+    "4PvnP3yCzrT289cX3wCdOx",
+    "7dGJo4pcD2V6oG8kP0tJRR",
+    "3pjq2pDV9RR6VY55wBjVnp",
+    "4gJT0OnBISFA5CPMNYBGIE",
+    "6tVxgFV9M1sqlTWUnQOhlu",
+    "1EfwyuCzDQpCslZc8C9gkG",
+    "1RyvyyTE3xzB2ZywiAwp0i",
+    "2XNo6k4LqlZlM5sj0wKReo",
+    "5q1SD3zx3GPnofIAPOIFrY",
+    "2Im8m4STDBosjfmb5hmP80",
+    "6gto7HVNhu4ARE3P3g8Y5Y",
+    "6hFz7qfv7dt2sgRuGBYnP1",
+    "77SW9BnxLY8rJ0RciFqkHh",
+    "5WLsGgfxV206tL7KD41Ft1",
+    "0Y5tJX1MQlPlqiwlOH1tJY",
+    "5SCDfg1YoEfI5gFtXqEWah",
+    "7rBed6Ya7Hwa2fXbh5btJE",
+    "3TVkH7YFaAKAjU9s0HgZtl",
+    "3DoYGi5spOR9sIqjdkf2R4",
+    "1dVKBw8iMPpS1almxwIVI3",
+    "7qG3b048QCHVRO5Pv1T5lw",
+    "28TqrmNSPiKo5w3WVb3A3N",
+    "7j6DKwmjbxvpQO8h914uEz",
+    "5INjqkS1o8h1imAzPqGZBb",
+    "5nWYvcpaqKtp08cYxjOfFr"
+   ],
+   "songs": [
+    {
+     "id": "s51",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s52",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      }
+     ]
+    },
+    {
+     "id": "s53",
+     "kuenstler": [
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s54",
+     "kuenstler": [
+      {
+       "id": "18ISxWwWjV6rPLoVCXf1dz"
+      }
+     ]
+    },
+    {
+     "id": "s38",
+     "kuenstler": [
+      {
+       "id": "7pqZmXaLL4eqW60I0XgTTF"
+      }
+     ]
+    },
+    {
+     "id": "s1",
+     "kuenstler": [
+      {
+       "id": "3scHMUcB85BflinC8FclbI"
+      }
+     ]
+    },
+    {
+     "id": "s55",
+     "kuenstler": [
+      {
+       "id": "6PTNNcLg90Kkl89JcEwKhT"
+      },
+      {
+       "id": "1dgdvbogmctybPrGEcnYf6"
+      },
+      {
+       "id": "4ScCswdRlyA23odg9thgIO"
+      }
+     ]
+    },
+    {
+     "id": "s2",
+     "kuenstler": [
+      {
+       "id": "0KaA8HctO3Rt7xjMSu3YUk"
+      }
+     ]
+    },
+    {
+     "id": "s56",
+     "kuenstler": [
+      {
+       "id": "711MCceyCBcFnzjGY4Q7Un"
+      }
+     ]
+    },
+    {
+     "id": "s57",
+     "kuenstler": [
+      {
+       "id": "1TIQZBUSqWPrBZuh80x6Rz"
+      }
+     ]
+    },
+    {
+     "id": "s58",
+     "kuenstler": [
+      {
+       "id": "4gJT0OnBISFA5CPMNYBGIE"
+      }
+     ]
+    },
+    {
+     "id": "s59",
+     "kuenstler": [
+      {
+       "id": "2DaxqgrOhkeH0fpeiQq2f4"
+      }
+     ]
+    },
+    {
+     "id": "s60",
+     "kuenstler": [
+      {
+       "id": "4sVieJlKgpZ2k9ESNS5IdN"
+      }
+     ]
+    },
+    {
+     "id": "s42",
+     "kuenstler": [
+      {
+       "id": "2JwyRtuXf2l6sTnSnGVIa1"
+      },
+      {
+       "id": "6gto7HVNhu4ARE3P3g8Y5Y"
+      }
+     ]
+    },
+    {
+     "id": "s61",
+     "kuenstler": [
+      {
+       "id": "2LAMcjEMXfL8mWohcAkCF9"
+      },
+      {
+       "id": "3F2BUPEkX9IDaRYAeJN0Gh"
+      }
+     ]
+    },
+    {
+     "id": "s62",
+     "kuenstler": [
+      {
+       "id": "3drqpTL4sQOckmAfF9i1wg"
+      },
+      {
+       "id": "72y6W9pGy97xTM44dwy3F6"
+      }
+     ]
+    },
+    {
+     "id": "s63",
+     "kuenstler": [
+      {
+       "id": "1aS5tqEs9ci5P9KD9tZWa6"
+      },
+      {
+       "id": "4TPAWIeZhHw6CnsoPe9vxY"
+      }
+     ]
+    },
+    {
+     "id": "s64",
+     "kuenstler": [
+      {
+       "id": "4Ck46WZxqzpKUInvcgVF1C"
+      }
+     ]
+    },
+    {
+     "id": "s65",
+     "kuenstler": [
+      {
+       "id": "4GoCdmGGYtijLZlgTMyhwe"
+      }
+     ]
+    },
+    {
+     "id": "s66",
+     "kuenstler": [
+      {
+       "id": "74cb3MG0x0BOnYNW1uXYnM"
+      },
+      {
+       "id": "3D04fb59z3ANxVaeHBfxtW"
+      }
+     ]
+    },
+    {
+     "id": "s5",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s67",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s68",
+     "kuenstler": [
+      {
+       "id": "0TnOYISbd1XYRBk9myaseg"
+      },
+      {
+       "id": "4wLXwxDeWQ8mtUIRPxGiD6"
+      }
+     ]
+    },
+    {
+     "id": "s69",
+     "kuenstler": [
+      {
+       "id": "7MiDcPa6UiV3In7lIM71IN"
+      }
+     ]
+    },
+    {
+     "id": "s70",
+     "kuenstler": [
+      {
+       "id": "7rBed6Ya7Hwa2fXbh5btJE"
+      }
+     ]
+    },
+    {
+     "id": "s71",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s72",
+     "kuenstler": [
+      {
+       "id": "0EmeFodog0BfCgMzAIvKQp"
+      },
+      {
+       "id": "3wcj11K77LjEY1PkEazffa"
+      }
+     ]
+    },
+    {
+     "id": "s36",
+     "kuenstler": [
+      {
+       "id": "3rJe1nJEEuzdmuGSPy8teM"
+      }
+     ]
+    },
+    {
+     "id": "s29",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "7rBed6Ya7Hwa2fXbh5btJE"
+      }
+     ]
+    },
+    {
+     "id": "s73",
+     "kuenstler": [
+      {
+       "id": "1dVKBw8iMPpS1almxwIVI3"
+      }
+     ]
+    },
+    {
+     "id": "s74",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s75",
+     "kuenstler": [
+      {
+       "id": "1ul8iLt2WnFe2UIyovjg7q"
+      }
+     ]
+    },
+    {
+     "id": "s76",
+     "kuenstler": [
+      {
+       "id": "19eLuQmk9aCobbVDHc6eek"
+      }
+     ]
+    },
+    {
+     "id": "s77",
+     "kuenstler": [
+      {
+       "id": "3EA9hVIzKfFiQI0Kikz2wo"
+      },
+      {
+       "id": "1Cs0zKBU1kc0i8ypK3B9ai"
+      },
+      {
+       "id": "0RMJOzHDhAKY1o2j0W0vxY"
+      },
+      {
+       "id": "181bsRPaVXVlUKXrxwZfHK"
+      }
+     ]
+    },
+    {
+     "id": "s78",
+     "kuenstler": [
+      {
+       "id": "0WyJfrWjsny9mSxops8ksX"
+      }
+     ]
+    },
+    {
+     "id": "s79",
+     "kuenstler": [
+      {
+       "id": "26dSoYclwsYLMAKD3tpOr4"
+      }
+     ]
+    },
+    {
+     "id": "s80",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s81",
+     "kuenstler": [
+      {
+       "id": "0wRGuF39WWxHeftv2TBNQT"
+      }
+     ]
+    },
+    {
+     "id": "s82",
+     "kuenstler": [
+      {
+       "id": "7ip3CWlgPZbQHvgJpmcGSS"
+      }
+     ]
+    },
+    {
+     "id": "s83",
+     "kuenstler": [
+      {
+       "id": "07SFzTMeYf5P8Rd32a9Zzw"
+      }
+     ]
+    },
+    {
+     "id": "s84",
+     "kuenstler": [
+      {
+       "id": "14D0I0RYqvIorkPL2EWoQh"
+      },
+      {
+       "id": "4mb1xtQVGSK5dh8AbtwBiR"
+      }
+     ]
+    },
+    {
+     "id": "s21",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      }
+     ]
+    },
+    {
+     "id": "s85",
+     "kuenstler": [
+      {
+       "id": "5JgxqXmh1TrVDZn7gAgqLw"
+      },
+      {
+       "id": "42cM14lDAB0KzoBWQ86TWu"
+      },
+      {
+       "id": "2KgIhGBEJK4W6Uw5WVeoaV"
+      },
+      {
+       "id": "5ct8AlcDgWMp4O25vbcjpC"
+      }
+     ]
+    },
+    {
+     "id": "s86",
+     "kuenstler": [
+      {
+       "id": "33ScadVnbm2X8kkUqOkC6Z"
+      },
+      {
+       "id": "5bv5RplEOwdCvhq0EILh9E"
+      }
+     ]
+    },
+    {
+     "id": "s87",
+     "kuenstler": [
+      {
+       "id": "1EZIni3W4CmC2bTy75Q053"
+      }
+     ]
+    },
+    {
+     "id": "s88",
+     "kuenstler": [
+      {
+       "id": "1dVKBw8iMPpS1almxwIVI3"
+      }
+     ]
+    },
+    {
+     "id": "s39",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s89",
+     "kuenstler": [
+      {
+       "id": "39KEQQAG9JhIt71g9NEVhh"
+      }
+     ]
+    },
+    {
+     "id": "s90",
+     "kuenstler": [
+      {
+       "id": "2ib5SfRdSqdCEO0serkHH1"
+      }
+     ]
+    },
+    {
+     "id": "s91",
+     "kuenstler": [
+      {
+       "id": "3jiOHVFdVQjbSDVeC7RgY7"
+      }
+     ]
+    }
+   ]
+  },
+  "1y": {
+   "kuenstler": [
+    "4WZGDpNwrC0vNQyl9QzF7d",
+    "0Dvx6p8JDyzeOPGmaCIH1L",
+    "4Yttlv9ndGjCDCVLqM7ACq",
+    "6h1s4i4XKIYv4ErDelLDN0",
+    "1Xyo4u8uXC1ZmMpatF05PJ",
+    "1aS5tqEs9ci5P9KD9tZWa6",
+    "34LetYSjEuG2fBb4Z8PwPg",
+    "6ynopZPMBXcIGBI9M02Un5",
+    "1ul8iLt2WnFe2UIyovjg7q",
+    "4q3ewBCX7sLwd24euuV69X",
+    "5yw4tA8D5uG7tT3NaDvq10",
+    "1qQLhymHXFPtP5U8KNKsm6",
+    "4lDiJcOJ2GLCK6p9q5BgfK",
+    "0GOx72r5AAEKRGQFn3xqXK",
+    "7dGJo4pcD2V6oG8kP0tJRR",
+    "00FQb4jTyendYWaN8pK0wa",
+    "3YQKmKGau1PzlVlkL1iodx",
+    "53XhwfbYqKCa1cC15pYq2q",
+    "77SW9BnxLY8rJ0RciFqkHh",
+    "1E8mXBWN7AXZCOPYbOky4J",
+    "5gSXA0ofbOM1wGaqItyGg9",
+    "0EmeFodog0BfCgMzAIvKQp",
+    "7qG3b048QCHVRO5Pv1T5lw",
+    "7GR9YDdr51tku5kjFgMLB1",
+    "28TqrmNSPiKo5w3WVb3A3N",
+    "2o5jDhtHVPhrJdv3cEQ99Z",
+    "7vk5e3vY1uw9plTHJAMwjN",
+    "18ISxWwWjV6rPLoVCXf1dz",
+    "1EfwyuCzDQpCslZc8C9gkG",
+    "0fTSzq9jAh4c36UVb4V7CB",
+    "39KEQQAG9JhIt71g9NEVhh",
+    "4hK7sEnm0se5bqoI3Yb5o1",
+    "711MCceyCBcFnzjGY4Q7Un",
+    "2ORiMtfuAyIgw5tk2WnERd",
+    "3fMbdgg4jU18AjLCKBhRSm",
+    "6fOMl44jA4Sp5b9PpYCkzz",
+    "41JIPLdFRH6JBZXb19vVuq",
+    "7cYEt1pqMgXJdq00hAwVpT",
+    "246dkjvS1zLTtiykXe5h60",
+    "5arKwJZEvT5uKq4o0JfqR4",
+    "1Cs0zKBU1kc0i8ypK3B9ai",
+    "5SCDfg1YoEfI5gFtXqEWah",
+    "5pVRwX5ZQR7hfJ18w8ZYkl",
+    "3Mqo6hd9UQljzHJTJETjsU",
+    "2DL1LxN8dHBG1tI3Q3TlK7",
+    "0LcJLqbBmaGUft1e9Mm8HV",
+    "3drqpTL4sQOckmAfF9i1wg",
+    "5pKCCKE2ajJHZ9KAiaK11H",
+    "4rrI3dKjmTOzRZvOwOWOlu",
+    "6r8QEHkxWjN4t2HemWAMyN"
+   ],
+   "songs": [
+    {
+     "id": "s92",
+     "kuenstler": [
+      {
+       "id": "34LetYSjEuG2fBb4Z8PwPg"
+      }
+     ]
+    },
+    {
+     "id": "s93",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s52",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      },
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      }
+     ]
+    },
+    {
+     "id": "s53",
+     "kuenstler": [
+      {
+       "id": "6h1s4i4XKIYv4ErDelLDN0"
+      },
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s94",
+     "kuenstler": [
+      {
+       "id": "5p9HO3XC5P3BLxJs5Mtrhm"
+      }
+     ]
+    },
+    {
+     "id": "s95",
+     "kuenstler": [
+      {
+       "id": "0fTSzq9jAh4c36UVb4V7CB"
+      }
+     ]
+    },
+    {
+     "id": "s7",
+     "kuenstler": [
+      {
+       "id": "2tHtwM1edk5g3zqMCPOfb6"
+      },
+      {
+       "id": "6SGVQ8bD0Hab6BItkqWVuJ"
+      },
+      {
+       "id": "5SsiJy8NJMzYowqe2sN58e"
+      }
+     ]
+    },
+    {
+     "id": "s96",
+     "kuenstler": [
+      {
+       "id": "2Diqn1jFkehRd9MVDGKGdq"
+      }
+     ]
+    },
+    {
+     "id": "s97",
+     "kuenstler": [
+      {
+       "id": "5bePP411ITzZyWf1QZ2SX4"
+      }
+     ]
+    },
+    {
+     "id": "s98",
+     "kuenstler": [
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      },
+      {
+       "id": "3CJKkU0XuElRT1z8rEtIYg"
+      }
+     ]
+    },
+    {
+     "id": "s99",
+     "kuenstler": [
+      {
+       "id": "2P7AfQW941UU324qq2ggZf"
+      }
+     ]
+    },
+    {
+     "id": "s100",
+     "kuenstler": [
+      {
+       "id": "4Yttlv9ndGjCDCVLqM7ACq"
+      },
+      {
+       "id": "1qQLhymHXFPtP5U8KNKsm6"
+      }
+     ]
+    },
+    {
+     "id": "s101",
+     "kuenstler": [
+      {
+       "id": "4KfEG606HYb1TLQhq7NbDl"
+      }
+     ]
+    },
+    {
+     "id": "s102",
+     "kuenstler": [
+      {
+       "id": "4W9cXg9c6w38cHSUfUWPcP"
+      }
+     ]
+    },
+    {
+     "id": "s103",
+     "kuenstler": [
+      {
+       "id": "5IH6FPUwQTxPSXurCrcIov"
+      }
+     ]
+    },
+    {
+     "id": "s54",
+     "kuenstler": [
+      {
+       "id": "18ISxWwWjV6rPLoVCXf1dz"
+      }
+     ]
+    },
+    {
+     "id": "s104",
+     "kuenstler": [
+      {
+       "id": "163tK9Wjr9P9DmM0AVK7lm"
+      }
+     ]
+    },
+    {
+     "id": "s14",
+     "kuenstler": [
+      {
+       "id": "6nJEMDVNcq7fduXgk7EdGG"
+      },
+      {
+       "id": "6l8dHVPkuEFzpQjhCH4xXT"
+      },
+      {
+       "id": "0EG0El2Ozcdnw0xJA77DyO"
+      }
+     ]
+    },
+    {
+     "id": "s105",
+     "kuenstler": [
+      {
+       "id": "06HL4z0CvFAxyc27GXpf02"
+      }
+     ]
+    },
+    {
+     "id": "s106",
+     "kuenstler": [
+      {
+       "id": "3rZBkgoRHG8M9jQL0QPNMi"
+      }
+     ]
+    },
+    {
+     "id": "s107",
+     "kuenstler": [
+      {
+       "id": "1aS5tqEs9ci5P9KD9tZWa6"
+      },
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      }
+     ]
+    },
+    {
+     "id": "s108",
+     "kuenstler": [
+      {
+       "id": "3fi2XZbBQ4Px2T9ar6Es0M"
+      }
+     ]
+    },
+    {
+     "id": "s109",
+     "kuenstler": [
+      {
+       "id": "702XNgA79AG7pUGDxoYHql"
+      }
+     ]
+    },
+    {
+     "id": "s110",
+     "kuenstler": [
+      {
+       "id": "28TqrmNSPiKo5w3WVb3A3N"
+      },
+      {
+       "id": "3F2BUPEkX9IDaRYAeJN0Gh"
+      }
+     ]
+    },
+    {
+     "id": "s111",
+     "kuenstler": [
+      {
+       "id": "1yIifIA91WgmfzBcjbQB8i"
+      }
+     ]
+    },
+    {
+     "id": "s112",
+     "kuenstler": [
+      {
+       "id": "5dGsIOepO9ufQlXjW8KrPL"
+      },
+      {
+       "id": "2eSp20wy0FQIPWJLCCfrqa"
+      },
+      {
+       "id": "4JLjGlT5l6gtKKvP8qRb2g"
+      }
+     ]
+    },
+    {
+     "id": "s113",
+     "kuenstler": [
+      {
+       "id": "353KPo8gVAfcZfwF7BPZDy"
+      }
+     ]
+    },
+    {
+     "id": "s38",
+     "kuenstler": [
+      {
+       "id": "7pqZmXaLL4eqW60I0XgTTF"
+      }
+     ]
+    },
+    {
+     "id": "s114",
+     "kuenstler": [
+      {
+       "id": "1HcduAQRxX1Q9hOTAQ8bOI"
+      },
+      {
+       "id": "6cUZdCbsiJJXae86kwiH5v"
+      },
+      {
+       "id": "3i5xWUEFpG6g9pcRo4C2yc"
+      }
+     ]
+    },
+    {
+     "id": "s115",
+     "kuenstler": [
+      {
+       "id": "6CP5wWvO8oIxedESJNCN4H"
+      },
+      {
+       "id": "6s5ubAp65wXoTZefE01RNR"
+      },
+      {
+       "id": "1T6DQ853AlyL47W8a2jC0f"
+      }
+     ]
+    },
+    {
+     "id": "s116",
+     "kuenstler": [
+      {
+       "id": "0Dvx6p8JDyzeOPGmaCIH1L"
+      }
+     ]
+    },
+    {
+     "id": "s117",
+     "kuenstler": [
+      {
+       "id": "3muH0fOWJZ2SaxK3agdOMD"
+      }
+     ]
+    },
+    {
+     "id": "s1",
+     "kuenstler": [
+      {
+       "id": "3scHMUcB85BflinC8FclbI"
+      }
+     ]
+    },
+    {
+     "id": "s118",
+     "kuenstler": [
+      {
+       "id": "5wyWp867LWGjFmYZXVSFnZ"
+      }
+     ]
+    },
+    {
+     "id": "s119",
+     "kuenstler": [
+      {
+       "id": "4q3ewBCX7sLwd24euuV69X"
+      },
+      {
+       "id": "6nVcHLIgY5pE2YCl8ubca1"
+      }
+     ]
+    },
+    {
+     "id": "s120",
+     "kuenstler": [
+      {
+       "id": "6ynopZPMBXcIGBI9M02Un5"
+      }
+     ]
+    },
+    {
+     "id": "s55",
+     "kuenstler": [
+      {
+       "id": "6PTNNcLg90Kkl89JcEwKhT"
+      },
+      {
+       "id": "1dgdvbogmctybPrGEcnYf6"
+      },
+      {
+       "id": "4ScCswdRlyA23odg9thgIO"
+      }
+     ]
+    },
+    {
+     "id": "s121",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s122",
+     "kuenstler": [
+      {
+       "id": "2otUckChxWf2cp6UP2cD6e"
+      },
+      {
+       "id": "39KEQQAG9JhIt71g9NEVhh"
+      },
+      {
+       "id": "2SabhGDiBSyaM6QSuBUVqB"
+      }
+     ]
+    },
+    {
+     "id": "s123",
+     "kuenstler": [
+      {
+       "id": "1G7TGDJ01So6i6XNirnVS7"
+      },
+      {
+       "id": "5IrNK8jRtmwCN4JLMJMSY5"
+      }
+     ]
+    },
+    {
+     "id": "s124",
+     "kuenstler": [
+      {
+       "id": "1qQLhymHXFPtP5U8KNKsm6"
+      }
+     ]
+    },
+    {
+     "id": "s125",
+     "kuenstler": [
+      {
+       "id": "2XNo6k4LqlZlM5sj0wKReo"
+      }
+     ]
+    },
+    {
+     "id": "s126",
+     "kuenstler": [
+      {
+       "id": "2j2rh3oQh4QEUnNTDKYSJD"
+      },
+      {
+       "id": "1aS5tqEs9ci5P9KD9tZWa6"
+      },
+      {
+       "id": "5eioJDe26lOqkAMbuhzZYs"
+      }
+     ]
+    },
+    {
+     "id": "s127",
+     "kuenstler": [
+      {
+       "id": "0JP5ABLaBXOg8HFsxUoPzC"
+      },
+      {
+       "id": "5k9dTPjhY8NrdWhPDD7C2H"
+      }
+     ]
+    },
+    {
+     "id": "s128",
+     "kuenstler": [
+      {
+       "id": "2DaxqgrOhkeH0fpeiQq2f4"
+      }
+     ]
+    },
+    {
+     "id": "s129",
+     "kuenstler": [
+      {
+       "id": "0KaA8HctO3Rt7xjMSu3YUk"
+      }
+     ]
+    },
+    {
+     "id": "s130",
+     "kuenstler": [
+      {
+       "id": "6r8QEHkxWjN4t2HemWAMyN"
+      }
+     ]
+    },
+    {
+     "id": "s131",
+     "kuenstler": [
+      {
+       "id": "4WZGDpNwrC0vNQyl9QzF7d"
+      }
+     ]
+    },
+    {
+     "id": "s132",
+     "kuenstler": [
+      {
+       "id": "39KEQQAG9JhIt71g9NEVhh"
+      }
+     ]
+    },
+    {
+     "id": "s133",
+     "kuenstler": [
+      {
+       "id": "1SnSPHBs8l5iAvoWF0aO05"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "kuenstler": {
+  "4WZGDpNwrC0vNQyl9QzF7d": {
+   "name": "Capital Bra",
+   "url": "https://open.spotify.com/artist/4WZGDpNwrC0vNQyl9QzF7d",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "berlin",
+    "pop rap",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "6h1s4i4XKIYv4ErDelLDN0": {
+   "name": "Samra",
+   "url": "https://open.spotify.com/artist/6h1s4i4XKIYv4ErDelLDN0",
+   "tags": [
+    "hip hop",
+    "pop rap",
+    "trap",
+    "rap",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "4Yttlv9ndGjCDCVLqM7ACq": {
+   "name": "Sido",
+   "url": "https://open.spotify.com/artist/4Yttlv9ndGjCDCVLqM7ACq",
+   "tags": [
+    "german",
+    "hip hop",
+    "rap",
+    "pop rap",
+    "hardcore hip hop",
+    "bilder",
+    "sido"
+   ],
+   "land": "DE"
+  },
+  "1aS5tqEs9ci5P9KD9tZWa6": {
+   "name": "Bonez MC",
+   "url": "https://open.spotify.com/artist/1aS5tqEs9ci5P9KD9tZWa6",
+   "tags": [
+    "hip hop",
+    "rap",
+    "gangsta rap",
+    "german",
+    "pop rap",
+    "deutschrap",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "6piO5Ac23WJnRQifD42dfv": {
+   "name": "Peaceful Melody",
+   "url": "https://open.spotify.com/artist/6piO5Ac23WJnRQifD42dfv",
+   "tags": [
+    "lo-fi",
+    "ambient"
+   ],
+   "land": null
+  },
+  "34LetYSjEuG2fBb4Z8PwPg": {
+   "name": "Pashanim",
+   "url": "https://open.spotify.com/artist/34LetYSjEuG2fBb4Z8PwPg",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "pop rap",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "1RIDuulMVv3vmkanZeYVq4": {
+   "name": "Lō-fÿkkø",
+   "url": "https://open.spotify.com/artist/1RIDuulMVv3vmkanZeYVq4",
+   "tags": [
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "6iiirBwETShwklU7hG6tXn": {
+   "name": "Røwspa",
+   "url": "https://open.spotify.com/artist/6iiirBwETShwklU7hG6tXn",
+   "tags": [
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "4PvnP3yCzrT289cX3wCdOx": {
+   "name": "Yung Hurn",
+   "url": "https://open.spotify.com/artist/4PvnP3yCzrT289cX3wCdOx",
+   "tags": [
+    "hip hop"
+   ],
+   "land": "AT"
+  },
+  "1qQLhymHXFPtP5U8KNKsm6": {
+   "name": "Apache 207",
+   "url": "https://open.spotify.com/artist/1qQLhymHXFPtP5U8KNKsm6",
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "6hFz7qfv7dt2sgRuGBYnP1": {
+   "name": "ILYAA",
+   "url": "https://open.spotify.com/artist/6hFz7qfv7dt2sgRuGBYnP1",
+   "tags": [
+    "german",
+    "pop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "0Dvx6p8JDyzeOPGmaCIH1L": {
+   "name": "RAF Camora",
+   "url": "https://open.spotify.com/artist/0Dvx6p8JDyzeOPGmaCIH1L",
+   "tags": [
+    "hip hop",
+    "pop rap",
+    "dancehall",
+    "deutschrap"
+   ],
+   "land": "AT"
+  },
+  "5WLsGgfxV206tL7KD41Ft1": {
+   "name": "Pacific",
+   "url": "https://open.spotify.com/artist/5WLsGgfxV206tL7KD41Ft1",
+   "tags": [
+    "drum and bass"
+   ],
+   "land": "CA"
+  },
+  "3TVkH7YFaAKAjU9s0HgZtl": {
+   "name": "Sunset Sundays",
+   "url": "https://open.spotify.com/artist/3TVkH7YFaAKAjU9s0HgZtl",
+   "tags": [
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "4lDiJcOJ2GLCK6p9q5BgfK": {
+   "name": "Kontra K",
+   "url": "https://open.spotify.com/artist/4lDiJcOJ2GLCK6p9q5BgfK",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "pop rap"
+   ],
+   "land": null
+  },
+  "5pVRwX5ZQR7hfJ18w8ZYkl": {
+   "name": "Ufo361",
+   "url": "https://open.spotify.com/artist/5pVRwX5ZQR7hfJ18w8ZYkl",
+   "tags": [
+    "hip hop",
+    "trap",
+    "cloud rap"
+   ],
+   "land": "DE"
+  },
+  "5INjqkS1o8h1imAzPqGZBb": {
+   "name": "Tame Impala",
+   "url": "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+   "tags": [
+    "psychedelic rock",
+    "neo-psychedelia",
+    "psychedelic pop",
+    "alternative rock",
+    "indie rock",
+    "synth-pop",
+    "dream pop",
+    "australia"
+   ],
+   "land": "AU"
+  },
+  "3fMbdgg4jU18AjLCKBhRSm": {
+   "name": "Michael Jackson",
+   "url": "https://open.spotify.com/artist/3fMbdgg4jU18AjLCKBhRSm",
+   "tags": [
+    "pop",
+    "dance-pop",
+    "disco",
+    "contemporary r&b",
+    "pop soul",
+    "soul",
+    "r&b",
+    "pop rock"
+   ],
+   "land": "US"
+  },
+  "1SUu1Bi7ev9HbOzyVC77qD": {
+   "name": "Kool Savas",
+   "url": "https://open.spotify.com/artist/1SUu1Bi7ev9HbOzyVC77qD",
+   "tags": [
+    "hip hop",
+    "rap",
+    "germany",
+    "german",
+    "german hip hop"
+   ],
+   "land": "DE"
+  },
+  "4q3ewBCX7sLwd24euuV69X": {
+   "name": "Bad Bunny",
+   "url": "https://open.spotify.com/artist/4q3ewBCX7sLwd24euuV69X",
+   "tags": [
+    "reggaeton",
+    "trap latino",
+    "latin",
+    "latin trap",
+    "hip hop",
+    "pop",
+    "spanish",
+    "english"
+   ],
+   "land": "PR"
+  },
+  "5yczwlOmRZG3wUEtvLiGBg": {
+   "name": "Braaheim",
+   "url": "https://open.spotify.com/artist/5yczwlOmRZG3wUEtvLiGBg",
+   "tags": [
+    "lo-fi"
+   ],
+   "land": "NO"
+  },
+  "18ISxWwWjV6rPLoVCXf1dz": {
+   "name": "RIN",
+   "url": "https://open.spotify.com/artist/18ISxWwWjV6rPLoVCXf1dz",
+   "tags": [
+    "german",
+    "hip hop",
+    "rap",
+    "cloud rap"
+   ],
+   "land": "DE"
+  },
+  "3drqpTL4sQOckmAfF9i1wg": {
+   "name": "Summer Cem",
+   "url": "https://open.spotify.com/artist/3drqpTL4sQOckmAfF9i1wg",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german"
+   ],
+   "land": "TR"
+  },
+  "711MCceyCBcFnzjGY4Q7Un": {
+   "name": "AC/DC",
+   "url": "https://open.spotify.com/artist/711MCceyCBcFnzjGY4Q7Un",
+   "tags": [
+    "hard rock",
+    "rock",
+    "blues rock",
+    "classic rock",
+    "rock and roll",
+    "heavy metal",
+    "hard & heavy",
+    "relaxed"
+   ],
+   "land": "AU"
+  },
+  "3c96G4d2lUOxhomM2mby5S": {
+   "name": "Bushido",
+   "url": "https://open.spotify.com/artist/3c96G4d2lUOxhomM2mby5S",
+   "tags": [
+    "hip hop",
+    "rap",
+    "germany",
+    "german",
+    "bonn",
+    "berlin",
+    "deutschrap",
+    "aggro berlin"
+   ],
+   "land": "DE"
+  },
+  "4rCSOIelSj4xsI1Zo5WM23": {
+   "name": "THNDERZ",
+   "url": "https://open.spotify.com/artist/4rCSOIelSj4xsI1Zo5WM23",
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "39KEQQAG9JhIt71g9NEVhh": {
+   "name": "Azet",
+   "url": "https://open.spotify.com/artist/39KEQQAG9JhIt71g9NEVhh",
+   "tags": [
+    "hip hop",
+    "deutschrap",
+    "rap",
+    "german",
+    "pop rap"
+   ],
+   "land": "DE"
+  },
+  "1XKjtpH5P81gpOXDB91IEB": {
+   "name": "Miami Yacine",
+   "url": "https://open.spotify.com/artist/1XKjtpH5P81gpOXDB91IEB",
+   "tags": [
+    "hip hop"
+   ],
+   "land": "DE"
+  },
+  "1Xyo4u8uXC1ZmMpatF05PJ": {
+   "name": "The Weeknd",
+   "url": "https://open.spotify.com/artist/1Xyo4u8uXC1ZmMpatF05PJ",
+   "tags": [
+    "r&b",
+    "contemporary r&b",
+    "alternative r&b",
+    "dance-pop",
+    "synth-pop",
+    "pop",
+    "2010s",
+    "2020s"
+   ],
+   "land": "CA"
+  },
+  "5hzJL6bebayheeXXnPmv1I": {
+   "name": "Bobby Sayyar",
+   "url": "https://open.spotify.com/artist/5hzJL6bebayheeXXnPmv1I",
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "07SFzTMeYf5P8Rd32a9Zzw": {
+   "name": "AK AUSSERKONTROLLE",
+   "url": "https://open.spotify.com/artist/07SFzTMeYf5P8Rd32a9Zzw",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "gangsta rap",
+    "deutschrap"
+   ],
+   "land": "DE"
+  },
+  "7rBed6Ya7Hwa2fXbh5btJE": {
+   "name": "LACAZETTE",
+   "url": "https://open.spotify.com/artist/7rBed6Ya7Hwa2fXbh5btJE",
+   "tags": [
+    "hip hop"
+   ],
+   "land": "DE"
+  },
+  "2jku7tDXc6XoB6MO2hFuqg": {
+   "name": "Tory Lanez",
+   "url": "https://open.spotify.com/artist/2jku7tDXc6XoB6MO2hFuqg",
+   "tags": [
+    "hip hop",
+    "r&b",
+    "dancehall",
+    "alternative hip hop",
+    "contemporary r&b",
+    "synth-pop",
+    "alternative r&b",
+    "trap"
+   ],
+   "land": "CA"
+  },
+  "3CJKkU0XuElRT1z8rEtIYg": {
+   "name": "Luciano",
+   "url": "https://open.spotify.com/artist/3CJKkU0XuElRT1z8rEtIYg",
+   "tags": [
+    "reggae",
+    "soul",
+    "roots reggae",
+    "soul and reggae"
+   ],
+   "land": "JM"
+  },
+  "3scHMUcB85BflinC8FclbI": {
+   "name": "Baby Jane",
+   "url": "https://open.spotify.com/artist/3scHMUcB85BflinC8FclbI",
+   "tags": [
+    "sped up",
+    "pop"
+   ],
+   "land": null
+  },
+  "5p7mWeX4RlvqBCxylfiXdE": {
+   "name": "KC Rebell",
+   "url": "https://open.spotify.com/artist/5p7mWeX4RlvqBCxylfiXdE",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "5sRQkVexJlax2iISuqL8cV": {
+   "name": "Kalazh44",
+   "url": "https://open.spotify.com/artist/5sRQkVexJlax2iISuqL8cV",
+   "tags": [
+    "trap",
+    "rap",
+    "german",
+    "hip hop"
+   ],
+   "land": null
+  },
+  "5y9wg9qkGBl0n9v9RzaPKu": {
+   "name": "CAPO",
+   "url": "https://open.spotify.com/artist/5y9wg9qkGBl0n9v9RzaPKu",
+   "tags": [
+    "hip hop",
+    "rap",
+    "germany",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "5nWYvcpaqKtp08cYxjOfFr": {
+   "name": "Gibran Alcocer",
+   "url": "https://open.spotify.com/artist/5nWYvcpaqKtp08cYxjOfFr",
+   "tags": [
+    "rock",
+    "modern classical"
+   ],
+   "land": "MX"
+  },
+  "6ynopZPMBXcIGBI9M02Un5": {
+   "name": "Haftbefehl",
+   "url": "https://open.spotify.com/artist/6ynopZPMBXcIGBI9M02Un5",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "0LEDohWJbpNV65CY3acjUS": {
+   "name": "HYPRDRVE",
+   "url": "https://open.spotify.com/artist/0LEDohWJbpNV65CY3acjUS",
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "3pVfscwg2QxhdHtk966inb": {
+   "name": "The Cratez",
+   "url": "https://open.spotify.com/artist/3pVfscwg2QxhdHtk966inb",
+   "tags": [
+    "german",
+    "hip hop",
+    "producer"
+   ],
+   "land": "DE"
+  },
+  "3pjq2pDV9RR6VY55wBjVnp": {
+   "name": "Dardan",
+   "url": "https://open.spotify.com/artist/3pjq2pDV9RR6VY55wBjVnp",
+   "tags": [
+    "rap",
+    "german",
+    "hip hop",
+    "pop rap"
+   ],
+   "land": "DE"
+  },
+  "4VuARVJiWGsH2msKTdsKdQ": {
+   "name": "Veysel",
+   "url": "https://open.spotify.com/artist/4VuARVJiWGsH2msKTdsKdQ",
+   "tags": [
+    "hip hop",
+    "deutschrap"
+   ],
+   "land": "DE"
+  },
+  "58lQAzmAxDD6di02MvAWkv": {
+   "name": "Andy Morris",
+   "url": "https://open.spotify.com/artist/58lQAzmAxDD6di02MvAWkv",
+   "tags": [
+    "pop"
+   ],
+   "land": "AU"
+  },
+  "0KaA8HctO3Rt7xjMSu3YUk": {
+   "name": "NEXTIME",
+   "url": null,
+   "tags": [
+    "sped up",
+    "pop"
+   ],
+   "land": null
+  },
+  "6eUKZXaKkcviH0Ku9w2n3V": {
+   "name": "Ed Sheeran",
+   "url": null,
+   "tags": [
+    "pop",
+    "folk pop",
+    "singer-songwriter",
+    "folk",
+    "dance-pop",
+    "uk",
+    "guitarist",
+    "singer"
+   ],
+   "land": "GB"
+  },
+  "1EfwyuCzDQpCslZc8C9gkG": {
+   "name": "SDP",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "reggae",
+    "pop"
+   ],
+   "land": "DE"
+  },
+  "0ydBtmgupeHnGowYxRo6tq": {
+   "name": "IIVEN",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "0860MVRZC3Llgf1mFvnd1R": {
+   "name": "NESS",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "2tHtwM1edk5g3zqMCPOfb6": {
+   "name": "Standart Skill",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "6SGVQ8bD0Hab6BItkqWVuJ": {
+   "name": "JURI",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "5SsiJy8NJMzYowqe2sN58e": {
+   "name": "Mavie",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "6GfiCQDFYANz5wUkSmb3Dr": {
+   "name": "Thousand Foot Krutch",
+   "url": null,
+   "tags": [
+    "alternative rock",
+    "nu metal",
+    "christian rock",
+    "heavy metal",
+    "hard rock",
+    "new metal",
+    "pop rock",
+    "rap metal"
+   ],
+   "land": "CA"
+  },
+  "3YwK1Kk8VSAtowOX2lRO0c": {
+   "name": "DJ Redblack",
+   "url": null,
+   "tags": [
+    "techno",
+    "hard techno",
+    "electronic"
+   ],
+   "land": "IT"
+  },
+  "6dXL3SnQlCGX9LCUAyin6a": {
+   "name": "Stereoact",
+   "url": null,
+   "tags": [
+    "electropop"
+   ],
+   "land": "DE"
+  },
+  "4kI8Ie27vjvonwaB2ePh8T": {
+   "name": "Portugal. The Man",
+   "url": null,
+   "tags": [
+    "indie rock",
+    "neo-psychedelia",
+    "pop",
+    "experimental",
+    "progressive",
+    "alternative",
+    "indie pop",
+    "indie electronic"
+   ],
+   "land": "US"
+  },
+  "73sIBHcqh3Z3NyqHKZ7FOL": {
+   "name": "Childish Gambino",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "funk",
+    "soul",
+    "neo soul",
+    "alternative hip hop",
+    "underground hip hop",
+    "r&b",
+    "contemporary r&b"
+   ],
+   "land": "US"
+  },
+  "0gQDOj4OisQbTq7FUEziea": {
+   "name": "New Beat Order",
+   "url": null,
+   "tags": [
+    "electronic",
+    "dance"
+   ],
+   "land": null
+  },
+  "58imfUscPVwuhuHt1MpBDA": {
+   "name": "Robbe",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "2XsKhGOiMsoOmHgckUMpZa": {
+   "name": "KROMA",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": "EE"
+  },
+  "6nJEMDVNcq7fduXgk7EdGG": {
+   "name": "MilleniumKid",
+   "url": null,
+   "tags": [],
+   "land": "DE"
+  },
+  "6l8dHVPkuEFzpQjhCH4xXT": {
+   "name": "JBS",
+   "url": null,
+   "tags": [
+    "hip hop"
+   ],
+   "land": "DE"
+  },
+  "0EG0El2Ozcdnw0xJA77DyO": {
+   "name": "The Boy The G",
+   "url": null,
+   "tags": [
+    "hip hop"
+   ],
+   "land": null
+  },
+  "6k9e4mFFVtEAAhGdvJBtqB": {
+   "name": "Luca-Dante Spadafora",
+   "url": null,
+   "tags": [
+    "pop",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "1ZPGzmbFTn8GRjqTqnLiFE": {
+   "name": "Niklas Dee",
+   "url": null,
+   "tags": [
+    "electronic"
+   ],
+   "land": null
+  },
+  "0rKRcoCpKA2jLHuIXXn80i": {
+   "name": "Octavian",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "garage",
+    "grime"
+   ],
+   "land": null
+  },
+  "1UEipeDjRtS1qnuhmKgmXg": {
+   "name": "Peter Plate",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "producer"
+   ],
+   "land": "DE"
+  },
+  "4anaTI5qQtKKp5D6I5sgDp": {
+   "name": "Ulf Leo Sommer",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "producer"
+   ],
+   "land": "DE"
+  },
+  "1U1el3k54VvEUzo3ybLPlM": {
+   "name": "Kali Uchis",
+   "url": null,
+   "tags": [
+    "neo soul",
+    "latin pop",
+    "r&b",
+    "alternative r&b"
+   ],
+   "land": "US"
+  },
+  "7cYEt1pqMgXJdq00hAwVpT": {
+   "name": "Chase Atlantic",
+   "url": null,
+   "tags": [
+    "pop rap",
+    "electropop",
+    "alternative pop",
+    "alternative rnb",
+    "2010s",
+    "trap pop",
+    "2020s"
+   ],
+   "land": "AU"
+  },
+  "5wTdspmxzb8V4ZjvDodpBo": {
+   "name": "A Touch Of Class",
+   "url": null,
+   "tags": [
+    "eurodance",
+    "dance"
+   ],
+   "land": "DE"
+  },
+  "0PEfbjTw85CAN5G0lz9n3p": {
+   "name": "Pete Konemann",
+   "url": null,
+   "tags": [
+    "pop",
+    "producer"
+   ],
+   "land": null
+  },
+  "4Ck46WZxqzpKUInvcgVF1C": {
+   "name": "YFG Pave",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "0sKY9AcBdiGx4FbFbQsXoX": {
+   "name": "EMIN",
+   "url": null,
+   "tags": [
+    "pop"
+   ],
+   "land": "AZ"
+  },
+  "2ISiyx4DLCMAMBCvPesCoq": {
+   "name": "JONY",
+   "url": null,
+   "tags": [
+    "pop",
+    "russian"
+   ],
+   "land": "RU"
+  },
+  "05MQiIv63Y3WL4AXG1Zo3E": {
+   "name": "Татьяна Куртукова",
+   "url": null,
+   "tags": [
+    "folk",
+    "russian"
+   ],
+   "land": "RU"
+  },
+  "7dGJo4pcD2V6oG8kP0tJRR": {
+   "name": "Eminem",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "detroit",
+    "pop rap",
+    "hardcore hip hop",
+    "midwest hip hop",
+    "detroit hip hop",
+    "hip-hop"
+   ],
+   "land": "US"
+  },
+  "1Oa0bMld0A3u5OTYfMzp5h": {
+   "name": "Nate Dogg",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "west coast hip hop",
+    "g-funk"
+   ],
+   "land": "US"
+  },
+  "0b62itBWBdLgiecXjXCqKC": {
+   "name": "Maxwell",
+   "url": null,
+   "tags": [
+    "neo-soul",
+    "neo soul",
+    "contemporary r&b",
+    "quiet storm",
+    "smooth soul"
+   ],
+   "land": "US"
+  },
+  "5kp4UMsrN5oZxPnsef59iQ": {
+   "name": "Kai Baum",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "3rJe1nJEEuzdmuGSPy8teM": {
+   "name": "Chef FM",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "7pqZmXaLL4eqW60I0XgTTF": {
+   "name": "TAB Coke Beats",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "producer"
+   ],
+   "land": null
+  },
+  "4F84IBURUo98rz4r61KF70": {
+   "name": "The White Stripes",
+   "url": null,
+   "tags": [
+    "alternative rock",
+    "indie rock",
+    "blues rock",
+    "garage rock revival",
+    "garage rock",
+    "american",
+    "rock",
+    "pop"
+   ],
+   "land": "US"
+  },
+  "2JwyRtuXf2l6sTnSnGVIa1": {
+   "name": "Farid Bang",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "gangsta rap",
+    "deutschrap",
+    "battle rap",
+    "rap",
+    "german"
+   ],
+   "land": null
+  },
+  "6gto7HVNhu4ARE3P3g8Y5Y": {
+   "name": "Kollegah",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "gangsta rap",
+    "deutschrap",
+    "battle rap",
+    "rapping"
+   ],
+   "land": "DE"
+  },
+  "0r0R5nIjDY04TfxRM10Bcb": {
+   "name": "Alligatoah",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "deutschrap",
+    "2000s",
+    "2010s",
+    "pop rap",
+    "rap rock"
+   ],
+   "land": "DE"
+  },
+  "65WfmKecS1GdKkxURvvY1s": {
+   "name": "Lūcadelic",
+   "url": null,
+   "tags": [
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "4J86DBDnC5acWsN0dpZe3j": {
+   "name": "Michael Hunter",
+   "url": null,
+   "tags": [
+    "electronic"
+   ],
+   "land": null
+  },
+  "6quRLJ5SiWHgcVMoE9TEJj": {
+   "name": "Andreas Bourani",
+   "url": null,
+   "tags": [
+    "pop",
+    "pop rock",
+    "deutschrock",
+    "europop",
+    "german-pop"
+   ],
+   "land": "DE"
+  },
+  "0OzU60O3MzXXLfoigoqB1N": {
+   "name": "DJOCHEM BARKI",
+   "url": null,
+   "tags": [
+    "techno",
+    "electronic"
+   ],
+   "land": null
+  },
+  "0EmeFodog0BfCgMzAIvKQp": {
+   "name": "Shakira",
+   "url": "https://open.spotify.com/artist/0EmeFodog0BfCgMzAIvKQp",
+   "tags": [
+    "pop",
+    "latin pop",
+    "pop rock",
+    "dance-pop",
+    "latin",
+    "rock",
+    "spanish",
+    "alternative"
+   ],
+   "land": "CO"
+  },
+  "1ul8iLt2WnFe2UIyovjg7q": {
+   "name": "reezy",
+   "url": "https://open.spotify.com/artist/1ul8iLt2WnFe2UIyovjg7q",
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "producer"
+   ],
+   "land": "DE"
+  },
+  "6dBBpd1zW3iywDqNt0UVOk": {
+   "name": "Czech Symphony Orchestra",
+   "url": "https://open.spotify.com/artist/6dBBpd1zW3iywDqNt0UVOk",
+   "tags": [
+    "classical",
+    "orchestral"
+   ],
+   "land": "CZ"
+  },
+  "1E8mXBWN7AXZCOPYbOky4J": {
+   "name": "Jazeek",
+   "url": "https://open.spotify.com/artist/1E8mXBWN7AXZCOPYbOky4J",
+   "tags": [
+    "hip hop",
+    "pop rap"
+   ],
+   "land": "DE"
+  },
+  "5gSXA0ofbOM1wGaqItyGg9": {
+   "name": "BASSTON",
+   "url": "https://open.spotify.com/artist/5gSXA0ofbOM1wGaqItyGg9",
+   "tags": [
+    "techno",
+    "hardcore techno"
+   ],
+   "land": null
+  },
+  "4gJT0OnBISFA5CPMNYBGIE": {
+   "name": "OG Keemo",
+   "url": "https://open.spotify.com/artist/4gJT0OnBISFA5CPMNYBGIE",
+   "tags": [
+    "hip hop",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "6tVxgFV9M1sqlTWUnQOhlu": {
+   "name": "Maebi",
+   "url": "https://open.spotify.com/artist/6tVxgFV9M1sqlTWUnQOhlu",
+   "tags": [
+    "lo-fi",
+    "ambient"
+   ],
+   "land": "GB"
+  },
+  "1RyvyyTE3xzB2ZywiAwp0i": {
+   "name": "Future",
+   "url": "https://open.spotify.com/artist/1RyvyyTE3xzB2ZywiAwp0i",
+   "tags": [
+    "hip hop",
+    "trap",
+    "trap rap",
+    "southern hip hop",
+    "dirty south",
+    "english",
+    "2010s",
+    "2020s"
+   ],
+   "land": "US"
+  },
+  "2XNo6k4LqlZlM5sj0wKReo": {
+   "name": "Dame",
+   "url": "https://open.spotify.com/artist/2XNo6k4LqlZlM5sj0wKReo",
+   "tags": [
+    "hip hop",
+    "nerdcore"
+   ],
+   "land": "AT"
+  },
+  "5q1SD3zx3GPnofIAPOIFrY": {
+   "name": "dnvn",
+   "url": "https://open.spotify.com/artist/5q1SD3zx3GPnofIAPOIFrY",
+   "tags": [
+    "lo-fi"
+   ],
+   "land": "MX"
+  },
+  "2Im8m4STDBosjfmb5hmP80": {
+   "name": "Loredana",
+   "url": "https://open.spotify.com/artist/2Im8m4STDBosjfmb5hmP80",
+   "tags": [
+    "romanian",
+    "romanian singer"
+   ],
+   "land": "RO"
+  },
+  "77SW9BnxLY8rJ0RciFqkHh": {
+   "name": "The Neighbourhood",
+   "url": "https://open.spotify.com/artist/77SW9BnxLY8rJ0RciFqkHh",
+   "tags": [
+    "indie pop",
+    "alternative rock",
+    "indie rock",
+    "rock",
+    "pop",
+    "tumblr"
+   ],
+   "land": "US"
+  },
+  "0Y5tJX1MQlPlqiwlOH1tJY": {
+   "name": "Travis Scott",
+   "url": "https://open.spotify.com/artist/0Y5tJX1MQlPlqiwlOH1tJY",
+   "tags": [
+    "hip hop",
+    "trap",
+    "rap",
+    "southern hip hop",
+    "pop rap",
+    "english",
+    "experimental hip hop",
+    "relic inn"
+   ],
+   "land": "US"
+  },
+  "5SCDfg1YoEfI5gFtXqEWah": {
+   "name": "ATLXS",
+   "url": "https://open.spotify.com/artist/5SCDfg1YoEfI5gFtXqEWah",
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": "IT"
+  },
+  "3DoYGi5spOR9sIqjdkf2R4": {
+   "name": "Coup",
+   "url": "https://open.spotify.com/artist/3DoYGi5spOR9sIqjdkf2R4",
+   "tags": [
+    "techno",
+    "electronic"
+   ],
+   "land": "DE"
+  },
+  "1dVKBw8iMPpS1almxwIVI3": {
+   "name": "THIZZY52",
+   "url": "https://open.spotify.com/artist/1dVKBw8iMPpS1almxwIVI3",
+   "tags": [
+    "hip hop",
+    "rap"
+   ],
+   "land": null
+  },
+  "7qG3b048QCHVRO5Pv1T5lw": {
+   "name": "Enrique Iglesias",
+   "url": "https://open.spotify.com/artist/7qG3b048QCHVRO5Pv1T5lw",
+   "tags": [
+    "pop",
+    "latin pop",
+    "electropop",
+    "latin",
+    "electro house",
+    "nepo baby",
+    "dance",
+    "spanish"
+   ],
+   "land": "ES"
+  },
+  "28TqrmNSPiKo5w3WVb3A3N": {
+   "name": "Aymen",
+   "url": "https://open.spotify.com/artist/28TqrmNSPiKo5w3WVb3A3N",
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "7j6DKwmjbxvpQO8h914uEz": {
+   "name": "Ryan Castro",
+   "url": "https://open.spotify.com/artist/7j6DKwmjbxvpQO8h914uEz",
+   "tags": [
+    "latin",
+    "reggaeton"
+   ],
+   "land": "CO"
+  },
+  "6PTNNcLg90Kkl89JcEwKhT": {
+   "name": "Alex Wann",
+   "url": null,
+   "tags": [
+    "pop",
+    "dance",
+    "house",
+    "electronica",
+    "edm",
+    "afro house",
+    "melodic techno",
+    "melodic house"
+   ],
+   "land": "FR"
+  },
+  "1dgdvbogmctybPrGEcnYf6": {
+   "name": "Route 94",
+   "url": null,
+   "tags": [
+    "deep house",
+    "tech house"
+   ],
+   "land": null
+  },
+  "4ScCswdRlyA23odg9thgIO": {
+   "name": "Jess Glynne",
+   "url": null,
+   "tags": [
+    "pop",
+    "house",
+    "soul",
+    "dance-pop",
+    "r&b",
+    "contemporary r&b",
+    "club",
+    "uk funky"
+   ],
+   "land": "GB"
+  },
+  "1TIQZBUSqWPrBZuh80x6Rz": {
+   "name": "Geoff Castellucci",
+   "url": null,
+   "tags": [
+    "bass singer"
+   ],
+   "land": null
+  },
+  "2DaxqgrOhkeH0fpeiQq2f4": {
+   "name": "Oasis",
+   "url": null,
+   "tags": [
+    "britpop",
+    "alternative rock",
+    "rock",
+    "british",
+    "indie rock",
+    "neo-psychedelia",
+    "madchester",
+    "psychedelic rock"
+   ],
+   "land": "GB"
+  },
+  "4sVieJlKgpZ2k9ESNS5IdN": {
+   "name": "Jamule",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "german",
+    "trap"
+   ],
+   "land": "DE"
+  },
+  "2LAMcjEMXfL8mWohcAkCF9": {
+   "name": "Cave",
+   "url": null,
+   "tags": [
+    "alternative rock",
+    "post-punk",
+    "punk blues",
+    "art rock",
+    "gothic rock",
+    "rock",
+    "singer-songwriter",
+    "indie rock"
+   ],
+   "land": "AU"
+  },
+  "3F2BUPEkX9IDaRYAeJN0Gh": {
+   "name": "Amo",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap"
+   ],
+   "land": "JP"
+  },
+  "72y6W9pGy97xTM44dwy3F6": {
+   "name": "BILLA JOE",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "4TPAWIeZhHw6CnsoPe9vxY": {
+   "name": "Lucry & Suena",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "producer"
+   ],
+   "land": "DE"
+  },
+  "4GoCdmGGYtijLZlgTMyhwe": {
+   "name": "Khrome",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "74cb3MG0x0BOnYNW1uXYnM": {
+   "name": "Hillsong UNITED",
+   "url": null,
+   "tags": [
+    "gospel",
+    "hillsong",
+    "contemporary gospel",
+    "praise & worship"
+   ],
+   "land": "AU"
+  },
+  "3D04fb59z3ANxVaeHBfxtW": {
+   "name": "TAYA",
+   "url": null,
+   "tags": [
+    "pop"
+   ],
+   "land": null
+  },
+  "0TnOYISbd1XYRBk9myaseg": {
+   "name": "Pitbull",
+   "url": null,
+   "tags": [
+    "dance-pop",
+    "electropop",
+    "dance",
+    "eurodance",
+    "electro house",
+    "hip hop",
+    "southern hip hop",
+    "pop rap"
+   ],
+   "land": "US"
+  },
+  "4wLXwxDeWQ8mtUIRPxGiD6": {
+   "name": "Marc Anthony",
+   "url": null,
+   "tags": [
+    "salsa",
+    "latin pop",
+    "latin",
+    "pop",
+    "ballad",
+    "rock",
+    "american"
+   ],
+   "land": "US"
+  },
+  "7MiDcPa6UiV3In7lIM71IN": {
+   "name": "Gusttavo Lima",
+   "url": null,
+   "tags": [
+    "sertanejo",
+    "latin",
+    "sertanejo universitário",
+    "singer-songwriter"
+   ],
+   "land": "BR"
+  },
+  "3wcj11K77LjEY1PkEazffa": {
+   "name": "Burna Boy",
+   "url": null,
+   "tags": [
+    "reggae",
+    "english",
+    "dancehall",
+    "afrobeats",
+    "afro fusion",
+    "afrobeat"
+   ],
+   "land": "NG"
+  },
+  "19eLuQmk9aCobbVDHc6eek": {
+   "name": "Louis Armstrong",
+   "url": null,
+   "tags": [
+    "jazz",
+    "dixieland",
+    "swing",
+    "vocal jazz",
+    "gospel",
+    "traditional pop",
+    "pop",
+    "blues"
+   ],
+   "land": "US"
+  },
+  "3EA9hVIzKfFiQI0Kikz2wo": {
+   "name": "Andrea Bocelli",
+   "url": null,
+   "tags": [
+    "classical",
+    "tenor",
+    "classical crossover",
+    "pop",
+    "italian",
+    "european",
+    "classical pop",
+    "italian pop"
+   ],
+   "land": "IT"
+  },
+  "1Cs0zKBU1kc0i8ypK3B9ai": {
+   "name": "David Guetta",
+   "url": null,
+   "tags": [
+    "house",
+    "dance-pop",
+    "dance",
+    "electro house",
+    "electronic",
+    "pop",
+    "electropop",
+    "club"
+   ],
+   "land": "FR"
+  },
+  "0RMJOzHDhAKY1o2j0W0vxY": {
+   "name": "EJAE",
+   "url": null,
+   "tags": [
+    "k-pop",
+    "pop"
+   ],
+   "land": "KR"
+  },
+  "181bsRPaVXVlUKXrxwZfHK": {
+   "name": "Megan Thee Stallion",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "southern hip hop",
+    "pop rap",
+    "rap",
+    "english",
+    "trap"
+   ],
+   "land": "US"
+  },
+  "0WyJfrWjsny9mSxops8ksX": {
+   "name": "LENNSKO",
+   "url": null,
+   "tags": [
+    "rap",
+    "german"
+   ],
+   "land": null
+  },
+  "26dSoYclwsYLMAKD3tpOr4": {
+   "name": "Britney Spears",
+   "url": null,
+   "tags": [
+    "pop",
+    "teen pop",
+    "american",
+    "dance-pop",
+    "electropop",
+    "2000s",
+    "electro house",
+    "y2k"
+   ],
+   "land": "US"
+  },
+  "0wRGuF39WWxHeftv2TBNQT": {
+   "name": "Ex Habit",
+   "url": null,
+   "tags": [
+    "alternative r&b",
+    "pop"
+   ],
+   "land": null
+  },
+  "7ip3CWlgPZbQHvgJpmcGSS": {
+   "name": "Peter Schilling",
+   "url": null,
+   "tags": [
+    "neue deutsche welle",
+    "new wave",
+    "synth-pop",
+    "ndw",
+    "pop",
+    "happy hardcore",
+    "synthpop",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "14D0I0RYqvIorkPL2EWoQh": {
+   "name": "MC WM",
+   "url": null,
+   "tags": [
+    "funk carioca",
+    "brazilian"
+   ],
+   "land": "BR"
+  },
+  "4mb1xtQVGSK5dh8AbtwBiR": {
+   "name": "MC Lan",
+   "url": null,
+   "tags": [
+    "funk ostentação",
+    "funk carioca"
+   ],
+   "land": "BR"
+  },
+  "5JgxqXmh1TrVDZn7gAgqLw": {
+   "name": "Sean Dagher",
+   "url": null,
+   "tags": [
+    "musique traditionnelle",
+    "musique de jeu vidéos",
+    "chant de marins"
+   ],
+   "land": null
+  },
+  "42cM14lDAB0KzoBWQ86TWu": {
+   "name": "Nils Brown",
+   "url": null,
+   "tags": [
+    "folk"
+   ],
+   "land": null
+  },
+  "2KgIhGBEJK4W6Uw5WVeoaV": {
+   "name": "Michiel Schrey",
+   "url": null,
+   "tags": [
+    "folk"
+   ],
+   "land": "CA"
+  },
+  "5ct8AlcDgWMp4O25vbcjpC": {
+   "name": "Assassin's Creed",
+   "url": null,
+   "tags": [
+    "software as artist",
+    "video game as artist"
+   ],
+   "land": null
+  },
+  "33ScadVnbm2X8kkUqOkC6Z": {
+   "name": "Don Omar",
+   "url": null,
+   "tags": [
+    "reggaeton",
+    "latin urban",
+    "latin",
+    "reggaetón"
+   ],
+   "land": "PR"
+  },
+  "5bv5RplEOwdCvhq0EILh9E": {
+   "name": "Lucenzo",
+   "url": null,
+   "tags": [
+    "kuduro",
+    "latin",
+    "dance"
+   ],
+   "land": "FR"
+  },
+  "1EZIni3W4CmC2bTy75Q053": {
+   "name": "benno!",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "2ib5SfRdSqdCEO0serkHH1": {
+   "name": "F-Raz",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "AT"
+  },
+  "3jiOHVFdVQjbSDVeC7RgY7": {
+   "name": "Wir sind Helden",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "rock",
+    "indie rock",
+    "pop rock",
+    "deutschland",
+    "indie pop",
+    "hamburg"
+   ],
+   "land": "DE"
+  },
+  "5yw4tA8D5uG7tT3NaDvq10": {
+   "name": "Stellar",
+   "url": "https://open.spotify.com/artist/5yw4tA8D5uG7tT3NaDvq10",
+   "tags": [
+    "k-pop",
+    "girl group"
+   ],
+   "land": "KR"
+  },
+  "0GOx72r5AAEKRGQFn3xqXK": {
+   "name": "GIMS",
+   "url": "https://open.spotify.com/artist/0GOx72r5AAEKRGQFn3xqXK",
+   "tags": [
+    "pop rap",
+    "french hip hop",
+    "pop",
+    "hardcore hip hop",
+    "sapés comme jamais"
+   ],
+   "land": "FR"
+  },
+  "00FQb4jTyendYWaN8pK0wa": {
+   "name": "Lana Del Rey",
+   "url": "https://open.spotify.com/artist/00FQb4jTyendYWaN8pK0wa",
+   "tags": [
+    "indie pop",
+    "pop",
+    "dream pop",
+    "alternative",
+    "electronic",
+    "trip hop",
+    "singer-songwriter",
+    "chamber pop"
+   ],
+   "land": "US"
+  },
+  "3YQKmKGau1PzlVlkL1iodx": {
+   "name": "Twenty One Pilots",
+   "url": "https://open.spotify.com/artist/3YQKmKGau1PzlVlkL1iodx",
+   "tags": [
+    "alternative rock",
+    "indie pop",
+    "alternative rap",
+    "alternative hip hop",
+    "rap",
+    "electropop",
+    "pop rap",
+    "indietronica"
+   ],
+   "land": "US"
+  },
+  "53XhwfbYqKCa1cC15pYq2q": {
+   "name": "Imagine Dragons",
+   "url": "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+   "tags": [
+    "alternative rock",
+    "pop rock",
+    "indie pop",
+    "pop",
+    "alternative pop",
+    "rock",
+    "electropop",
+    "indietronica"
+   ],
+   "land": "US"
+  },
+  "7GR9YDdr51tku5kjFgMLB1": {
+   "name": "Richter",
+   "url": "https://open.spotify.com/artist/7GR9YDdr51tku5kjFgMLB1",
+   "tags": [
+    "pop"
+   ],
+   "land": null
+  },
+  "2o5jDhtHVPhrJdv3cEQ99Z": {
+   "name": "Tiësto",
+   "url": "https://open.spotify.com/artist/2o5jDhtHVPhrJdv3cEQ99Z",
+   "tags": [
+    "trance",
+    "electronic",
+    "dance",
+    "house",
+    "electro house",
+    "dutch",
+    "progressive trance",
+    "techno"
+   ],
+   "land": "NL"
+  },
+  "7vk5e3vY1uw9plTHJAMwjN": {
+   "name": "Alan Walker",
+   "url": "https://open.spotify.com/artist/7vk5e3vY1uw9plTHJAMwjN",
+   "tags": [
+    "electronic",
+    "electro house",
+    "edm",
+    "future bass",
+    "dance",
+    "progressive house",
+    "pop",
+    "electropop"
+   ],
+   "land": "NO"
+  },
+  "0fTSzq9jAh4c36UVb4V7CB": {
+   "name": "Alex Warren",
+   "url": "https://open.spotify.com/artist/0fTSzq9jAh4c36UVb4V7CB",
+   "tags": [
+    "pop",
+    "indie pop",
+    "folk",
+    "singer-songwriter",
+    "indie folk",
+    "folk pop",
+    "2020s"
+   ],
+   "land": "US"
+  },
+  "4hK7sEnm0se5bqoI3Yb5o1": {
+   "name": "SANTOS",
+   "url": "https://open.spotify.com/artist/4hK7sEnm0se5bqoI3Yb5o1",
+   "tags": [
+    "latin",
+    "bachata"
+   ],
+   "land": "DO"
+  },
+  "2ORiMtfuAyIgw5tk2WnERd": {
+   "name": "Micah Palace",
+   "url": "https://open.spotify.com/artist/2ORiMtfuAyIgw5tk2WnERd",
+   "tags": [
+    "pop",
+    "sped up"
+   ],
+   "land": null
+  },
+  "6fOMl44jA4Sp5b9PpYCkzz": {
+   "name": "NF",
+   "url": "https://open.spotify.com/artist/6fOMl44jA4Sp5b9PpYCkzz",
+   "tags": [
+    "rap",
+    "hip hop",
+    "rapper",
+    "pop rap",
+    "trap"
+   ],
+   "land": "US"
+  },
+  "41JIPLdFRH6JBZXb19vVuq": {
+   "name": "ambient giants",
+   "url": "https://open.spotify.com/artist/41JIPLdFRH6JBZXb19vVuq",
+   "tags": [
+    "ambient",
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "246dkjvS1zLTtiykXe5h60": {
+   "name": "Post Malone",
+   "url": "https://open.spotify.com/artist/246dkjvS1zLTtiykXe5h60",
+   "tags": [
+    "hip hop",
+    "pop rap",
+    "trap",
+    "country",
+    "cloud rap",
+    "pop",
+    "english",
+    "r&b"
+   ],
+   "land": "US"
+  },
+  "5arKwJZEvT5uKq4o0JfqR4": {
+   "name": "Isabel LaRosa",
+   "url": "https://open.spotify.com/artist/5arKwJZEvT5uKq4o0JfqR4",
+   "tags": [
+    "alternative pop",
+    "2020s"
+   ],
+   "land": "US"
+  },
+  "3Mqo6hd9UQljzHJTJETjsU": {
+   "name": "Øutgrown",
+   "url": "https://open.spotify.com/artist/3Mqo6hd9UQljzHJTJETjsU",
+   "tags": [
+    "ambient",
+    "dark ambient"
+   ],
+   "land": "BE"
+  },
+  "2DL1LxN8dHBG1tI3Q3TlK7": {
+   "name": "Blocktane",
+   "url": "https://open.spotify.com/artist/2DL1LxN8dHBG1tI3Q3TlK7",
+   "tags": [
+    "lo-fi hip hop",
+    "hip hop",
+    "chillwave",
+    "instrumental hip hop",
+    "lo-fi",
+    "boom bap",
+    "downtempo",
+    "instrumental"
+   ],
+   "land": null
+  },
+  "0LcJLqbBmaGUft1e9Mm8HV": {
+   "name": "ABBA",
+   "url": "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+   "tags": [
+    "pop",
+    "disco",
+    "europop",
+    "glam rock",
+    "pop rock",
+    "rock",
+    "dance",
+    "sweden"
+   ],
+   "land": "SE"
+  },
+  "5pKCCKE2ajJHZ9KAiaK11H": {
+   "name": "Rihanna",
+   "url": "https://open.spotify.com/artist/5pKCCKE2ajJHZ9KAiaK11H",
+   "tags": [
+    "pop",
+    "r&b",
+    "dance-pop",
+    "contemporary r&b",
+    "hip hop",
+    "dance",
+    "electropop",
+    "dancehall"
+   ],
+   "land": "US"
+  },
+  "4rrI3dKjmTOzRZvOwOWOlu": {
+   "name": "EMMY",
+   "url": "https://open.spotify.com/artist/4rrI3dKjmTOzRZvOwOWOlu",
+   "tags": [
+    "pop"
+   ],
+   "land": "NO"
+  },
+  "6r8QEHkxWjN4t2HemWAMyN": {
+   "name": "James Bakian",
+   "url": "https://open.spotify.com/artist/6r8QEHkxWjN4t2HemWAMyN",
+   "tags": [
+    "electronic",
+    "dance"
+   ],
+   "land": null
+  },
+  "5p9HO3XC5P3BLxJs5Mtrhm": {
+   "name": "Djo",
+   "url": null,
+   "tags": [
+    "indie pop",
+    "indie rock",
+    "neo-psychedelia",
+    "bedroom pop"
+   ],
+   "land": "US"
+  },
+  "2Diqn1jFkehRd9MVDGKGdq": {
+   "name": "Eddin",
+   "url": null,
+   "tags": [
+    "german",
+    "hip hop",
+    "rap"
+   ],
+   "land": "DE"
+  },
+  "5bePP411ITzZyWf1QZ2SX4": {
+   "name": "Flame Runner",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": "DE"
+  },
+  "2P7AfQW941UU324qq2ggZf": {
+   "name": "METRICKZ",
+   "url": null,
+   "tags": [
+    "hip hop"
+   ],
+   "land": "DE"
+  },
+  "4KfEG606HYb1TLQhq7NbDl": {
+   "name": "Kyle Alessandro",
+   "url": null,
+   "tags": [
+    "pop",
+    "eurovision",
+    "eurovision 2025"
+   ],
+   "land": "NO"
+  },
+  "4W9cXg9c6w38cHSUfUWPcP": {
+   "name": "JJ",
+   "url": null,
+   "tags": [
+    "pop"
+   ],
+   "land": null
+  },
+  "5IH6FPUwQTxPSXurCrcIov": {
+   "name": "Alec Benjamin",
+   "url": null,
+   "tags": [
+    "pop",
+    "indie pop",
+    "alternative pop",
+    "emo pop",
+    "singer-songwriter",
+    "pop rock",
+    "acoustic pop",
+    "alternative rock"
+   ],
+   "land": "US"
+  },
+  "163tK9Wjr9P9DmM0AVK7lm": {
+   "name": "Lorde",
+   "url": null,
+   "tags": [
+    "pop",
+    "synth-pop",
+    "indie pop",
+    "alternative pop",
+    "art pop",
+    "2010s",
+    "alternative rock",
+    "singer-songwriter"
+   ],
+   "land": "NZ"
+  },
+  "06HL4z0CvFAxyc27GXpf02": {
+   "name": "Taylor Swift",
+   "url": null,
+   "tags": [
+    "pop",
+    "country",
+    "country pop",
+    "singer/songwriter",
+    "female vocals",
+    "singer-songwriter",
+    "icon",
+    "2010s"
+   ],
+   "land": "US"
+  },
+  "3rZBkgoRHG8M9jQL0QPNMi": {
+   "name": "Adel Tawil",
+   "url": null,
+   "tags": [
+    "pop",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "3fi2XZbBQ4Px2T9ar6Es0M": {
+   "name": "Juice",
+   "url": null,
+   "tags": [
+    "j-pop",
+    "hello project",
+    "girl group",
+    "つんく♂プロデュース",
+    "ハロー！プロジェクト"
+   ],
+   "land": "JP"
+  },
+  "702XNgA79AG7pUGDxoYHql": {
+   "name": "Miami Rize",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "1yIifIA91WgmfzBcjbQB8i": {
+   "name": "Kurdo",
+   "url": null,
+   "tags": [
+    "german",
+    "rap",
+    "hip hop"
+   ],
+   "land": "DE"
+  },
+  "5dGsIOepO9ufQlXjW8KrPL": {
+   "name": "Neptunica",
+   "url": null,
+   "tags": [
+    "edm"
+   ],
+   "land": "DE"
+  },
+  "2eSp20wy0FQIPWJLCCfrqa": {
+   "name": "JØA",
+   "url": null,
+   "tags": [
+    "melodic techno",
+    "melodic house"
+   ],
+   "land": null
+  },
+  "4JLjGlT5l6gtKKvP8qRb2g": {
+   "name": "Jost",
+   "url": null,
+   "tags": [
+    "downtempo",
+    "instrumental",
+    "hip hop",
+    "lo-fi",
+    "boom bap",
+    "chillwave",
+    "instrumental hip hop",
+    "lo-fi hip hop"
+   ],
+   "land": "DE"
+  },
+  "353KPo8gVAfcZfwF7BPZDy": {
+   "name": "Münchener Freiheit",
+   "url": null,
+   "tags": [
+    "german",
+    "pop",
+    "europop",
+    "neue deutsche welle",
+    "ndw",
+    "eurovision"
+   ],
+   "land": "DE"
+  },
+  "1HcduAQRxX1Q9hOTAQ8bOI": {
+   "name": "TWXNY",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": "KZ"
+  },
+  "6cUZdCbsiJJXae86kwiH5v": {
+   "name": "Sxilwix",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "3i5xWUEFpG6g9pcRo4C2yc": {
+   "name": "INNXCENCE",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "6CP5wWvO8oIxedESJNCN4H": {
+   "name": "Ski Aggu",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "pop rap"
+   ],
+   "land": "DE"
+  },
+  "6s5ubAp65wXoTZefE01RNR": {
+   "name": "Joost",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "eurovision 2024 artists"
+   ],
+   "land": "NL"
+  },
+  "1T6DQ853AlyL47W8a2jC0f": {
+   "name": "Otto Waalkes",
+   "url": null,
+   "tags": [
+    "german",
+    "comedy",
+    "comedian"
+   ],
+   "land": "DE"
+  },
+  "3muH0fOWJZ2SaxK3agdOMD": {
+   "name": "Melody",
+   "url": null,
+   "tags": [
+    "pop"
+   ],
+   "land": "JP"
+  },
+  "5wyWp867LWGjFmYZXVSFnZ": {
+   "name": "MERO",
+   "url": null,
+   "tags": [
+    "trap",
+    "hip hop",
+    "rap",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "6nVcHLIgY5pE2YCl8ubca1": {
+   "name": "JHAYCO",
+   "url": null,
+   "tags": [
+    "reggaeton",
+    "hip hop",
+    "trap latino",
+    "latin"
+   ],
+   "land": "PR"
+  },
+  "2otUckChxWf2cp6UP2cD6e": {
+   "name": "Zuna",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "deutschrap"
+   ],
+   "land": null
+  },
+  "2SabhGDiBSyaM6QSuBUVqB": {
+   "name": "Noizy",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "albanian",
+    "rap",
+    "german",
+    "english"
+   ],
+   "land": null
+  },
+  "1G7TGDJ01So6i6XNirnVS7": {
+   "name": "Takt32",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "german"
+   ],
+   "land": "DE"
+  },
+  "5IrNK8jRtmwCN4JLMJMSY5": {
+   "name": "SIMONA",
+   "url": null,
+   "tags": [
+    "german",
+    "pop"
+   ],
+   "land": "DE"
+  },
+  "2j2rh3oQh4QEUnNTDKYSJD": {
+   "name": "187 Strassenbande",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "gangsta rap"
+   ],
+   "land": null
+  },
+  "5eioJDe26lOqkAMbuhzZYs": {
+   "name": "Gzuz",
+   "url": null,
+   "tags": [
+    "hip hop",
+    "rap",
+    "germany",
+    "german",
+    "hamburg"
+   ],
+   "land": null
+  },
+  "0JP5ABLaBXOg8HFsxUoPzC": {
+   "name": "Strob",
+   "url": null,
+   "tags": [
+    "phonk",
+    "electronic"
+   ],
+   "land": null
+  },
+  "5k9dTPjhY8NrdWhPDD7C2H": {
+   "name": "dæve",
+   "url": null,
+   "tags": [
+    "lo-fi"
+   ],
+   "land": null
+  },
+  "1SnSPHBs8l5iAvoWF0aO05": {
+   "name": "FOURTY",
+   "url": null,
+   "tags": [
+    "trap",
+    "hip hop",
+    "german",
+    "rap"
+   ],
+   "land": null
+  }
+ },
+ "zuletzt": []
+}

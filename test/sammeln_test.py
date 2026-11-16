@@ -22,12 +22,11 @@ def _track(i="t1", album=None):
 
 
 def _spotify_attrappe(pfad, **params):
-    if pfad == "/me/player/recently-played":
-        return {"items": [{"track": _track("t2"), "played_at": GEHOERT_UM}]}
     if pfad == "/me/top/artists":
-        return {"items": [{"id": "a1", "name": "Band A", "images": [], "external_urls": {"spotify": "http://x/a1"}}]}
+        return {"items": [{"id": "a1", "name": "Band A", "images": [{"url": "http://x/kuenstlerbild", "width": 320}],
+                           "external_urls": {"spotify": "http://x/a1"}}]}
     if pfad == "/me/top/tracks":
-        return {"items": [_track("t1")]}
+        return {"items": [_track("t1"), _track("t2")]}
     raise AssertionError("unerwarteter Pfad " + pfad)
 
 
@@ -39,53 +38,51 @@ def _sammeln(**kw):
         return sammeln.sammeln(mit_mb=False, **kw)
 
 
-class Privatsphaere(unittest.TestCase):
-    def test_standard_ohne_uhrzeiten(self):
+class Oeffentlich(unittest.TestCase):
+    """Spotify Developer Terms: keine Spotify-Inhalte dauerhaft speichern. Der Schnappschuss ist öffentlich."""
+
+    def test_keine_songdaten_und_keine_bilder(self):
+        text = json.dumps(_sammeln(), ensure_ascii=False)
+        for verboten in ["Lied t1", "Album", "groß", "kuenstlerbild", "2020-05-01", "http://x/t1", '"t1"', "dauer_ms", "cover", "bild"]:
+            self.assertNotIn(verboten, text)
+
+    def test_keine_zuletzt_gehoerten_und_kein_abruf(self):
         out = _sammeln()
-        self.assertEqual(len(out["zuletzt"]), 1)
-        for e in out["zuletzt"]:
-            self.assertIsNone(e["um"])
+        self.assertEqual(out["zuletzt"], [])
         self.assertNotIn(GEHOERT_UM, json.dumps(out))
+        self.assertEqual(sammeln.SCOPES, "user-top-read")
 
-    def test_explizit_ohne_uhrzeiten(self):
-        out = _sammeln(mit_zeiten=False)
-        self.assertTrue(all(e["um"] is None for e in out["zuletzt"]))
-        self.assertNotIn(GEHOERT_UM, json.dumps(out))
+    def test_songs_anonym_mit_eigener_nummer(self):
+        out = _sammeln()
+        songs = out["zeitraeume"]["4w"]["songs"]
+        self.assertEqual(songs, [{"id": "s1", "kuenstler": [{"id": "a1"}]}, {"id": "s2", "kuenstler": [{"id": "a1"}]}])
+        # derselbe Song in mehreren Zeiträumen behält seine Nummer (Sternbilder zählen ihn nur einmal)
+        self.assertEqual(out["zeitraeume"]["1y"]["songs"][0]["id"], "s1")
 
-    def test_mit_zeiten(self):
-        out = _sammeln(mit_zeiten=True)
-        self.assertEqual(out["zuletzt"][0]["um"], GEHOERT_UM)
+    def test_kuenstler_nur_name_link_tags_land(self):
+        k = _sammeln()["kuenstler"]["a1"]
+        self.assertEqual(k, {"name": "Band A", "url": "http://x/a1", "tags": [], "land": None})
 
+    def test_alter_voller_schnappschuss_wird_gekuerzt_und_idempotent(self):
+        alt = {"erstellt": "2026-10-31T20:15:19Z", "quelle": "spotify+musicbrainz",
+               "zeitraeume": {"4w": {"kuenstler": ["a1"], "songs": [{"id": "x9", "name": "Lied", "album": "A", "cover": "http://c",
+                                                                      "kuenstler": [{"id": "a1", "name": "Band A"}], "dauer_ms": 1, "erschienen": "2020"}]},
+                              "1y": {"kuenstler": [], "songs": [{"id": "x9", "kuenstler": [{"id": "a1"}]}, {"id": "x7", "kuenstler": []}]}},
+               "kuenstler": {"a1": {"name": "Band A", "bild": "http://b", "url": "http://x/a1", "tags": ["rap"], "land": "AT"}},
+               "zuletzt": [{"song": {"id": "x9"}, "um": None}]}
+        neu = sammeln.oeffentlich(alt)
+        self.assertEqual(neu["zeitraeume"]["4w"]["songs"], [{"id": "s1", "kuenstler": [{"id": "a1"}]}])
+        self.assertEqual([s["id"] for s in neu["zeitraeume"]["1y"]["songs"]], ["s1", "s2"])
+        self.assertEqual(neu["kuenstler"]["a1"], {"name": "Band A", "url": "http://x/a1", "tags": ["rap"], "land": "AT"})
+        self.assertEqual(neu["zuletzt"], [])
+        self.assertEqual(neu["erstellt"], alt["erstellt"])
+        self.assertEqual(sammeln.oeffentlich(neu), neu)
 
-class Bild(unittest.TestCase):
-    def test_leere_liste(self):
-        self.assertIsNone(sammeln._bild([]))
-
-    def test_kleinstes_ab_160(self):
-        bilder = [{"url": "gross", "width": 640}, {"url": "mittel", "width": 300}, {"url": "klein", "width": 64}]
-        self.assertEqual(sammeln._bild(bilder), "mittel")
-
-    def test_alle_zu_klein_nimmt_letztes(self):
-        self.assertEqual(sammeln._bild([{"url": "a", "width": 64}, {"url": "b", "width": 32}]), "b")
-
-
-class Track(unittest.TestCase):
-    def test_ohne_datum_und_bilder(self):
-        t = sammeln._track(_track(album={"name": "Nur Name"}))
-        self.assertIsNone(t["erschienen"])
-        self.assertIsNone(t["cover"])
-        self.assertEqual(t["album"], "Nur Name")
-
-    def test_ohne_link(self):
-        roh = _track()
-        roh["external_urls"] = {}
-        self.assertIsNone(sammeln._track(roh)["url"])
-
-    def test_vollstaendig(self):
-        t = sammeln._track(_track())
-        self.assertEqual(t["erschienen"], "2020-05-01")
-        self.assertEqual(t["cover"], "http://x/groß")
-        self.assertEqual(t["kuenstler"], [{"id": "a1", "name": "Band A"}])
+    def test_echter_schnappschuss_ist_schon_gekuerzt(self):
+        pfad = os.path.join(os.path.dirname(PFAD), "..", "data", "snapshot.json")
+        with open(pfad, encoding="utf-8") as f:
+            d = json.load(f)
+        self.assertEqual(sammeln.oeffentlich(d), d)
 
 
 class Ueberschreibungen(unittest.TestCase):

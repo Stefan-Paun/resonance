@@ -11,8 +11,8 @@
 - **Der Himmel.** Rund 200 Sterne, Größe nach Hörgewicht, Halo in der Farbe ihrer Welt. Künstler mit gemeinsamen Songs sind durch Sternbildlinien verbunden. Ziehen dreht den Blick, Pfeiltasten gehen auch, `Enter` öffnet den Stern in der Bildmitte.
 - **Acht Welten.** Deutschrap, Rap & Hip-Hop, Nacht & R&B, Phonk & Tekkno, Latino, Rock & Klassiker, Pop, Fokus & Lo-fi (plus „Streulicht“ für Unzuordenbares). Die Zuordnung aus MusicBrainz-Tags steht in [`public/welten.js`](public/welten.js) und ist getestet.
 - **Das Armaturenbrett.** Zeitraum-Schalter (4 Wochen · 6 Monate · 1 Jahr) mit Bernstein-Cursor, eine Legende, die den Himmel filtert, Messwerte in Rotlicht, die dem Zeitraum folgen.
-- **Der Rückblick.** Scroll-Kapitel: deine Welten, was gerade läuft, Dauerbrenner, Verblasstes, Herkunft, Jahrgänge, zuletzt gehört. Jeder Text entsteht aus den Daten.
-- **Sternkarten.** Stern oder Namen antippen: Plätze, Songs mit Cover und Dauer, Spotify-Link und eine 30-Sekunden-Vorschau, die erst beim Drücken von Deezer kommt.
+- **Der Rückblick.** Scroll-Kapitel: deine Welten, was gerade läuft, Dauerbrenner, Verblasstes, Herkunft; mit eigenem Konto auch Jahrgänge und zuletzt gehört. Jeder Text entsteht aus den Daten.
+- **Sternkarten.** Stern oder Namen antippen: Plätze, Genres, Herkunft und ein Link zum Künstler auf Spotify. Im eigenen Himmel zeigt die Karte auch deine Top-Songs mit Dauer. Keine Cover und keine Hörproben (siehe Lizenzen).
 - **Deutsch und Englisch.** Die Oberfläche folgt der Browsersprache; der Schalter `EN`/`DE` in der Kartusche (oder `?lang=en`) übersteuert sie.
 - **Dein eigener Himmel.** Das ZIP des *erweiterten Streaming-Verlaufs* ablegen: Heatmap Wochentag × Stunde, Monate, Nachtanteil, Serien. Oder mit eigener Spotify-App anmelden (PKCE, im Browser). Alles bleibt im `localStorage`.
 - **Mehr Quellen.** Dieselben Verlaufs-Kapitel gibt es mit der *Play Activity*-CSV von Apple Music, einem Last.fm-Export (CSV oder JSON von `user.getRecentTracks`) und der `watch-history.json` aus Google Takeout (nur YouTube-Music-Einträge). Die Quelle wird am Inhalt erkannt, nicht am Dateinamen. Die Leser liegen als reine Module in [`public/quellen/`](public/quellen/) um ein gemeinsames Eintragsformat (`t` in UTC, Künstler, Titel, optional Album und Hördauer, Quelle); Quellen ohne Hördauer zählen 3,5 Minuten pro Eintrag. Obergrenzen: 150 MB und 3 Mio. Zeilen, eingelesen in Portionen mit Fortschrittsanzeige. Nichts wird hochgeladen; die Testdateien sind erfunden.
@@ -48,18 +48,22 @@ Der Sammler ist reines Python ohne Pakete. MusicBrainz wird mit einer Anfrage pr
 
 ## Ehrliche Grenzen
 
-- Seit Februar 2026 liefert die Spotify-Web-API im Development Mode **keine Genres, keine Popularität und keine Vorschauen** mehr, der App-Besitzer braucht Premium, und höchstens fünf Nutzer dürfen eingetragen sein. Deshalb kommen Genres von MusicBrainz und Vorschauen von Deezer, und deshalb braucht „mit eigenem Konto“ eine eigene Client-ID.
+- Seit Februar 2026 liefert die Spotify-Web-API im Development Mode **keine Genres, keine Popularität und keine Vorschauen** mehr, der App-Besitzer braucht Premium, und höchstens fünf Nutzer dürfen eingetragen sein. Deshalb kommen Genres von MusicBrainz, deshalb gibt es keine Hörproben, und deshalb braucht „mit eigenem Konto“ eine eigene Client-ID.
 - „Zuletzt gehört“ sind die letzten 50 Songs. Ein echter Tagesrhythmus braucht den exportierten Streaming-Verlauf.
 - Der Himmel ist ein Schnappschuss, kein Live-Bild.
 
 ## Datenschutz
 
-Die Demo zeigt meine Künstler, Songs und Hörgewichte, ungefähr das, was ein öffentliches Spotify Wrapped zeigt. Nie dabei: Anzeigename, Playlists, E-Mail und **Uhrzeiten**: Der Sammler lässt die Abspielzeiten von „zuletzt gehört“ standardmäßig weg (`--mit-zeiten` behält sie für einen privaten Lauf). Der öffentliche Himmel sagt also, was ich höre, nicht wann. Der volle Tagesrhythmus (Heatmap, Monate, Serien) läuft immer nur lokal aus dem eigenen Export. Eigene Daten werden nur im Browser verarbeitet; die einzigen Aufrufe an Dritte sind MusicBrainz (Genres, beim Anmelden) und Deezer (Vorschau, beim Drücken auf Play).
+Die Demo zeigt meine Künstler und Hörgewichte, weniger als ein öffentliches Spotify Wrapped. `data/snapshot.json` enthält nur Künstlernamen, den Link zum Künstler auf Spotify, die Ranglisten je Zeitraum und pro Top-Song eine eigene Nummer plus die beteiligten Künstler (daraus rechnet die Seite Sterngewichte und Sternbildlinien). Nicht dabei: Songtitel, Song-IDs, Alben, Cover- und Künstlerbild-URLs, Dauer, Erscheinungsdaten, „zuletzt gehört“, Anzeigename, Playlists, E-Mail und Uhrzeiten. Der volle Tagesrhythmus (Heatmap, Monate, Serien) läuft immer nur lokal aus dem eigenen Export. Eigene Daten werden nur im Browser verarbeitet; die einzigen Aufrufe an Dritte sind Spotify (beim Anmelden) und MusicBrainz (Genres, nach dem Anmelden). Impressum und Datenschutzerklärung für die ganze Domain: [stefanpaun.page/impressum.html](https://stefanpaun.page/impressum.html), [stefanpaun.page/datenschutz.html](https://stefanpaun.page/datenschutz.html).
 
-## Dank
+## Lizenzen
 
-Metadaten und Cover gehören Spotify und den Rechteinhabern; das hier ist ein privates Projekt ohne Verbindung zu Spotify. Genres und Länder von [MusicBrainz](https://musicbrainz.org). Vorschauen von [Deezer](https://developers.deezer.com). three.js (MIT). Schriften: Bricolage Grotesque und Azeret Mono (SIL OFL), selbst gehostet.
+- **Code:** MIT, siehe [`LICENSE`](LICENSE). Die MIT-Lizenz gilt nur für den Quellcode, nicht für die Daten unten.
+- **Genre-Tags** in `data/snapshot.json` (und im eigenen Himmel nach dem Anmelden) stammen von [MusicBrainz](https://musicbrainz.org) und stehen unter [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.de) ([MusicBrainz-Datenlizenz](https://musicbrainz.org/doc/About/Data_License)): Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Die Herkunftsländer sind MusicBrainz-Kerndaten (CC0). Das Projekt ist nicht kommerziell; wer die Tags weiterverwendet, für den gelten dieselben Bedingungen.
+- **Künstlernamen und Ranglisten** kommen aus der Spotify-Web-API. Das hier ist ein privates Projekt ohne Verbindung zu Spotify oder MusicBrainz. Nach den [Spotify Developer Terms](https://developer.spotify.com/terms) speichert der öffentliche Schnappschuss keine Songdaten und keine Cover, und die Seite lädt nichts von Spotifys Bildservern.
+- **three.js** liegt in `public/vendor/` (MIT, siehe `three.LICENSE`); kein CDN zur Laufzeit.
+- **Schriften:** Bricolage Grotesque und Azeret Mono (SIL OFL 1.1, Texte in `public/fonts/`), selbst gehostet.
 
-three.js liegt in `public/vendor/` (kein CDN zur Laufzeit). Genre-Tags von MusicBrainz stehen unter CC BY-NC-SA 3.0; das Projekt ist nicht kommerziell. Eine strenge Content-Security-Policy beschränkt die Seite auf eigene Dateien plus Spotify (Login, API, Cover), MusicBrainz und Deezer.
+Eine strenge Content-Security-Policy beschränkt die Seite auf eigene Dateien plus Spotify (Login und API) und MusicBrainz.
 
-MIT-Lizenz. Gebaut von Stefan Paun, 17, Wien, mit Claude Code.
+Gebaut von Stefan Paun, 17, Wien, mit Claude Code.

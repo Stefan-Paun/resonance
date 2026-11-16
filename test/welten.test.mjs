@@ -89,10 +89,26 @@ test("Kapitel: Namen mit HTML werden escaped, ohne Länder und Tags kein Absturz
   const main = { innerHTML: "" };
   const liste = sterneAus(snap);
   const kapitel = kapitelBauen(main, snap, liste, {});
-  assert.ok(kapitel.length >= 8);
+  assert.ok(kapitel.length >= 6);
+  assert.ok(!kapitel.some((k) => k.id === "jahrgaenge" || k.id === "zuletzt"), "leere Song-Kapitel fallen weg");
+  assert.ok(main.innerHTML.includes('href="https://stefanpaun.page/impressum.html"'), "Impressum-Link fehlt");
+  assert.ok(main.innerHTML.includes('href="https://stefanpaun.page/datenschutz.html"'), "Datenschutz-Link fehlt");
   assert.ok(!main.innerHTML.includes("<img src=x"), "rohes HTML im Kapiteltext");
   assert.ok(main.innerHTML.includes("&lt;img src=x"), "Name sollte escaped erscheinen");
   assert.ok(main.innerHTML.includes("Zu keinem der 2 Sterne ist eine Herkunft bekannt"));
+});
+
+test("Kapitel: eigener Himmel mit Songtiteln behält Jahrgänge und Zuletzt", () => {
+  const lied = (id, j) => ({ id, name: "Lied " + id, kuenstler: [{ id: "a", name: "A" }], album: "X", dauer_ms: 1000, erschienen: j + "-01-01", cover: "https://i.scdn.co/image/alt" });
+  const snap = {
+    erstellt: "2026-11-01T00:00:00Z", kuenstler: { a: { name: "A", tags: [], land: null, bild: "https://i.scdn.co/image/alt" } },
+    zeitraeume: { "4w": { kuenstler: ["a"], songs: [] }, "6m": { kuenstler: ["a"], songs: [] }, "1y": { kuenstler: ["a"], songs: [lied("t1", 2019), lied("t2", 2024)] } },
+    zuletzt: [{ song: lied("t1", 2019), um: null }],
+  };
+  const main = { innerHTML: "" };
+  const kapitel = kapitelBauen(main, snap, sterneAus(snap), { eigener: true });
+  assert.ok(kapitel.some((k) => k.id === "jahrgaenge") && kapitel.some((k) => k.id === "zuletzt"));
+  assert.ok(!main.innerHTML.includes("scdn.co"), "kein Spotify-Bild in der Ansicht");
 });
 
 test("Kapitel: leerer Schnappschuss stürzt nicht ab", () => {
@@ -113,6 +129,8 @@ test("Englische Kapitel: Titel und Texte übersetzt, Länder per Intl", () => {
     assert.ok(main.innerHTML.includes("Eight worlds, one sky."));
     assert.ok(main.innerHTML.includes("German rap"));
     assert.ok(main.innerHTML.includes("Germany"));
+    assert.ok(main.innerHTML.includes('href="https://stefanpaun.page/en/legal-notice.html"'));
+    assert.ok(main.innerHTML.includes('href="https://stefanpaun.page/en/privacy.html"'));
     assert.ok(!main.innerHTML.includes("Sterne stehen"));
     assert.equal(landName("AT"), "Austria");
     assert.equal(tx().ui.z4w, "4 wk");

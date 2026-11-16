@@ -11,8 +11,8 @@
 - **The sky.** ~200 stars, sized by how much you listen, haloed in the colour of their world. Artists who share songs are joined by constellation lines. Drag to look around, arrow keys work too, `Enter` opens the star nearest the centre.
 - **Eight worlds.** German rap, Rap & hip-hop, Night & R&B, Phonk & techno, Latin, Rock & classics, Pop, Focus & lo-fi (plus "stray light" for the unclassifiable). The mapping from MusicBrainz tags lives in [`public/welten.js`](public/welten.js) and is tested.
 - **The instrument panel.** Period switch (4 weeks · 6 months · 1 year) with an amber cursor, a legend that filters the sky, red-light readouts that follow the period.
-- **The retrospective.** Scroll chapters: your worlds, what's new, the ever-burning, what faded, where the sound comes from, release years, what you played last. All text is generated from the data.
-- **Star cards.** Tap a star or a name: ranks, songs with covers and length, a Spotify link, and a 30-second preview fetched from Deezer only when you press play.
+- **The retrospective.** Scroll chapters: your worlds, what's new, the ever-burning, what faded, where the sound comes from; with your own account also release years and what you played last. All text is generated from the data.
+- **Star cards.** Tap a star or a name: ranks, genres, origin and a link to the artist on Spotify. In your own sky the card also lists your top songs with length. No cover art and no audio previews (see Licences).
 - **German and English.** The interface follows your browser language; the `EN`/`DE` switch in the cartouche (or `?lang=en`) overrides it.
 - **Your own sky.** Drop the ZIP of your Spotify *Extended Streaming History* for an hour-by-weekday heatmap, months, night share and streaks. Or sign in with your own Spotify app (PKCE, in the browser). Everything stays in `localStorage`.
 - **More sources.** The same history chapters work with an Apple Music *Play Activity* CSV, a Last.fm export (CSV or `user.getRecentTracks` JSON) and `watch-history.json` from Google Takeout (YouTube Music entries only). The source is recognised from the content, not the file name. Readers live in [`public/quellen/`](public/quellen/) as pure modules around one shared entry format (`t` in UTC, artist, title, optional album and listening time, source); sources without listening time count 3.5 minutes per entry. Files are capped at 150 MB / 3 million rows and read in chunks with a progress line. Nothing is uploaded; test fixtures are invented.
@@ -48,18 +48,22 @@ The collector is standard-library Python. MusicBrainz is queried at one request 
 
 ## Honest limits
 
-- Since February 2026 the Spotify Web API in development mode gives **no genres, no popularity and no previews**, the app owner needs Premium, and at most five users can be allowlisted. That is why genres come from MusicBrainz and previews from Deezer, and why "sign in with your own account" needs your own client ID.
+- Since February 2026 the Spotify Web API in development mode gives **no genres, no popularity and no previews**, the app owner needs Premium, and at most five users can be allowlisted. That is why genres come from MusicBrainz, why there are no previews, and why "sign in with your own account" needs your own client ID.
 - "Recently played" is the last 50 tracks. A real daily rhythm needs the exported streaming history.
 - The sky is a snapshot, not a live view.
 
 ## Privacy
 
-The demo shows my artists, songs and listening weights, roughly what a public Spotify Wrapped shows. It never contains a display name, playlists, an email or **timestamps**: the collector drops the play times of "recently played" by default (`--mit-zeiten` keeps them for a private run), so the public sky says what I listen to, not when. The full daily rhythm (heatmap, months, streaks) only ever runs locally from your own export. Your own data, when you load it, is processed in your browser only; the only third-party calls are MusicBrainz (genres, when you sign in) and Deezer (previews, when you press play).
+The demo shows my artists and listening weights, less than a public Spotify Wrapped shows. `data/snapshot.json` keeps only artist names, the artist link on Spotify, the rank lists per period and, per top song, a number of my own plus the artists on it (that is what the star weights and constellation lines are computed from). It contains no song titles, song IDs, albums, cover or artist image URLs, lengths, release dates, "recently played", display name, playlists, email or timestamps. The full daily rhythm (heatmap, months, streaks) only ever runs locally from your own export. Your own data, when you load it, is processed in your browser only; the only third-party calls are Spotify (when you sign in) and MusicBrainz (genres, after sign-in). Imprint and privacy policy for the whole domain: [stefanpaun.page/en/legal-notice.html](https://stefanpaun.page/en/legal-notice.html), [stefanpaun.page/en/privacy.html](https://stefanpaun.page/en/privacy.html).
 
-## Credits
+## Licences
 
-Metadata and cover art belong to Spotify and the rights holders; this is a private project not affiliated with Spotify. Genres and countries from [MusicBrainz](https://musicbrainz.org). Previews from [Deezer](https://developers.deezer.com). three.js (MIT). Fonts: Bricolage Grotesque and Azeret Mono (SIL OFL), self-hosted.
+- **Code:** MIT, see [`LICENSE`](LICENSE). The MIT licence covers the source code only, not the data below.
+- **Genre tags** in `data/snapshot.json` (and in your own sky after sign-in) come from [MusicBrainz](https://musicbrainz.org) and are licensed under [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) ([MusicBrainz data licence](https://musicbrainz.org/doc/About/Data_License)): attribution, non-commercial, share alike. The countries are MusicBrainz core data (CC0). This project is non-commercial; if you reuse the tags, the same terms apply to you.
+- **Artist names and rank lists** come from the Spotify Web API. This is a private project, not affiliated with or endorsed by Spotify or MusicBrainz. Following the [Spotify Developer Terms](https://developer.spotify.com/terms), the public snapshot stores no song data and no cover art, and the page loads nothing from Spotify's image servers.
+- **three.js** is vendored in `public/vendor/` (MIT, see `three.LICENSE`); no CDN at runtime.
+- **Fonts:** Bricolage Grotesque and Azeret Mono (SIL OFL 1.1, texts in `public/fonts/`), self-hosted.
 
-three.js is vendored in `public/vendor/` (no CDN at runtime). Genre tags from MusicBrainz are CC BY-NC-SA 3.0; this project is non-commercial. A strict Content-Security-Policy limits the page to its own files plus Spotify (login, API, covers), MusicBrainz and Deezer.
+A strict Content-Security-Policy limits the page to its own files plus Spotify (login and API) and MusicBrainz.
 
-MIT License. Built by Stefan Paun, 17, Vienna, with Claude Code.
+Built by Stefan Paun, 17, Vienna, with Claude Code.

@@ -125,22 +125,57 @@ test("Länder: Deutschland vorne, Summe passt, Namen vorhanden", () => {
   for (const x of l.liste) assert.ok(LANDNAMEN[x.code], "Name fehlt für " + x.code);
 });
 
+// Eigener Himmel (aus dem Konto-Login oder alt im localStorage): Songs mit Titel, Album, Datum, Dauer.
+const lied = (id, kid, erschienen) => ({ id, name: "Lied " + id, kuenstler: [{ id: kid, name: "K " + kid }], album: "Album", dauer_ms: 180000, erschienen });
+const eigenerSnap = {
+  erstellt: "2026-11-01T00:00:00Z", kuenstler: { a: { name: "A", tags: [] }, b: { name: "B", tags: [] } },
+  zeitraeume: { "4w": { kuenstler: ["a"], songs: [] }, "6m": { kuenstler: ["a"], songs: [] },
+    "1y": { kuenstler: ["a", "b"], songs: [lied("t1", "a", "2019-03-01"), lied("t2", "b", "2024-06-01"), lied("t3", "a", "2021-01-01"), lied("t4", "b", "2024-02-02"), lied("t5", "a", null)] } },
+  zuletzt: ["t1", "t2", "t3", "t4", "t5", "t1"].map((id) => ({ song: lied(id, "a", "2020-01-01"), um: null })),
+};
+
 test("Jahrgänge: sortiert, ältester vor neuestem, Summe = Songs mit Datum", () => {
-  const j = jahrgaenge(snap, "1y");
-  assert.ok(j.jahre.length > 3);
+  const j = jahrgaenge(eigenerSnap, "1y");
+  assert.equal(j.jahre.length, 3);
+  assert.equal(j.gesamt, 4);
   for (let i = 1; i < j.jahre.length; i++) assert.ok(j.jahre[i - 1].jahr < j.jahre[i].jahr);
   assert.equal(j.jahre.reduce((a, x) => a + x.anzahl, 0), j.gesamt);
   assert.ok(j.aeltester.erschienen <= j.neuester.erschienen);
   assert.equal(jahrgaenge({ zeitraeume: {} }, "1y").gesamt, 0);
+  assert.equal(jahrgaenge(snap, "1y").gesamt, 0, "öffentlicher Schnappschuss hat keine Erscheinungsdaten");
 });
 
-test("Zuletzt: fünf Songs; im öffentlichen Schnappschuss ohne Uhrzeiten", () => {
-  const z = zuletzt(snap);
-  assert.equal(z.anzahl, 50);
-  assert.equal(z.von, null, "öffentlicher Schnappschuss darf keine Hörzeiten tragen");
+test("Zuletzt: fünf Songs; der öffentliche Schnappschuss hat gar keine", () => {
+  assert.deepEqual(snap.zuletzt, [], "öffentlicher Schnappschuss darf keine zuletzt gehörten Songs tragen");
+  const z = zuletzt(eigenerSnap);
+  assert.equal(z.anzahl, 6);
+  assert.equal(z.von, null);
   assert.equal(z.songs.length, 5);
-  assert.ok(snap.zuletzt.every((e) => !e.um));
   const mit = zuletzt({ zuletzt: [{ song: { id: "a" }, um: "2026-10-31T19:00:00Z" }, { song: { id: "b" }, um: "2026-10-31T17:00:00Z" }] });
   assert.equal(mit.von, "2026-10-31T17:00:00Z"); assert.equal(mit.bis, "2026-10-31T19:00:00Z");
   assert.deepEqual(zuletzt({ zuletzt: [] }), { anzahl: 0, von: null, bis: null, songs: [] });
+});
+
+test("Öffentlicher Schnappschuss: keine Spotify-Songdaten, keine Bild-URLs (Spotify Developer Terms)", () => {
+  const text = JSON.stringify(snap);
+  for (const verboten of ["scdn.co", "open.spotify.com/track", "open.spotify.com/album", "\"cover\"", "\"bild\"", "\"album\"", "\"erschienen\"", "\"dauer_ms\"", "\"name\":\"Lied"]) {
+    assert.ok(!text.includes(verboten), "enthält " + verboten);
+  }
+  const erlaubtK = new Set(["name", "url", "tags", "land"]);
+  for (const k of Object.values(snap.kuenstler)) for (const f of Object.keys(k)) assert.ok(erlaubtK.has(f), "Künstlerfeld " + f);
+  for (const z of ZEITRAEUME) for (const s of snap.zeitraeume[z].songs) {
+    assert.deepEqual(Object.keys(s).sort(), ["id", "kuenstler"]);
+    assert.match(s.id, /^s\d+$/, "eigene Nummer statt Spotify-ID");
+    for (const k of s.kuenstler) { assert.deepEqual(Object.keys(k), ["id"]); assert.ok(snap.kuenstler[k.id], k.id); }
+  }
+});
+
+test("Alter eigener Himmel mit Cover- und Bild-URLs rechnet weiter, Bilder fallen aus den Sternen", () => {
+  const alt = structuredClone(eigenerSnap);
+  alt.kuenstler.a.bild = "https://i.scdn.co/image/x";
+  for (const s of alt.zeitraeume["1y"].songs) s.cover = "https://i.scdn.co/image/y";
+  const s = sterne(alt);
+  assert.equal(s.length, 2);
+  assert.ok(s.every((x) => !("bild" in x)));
+  assert.equal(s.find((x) => x.id === "a").songs.length, 3);
 });
