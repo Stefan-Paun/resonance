@@ -40,7 +40,7 @@ MB_CACHE = os.path.join(WURZEL, "data", "roh", "musicbrainz-cache.json")
 REDIRECT = "http://127.0.0.1:8888/callback"
 SCOPES = "user-top-read"
 API = "https://api.spotify.com/v1"
-UA = "Resonanz/0.1 (https://github.com/Stefan-Paun/resonanz)"
+UA = "Resonanz/0.1 (https://github.com/Stefan-Paun/resonance)"
 ZEITRAEUME = {"short_term": "4w", "medium_term": "6m", "long_term": "1y"}
 
 
