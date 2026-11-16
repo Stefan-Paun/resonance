@@ -2,7 +2,7 @@
 
 **Your music as a walkable night sky.** Every artist is a star, every listening world a galaxy, and scrolling takes you through your own retrospective. Built from the Spotify Web API and MusicBrainz, rendered in the browser with three.js. No build step, no server, nothing uploaded.
 
-[Deutsche Fassung](README.de.md) · Live: **[stefanpaun.page/resonanz](https://stefanpaun.page/resonanz/)**
+[Deutsche Fassung](README.de.md) · Live: **[stefanpaun.page/resonance](https://stefanpaun.page/resonance/)**
 
 ![The sky: pink Deutschrap galaxy in the centre, purple Night & R&B to the right, amber instrument panel below](docs/himmel.png)
 
@@ -20,7 +20,7 @@
 ## Run it
 
 ```bash
-git clone https://github.com/Stefan-Paun/resonanz
+git clone https://github.com/Stefan-Paun/resonance
 cd resonanz
 npm start          # python3 -m http.server 8742 --directory public
 npm test           # node --test, no dependencies
