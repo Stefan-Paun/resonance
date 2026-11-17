@@ -34,6 +34,11 @@ const liste = (arr, und) => arr.length <= 1 ? arr.join("") : arr.slice(0, -1).jo
 const uhr = (iso) => new Date(iso).toLocaleTimeString(locale(), { hour: "2-digit", minute: "2-digit", timeZone: "Europe/Vienna" });
 const tag = (iso) => new Date(iso).toLocaleDateString(locale(), { weekday: "long", day: "numeric", month: "long", timeZone: "Europe/Vienna" });
 const datum = (t) => new Date(t).toLocaleDateString(locale(), { day: "numeric", month: "short", year: "numeric" });
+/** Kalendertag "JJJJ-MM-TT" (ohne Uhrzeit) lesbar, in jeder Zeitzone derselbe Tag. */
+export const kalendertag = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString(locale(), { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
+/** Dasselbe kurz für Tabellen ("01.06.24"), damit sie auch am Handy passen. */
+export const kalendertagKurz = (iso) => new Date(iso + "T00:00:00Z").toLocaleDateString(locale(), { day: "2-digit", month: "2-digit", year: "2-digit", timeZone: "UTC" });
+const plural = (n, eins, viele) => (n === 1 ? eins : viele);
 
 const DE = {
   ui: {
@@ -85,6 +90,18 @@ const DE = {
       text: (st, schnitt) => `Der lauteste Monat: ${st.name} ${st.jahr} mit ${Math.round(st.stunden)} Stunden. Im Schnitt ${schnitt} Stunden pro Monat.` },
     hoerzeit: { titel: "Hörzeit.", spalten: ["Künstler", "Stunden"],
       text: (v, skip) => `Nach Stunden gezählt, nicht nach Rang: ${v.topKuenstler[0] ? `${v.topKuenstler[0].name} führt mit ${Math.round(v.topKuenstler[0].stunden)} Stunden` : "niemand führt"}.${skip !== null ? ` ${skip} Prozent aller Streams hast du übersprungen.` : ""} Meistgespielt: ${v.topSongs[0] ? `„${v.topSongs[0].name}“, ${v.topSongs[0].n}‑mal` : "–"}.` },
+    entdeckungen: { titel: "Entdeckungen.", spalten: ["Künstler", "Monat", "Min.", "Danach"],
+      status: { geblieben: "geblieben", strohfeuer: "Strohfeuer", offen: "offen" },
+      text: (e) => `In ${e.monate} Monaten kam ein neuer Stern dazu, der gleich viel lief. Die stärkste Entdeckung: ${e.staerkste.name}, zum ersten Mal am ${kalendertag(e.staerkste.erster)} gehört und in den 30 Tagen danach ${zahl(e.staerkste.minuten)} Minuten lang. ${!e.geblieben && !e.strohfeuer ? "Ob sie bleiben, ist noch zu früh zu sagen." : `${[e.geblieben ? `${e.geblieben} ${plural(e.geblieben, "lief", "liefen")} nach einem halben Jahr noch` : "Keine lief nach einem halben Jahr noch", e.strohfeuer ? `${e.strohfeuer} ${plural(e.strohfeuer, "war ein Strohfeuer", "waren Strohfeuer")}` : ""].filter(Boolean).join(", ")}${e.offen ? `; bei ${e.offen} ist es noch zu früh` : ""}.`}` },
+    serien: { titel: "Serien.", spalten: ["Künstler", "Tage", "Von", "Bis"],
+      text: (s) => `An ${zahl(s.gesamt.laenge)} Tagen hintereinander lief Musik, vom ${kalendertag(s.gesamt.von)} bis ${kalendertag(s.gesamt.bis)}. Am längsten hielt ein einzelner Stern durch: ${s.liste[0].name}, ${s.liste[0].laenge} Tage am Stück, jeden Tag, vom ${kalendertag(s.liste[0].von)} bis ${kalendertag(s.liste[0].bis)}.` },
+    comebacks: { titel: "Comebacks.", spalten: ["Künstler", "Pause", "Zurück", "Min."], tage: (n) => `${zahl(n)} T.`,
+      text: (c) => `${plural(c.anzahl, "Ein Stern kam", `${c.anzahl} Sterne kamen`)} nach mehr als einem halben Jahr Funkstille zurück. Die größte Rückkehr: ${c.liste[0].name}, ${zahl(c.liste[0].pauseTage)} Tage still, dann ab ${kalendertag(c.liste[0].zurueck)} ${zahl(c.liste[0].minuten)} Minuten in drei Monaten.` },
+    geschichten: {
+      ohneVerlauf: "Mit einem Streaming-Verlauf kämen hier drei Geschichten dazu: Entdeckungen, Serien und Comebacks. Dafür braucht es den exportierten Verlauf (das ZIP von Spotify oder eine andere Quelle), gerechnet nur im Browser.",
+      alterVerlauf: "Entdeckungen, Serien und Comebacks fehlen, weil dieser Verlauf mit einer älteren Version gespeichert wurde. Leg die Datei noch einmal ab.",
+      zuWenig: "Für Entdeckungen, Serien und Comebacks ist der Verlauf noch zu kurz: Es braucht drei Monate mit einer Entdeckung, eine Serie von fünf Tagen oder eine Pause von über einem halben Jahr.",
+    },
     wochentage: ["Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"],
     monatsnamen: ["Jän", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
   },
@@ -211,6 +228,18 @@ const EN = {
       text: (st, schnitt) => `The loudest month: ${st.name} ${st.jahr} with ${Math.round(st.stunden)} hours. On average ${schnitt} hours per month.` },
     hoerzeit: { titel: "Listening time.", spalten: ["Artist", "Hours"],
       text: (v, skip) => `Counted in hours, not in rank: ${v.topKuenstler[0] ? `${v.topKuenstler[0].name} leads with ${Math.round(v.topKuenstler[0].stunden)} hours` : "nobody leads"}.${skip !== null ? ` You skipped ${skip} percent of all streams.` : ""} Most played: ${v.topSongs[0] ? `“${v.topSongs[0].name}”, ${v.topSongs[0].n} times` : "–"}.` },
+    entdeckungen: { titel: "Discoveries.", spalten: ["Artist", "Month", "Min.", "Later"],
+      status: { geblieben: "stayed", strohfeuer: "fizzled", offen: "too early" },
+      text: (e) => `In ${e.monate} months a new star arrived and got a lot of plays right away. The strongest discovery: ${e.staerkste.name}, first played on ${kalendertag(e.staerkste.erster)}, then ${zahl(e.staerkste.minuten)} minutes in the following 30 days. ${!e.geblieben && !e.strohfeuer ? "It is too early to tell whether they will stay." : `${[e.geblieben ? `${e.geblieben} ${plural(e.geblieben, "was", "were")} still playing half a year later` : "None was still playing half a year later", e.strohfeuer ? `${e.strohfeuer} ${plural(e.strohfeuer, "fizzled out", "fizzled out")}` : ""].filter(Boolean).join(", ")}${e.offen ? `; for ${e.offen} it is too early to tell` : ""}.`}` },
+    serien: { titel: "Streaks.", spalten: ["Artist", "Days", "From", "To"],
+      text: (s) => `Music played on ${zahl(s.gesamt.laenge)} days in a row, from ${kalendertag(s.gesamt.von)} to ${kalendertag(s.gesamt.bis)}. The longest run of a single star: ${s.liste[0].name}, every day for ${s.liste[0].laenge} days, from ${kalendertag(s.liste[0].von)} to ${kalendertag(s.liste[0].bis)}.` },
+    comebacks: { titel: "Comebacks.", spalten: ["Artist", "Break", "Back", "Min."], tage: (n) => `${zahl(n)} d`,
+      text: (c) => `${plural(c.anzahl, "One star came", `${c.anzahl} stars came`)} back after more than half a year of silence. The biggest return: ${c.liste[0].name}, silent for ${zahl(c.liste[0].pauseTage)} days, then ${zahl(c.liste[0].minuten)} minutes in three months from ${kalendertag(c.liste[0].zurueck)}.` },
+    geschichten: {
+      ohneVerlauf: "With a streaming history, three more stories would appear here: discoveries, streaks and comebacks. They need the exported history (the ZIP from Spotify or another source), computed only in the browser.",
+      alterVerlauf: "Discoveries, streaks and comebacks are missing because this history was saved by an older version. Drop the file again.",
+      zuWenig: "The history is still too short for discoveries, streaks and comebacks: they need three months with a discovery, a five-day streak or a break of more than half a year.",
+    },
     wochentage: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
     monatsnamen: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
   },

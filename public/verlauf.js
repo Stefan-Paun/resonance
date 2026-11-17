@@ -1,6 +1,8 @@
 // Erweiterter Streaming-Verlauf (Spotify-Export): ZIP lesen, Streams zählen, Muster finden.
 // Reine Funktionen; die ZIP-Entpackung braucht DecompressionStream (Browser oder Node 18+).
 
+import { geschichtenAuswerten } from "./geschichten.js";
+
 const TEXT = new TextDecoder("utf-8");
 
 /** Liest ein ZIP (ArrayBuffer) und gibt {name, bytes} für jede Datei zurück, für die `filter(name)` wahr ist. */
@@ -91,7 +93,8 @@ teile.cache = {};
 
 /**
  * Auswertung des Verlaufs: Heatmap Stunde×Wochentag (Minuten), Monate, Top-Künstler nach Hörzeit,
- * Nachtanteil, Skip-Quote, erster und letzter Stream, längste Serie an Tagen.
+ * Nachtanteil, Skip-Quote, erster und letzter Stream, längste Serie an Tagen,
+ * dazu die Geschichten (Entdeckungen, Serien, Comebacks; siehe geschichten.js).
  */
 export function verlaufAuswerten(streams, { zone = "Europe/Vienna", minMs = 30000 } = {}) {
   const gueltig = streams.filter((s) => s.ms >= minMs);
@@ -133,6 +136,7 @@ export function verlaufAuswerten(streams, { zone = "Europe/Vienna", minMs = 3000
     topSongs: [...songs].sort((a, b) => b[1] - a[1]).slice(0, 10).map(([name, n]) => ({ name, n })),
     nachtAnteil: gesamtMs ? nachtMs / gesamtMs : 0,
     skipQuote: mitSkipInfo ? skips / mitSkipInfo : null,
+    geschichten: geschichtenAuswerten(gueltig, { zone, schwellen: { minMs } }),
   };
 }
 

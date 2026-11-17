@@ -1,7 +1,7 @@
 // Rückblick-Kapitel: Text und Messwerte aus dem Schnappschuss, beim Scrollen steuert jedes Kapitel den Himmel.
 import { welt } from "./welten.js";
 import { aufsteiger, verblasst, dauerbrenner, laender, jahrgaenge, zuletzt, weltenZaehlung, dauerText } from "./daten.js";
-import { tx, weltName, landName } from "./texte.js";
+import { tx, weltName, landName, kalendertagKurz } from "./texte.js";
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -92,7 +92,14 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
     const behalten = kapitel.filter((k) => k.id === "welten" || k.id === "schluss");
     behalten.splice(1, 0, ihrZwei(vergleich));
     kapitel.length = 0; kapitel.push(...behalten);
-  } else if (verlauf) kapitel.splice(kapitel.length - 1, 0, ...verlaufKapitel(verlauf, T));
+  } else {
+    if (verlauf) kapitel.splice(kapitel.length - 1, 0, ...verlaufKapitel(verlauf, T), ...geschichtenKapitel(verlauf.geschichten, sterne, T));
+    // Ohne Geschichten-Kapitel sagt der Schluss, was dafür nötig wäre.
+    if (!kapitel.some((k) => GESCHICHTEN.includes(k.id))) {
+      const G = T.geschichten;
+      kapitel[kapitel.length - 1].hinweis = !verlauf ? G.ohneVerlauf : !verlauf.geschichten ? G.alterVerlauf : G.zuWenig;
+    }
+  }
   if (eigener) kapitel[kapitel.length - 1].text = T.schluss.textEigen;
   kapitel[kapitel.length - 1].links.unshift(["#", T.schluss.eigen, "data-eigener"]);
 
@@ -107,6 +114,7 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
         ${k.links ? `<p class="links">${k.links.map(([h, t, attr]) => attr ? `<a href="${h}" ${attr}>${t}</a>` : `<a href="${h}" target="_blank" rel="noopener">${t}</a>`).join("")}</p>` : ""}
         ${k.heat ? heatmap(k.heat, T) : ""}
         ${k.monate ? monate(k.monate, T) : ""}
+        ${k.hinweis ? `<p class="klein hinweis-verlauf">${esc(k.hinweis)}</p>` : ""}
         ${k.schluss ? `<p class="klein">${esc(T.schluss.klein)}</p>
         <footer class="recht">${T.schluss.recht.map(([h, t]) => `<a href="${esc(h)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("")}</footer>` : ""}
       </div>
@@ -196,6 +204,44 @@ function verlaufKapitel(v, T) {
       steuer: { zeitraum: "1y", welt: null, fokus: null, blick: "deutschrap" },
     },
   ];
+}
+
+// ---------------------------------------------------------------- Geschichten (Entdeckungen, Serien, Comebacks)
+const GESCHICHTEN = ["entdeckungen", "serien", "comebacks"];
+const nameSchluessel = (n) => String(n).normalize("NFC").trim().toLocaleLowerCase("de");
+
+/**
+ * Drei Kapitel aus verlauf.geschichten (siehe geschichten.js). Jedes fehlt, wenn seine Auswertung null ist.
+ * Namen aus dem Verlauf werden den Sternen über den Namen zugeordnet; wer keinen Stern hat, steht nur in der Tabelle.
+ */
+export function geschichtenKapitel(g, sterne, T = tx().kapitel) {
+  if (!g) return [];
+  const sternVon = new Map();
+  for (const s of sterne) { const k = nameSchluessel(s.name); if (!sternVon.has(k)) sternVon.set(k, s); }
+  const stern = (name) => sternVon.get(nameSchluessel(name)) || null;
+  const zelle = (name) => { const s = stern(name); return s ? knopf({ id: s.id, name }) : esc(name); };
+  const steuer = (namen) => {
+    const ids = [...new Set(namen.map(stern).filter(Boolean).map((s) => s.id))];
+    return ids.length ? { zeitraum: "1y", welt: null, fokus: ids, blick: null } : { zeitraum: "1y", welt: null, fokus: null, blick: null, pan: true };
+  };
+  const aus = [];
+  const e = g.entdeckungen, sr = g.serien, c = g.comebacks;
+  if (e && e.liste?.length && e.staerkste) aus.push({
+    id: "entdeckungen", titel: T.entdeckungen.titel, text: T.entdeckungen.text(e), spalten: T.entdeckungen.spalten,
+    tabelle: [...e.liste].reverse().map((x) => [zelle(x.name), `${esc(T.monatsnamen[x.monatIndex] ?? "")} ${esc(String(x.jahr).slice(-2))}`, esc(x.minuten), esc(T.entdeckungen.status[x.status] ?? "")]),
+    steuer: steuer(e.liste.map((x) => x.name)),
+  });
+  if (sr && sr.liste?.length && sr.gesamt) aus.push({
+    id: "serien", titel: T.serien.titel, text: T.serien.text(sr), spalten: T.serien.spalten,
+    tabelle: sr.liste.map((x) => [zelle(x.name), esc(x.laenge), esc(kalendertagKurz(x.von)), esc(kalendertagKurz(x.bis))]),
+    steuer: steuer(sr.liste.map((x) => x.name)),
+  });
+  if (c && c.liste?.length) aus.push({
+    id: "comebacks", titel: T.comebacks.titel, text: T.comebacks.text(c), spalten: T.comebacks.spalten,
+    tabelle: c.liste.map((x) => [zelle(x.name), esc(T.comebacks.tage(x.pauseTage)), esc(kalendertagKurz(x.zurueck)), esc(x.minuten)]),
+    steuer: steuer(c.liste.map((x) => x.name)),
+  });
+  return aus;
 }
 
 function heatmap(v, T) {
