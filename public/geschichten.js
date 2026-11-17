@@ -17,6 +17,7 @@ export const SCHWELLEN = Object.freeze({
   serieMinTage: 5,            // kürzere Serien einzelner Künstler sind kein Thema
   // Comebacks
   pauseMinTage: 180,          // Pause muss länger sein (stille Tage zwischen zwei Hörtagen)
+  lueckeTage: 30,             // so lange ganz ohne Musik gilt als Lücke im Verlauf und zählt nicht zur Pause
   vorherMinMinuten: 30,       // vor der Pause schon nennenswert gehört
   nachherFensterTage: 90,     // Minuten in den 90 Tagen ab der Rückkehr …
   nachherMinMinuten: 60,      // … müssen mindestens so viele sein
@@ -25,27 +26,36 @@ export const SCHWELLEN = Object.freeze({
 });
 
 const TAG_MS = 86400000;
-const VIERTEL_MS = 900000; // Zeitzonen-Versätze sind Vielfache von 15 Minuten, Tagesgrenzen also auch
+const VIERTEL_MS = 900000, STUNDE_MS = 3600000; // Zeitzonen-Versätze sind Vielfache von 15 Minuten, Tagesgrenzen also auch
 
 /**
  * Liefert eine Funktion t → lokale Tagesnummer (Tage seit 1970 nach dem Kalender der Zone).
- * Zwischenspeicher je Viertelstunde, damit Intl nicht für jeden Stream läuft.
+ * Zwischenspeicher je UTC-Stunde; nur Stunden, in denen der lokale Tag wechselt (Versatz mit
+ * halben oder Viertelstunden), werden je Viertelstunde nachgeschlagen. So läuft Intl selten.
  */
 export function tagNummerFuer(zone = "Europe/Vienna") {
   const f = new Intl.DateTimeFormat("en-CA", { timeZone: zone, year: "numeric", month: "numeric", day: "numeric" });
-  const cache = new Map();
-  return (t) => {
-    const v = Math.floor(t / VIERTEL_MS);
-    let n = cache.get(v);
-    if (n === undefined) {
-      let j = 0, m = 0, d = 0;
-      for (const p of f.formatToParts(new Date(v * VIERTEL_MS))) {
-        if (p.type === "year") j = +p.value; else if (p.type === "month") m = +p.value; else if (p.type === "day") d = +p.value;
-      }
-      n = Date.UTC(j, m - 1, d) / TAG_MS;
-      cache.set(v, n);
+  const tagUm = (t) => {
+    let j = 0, m = 0, d = 0;
+    for (const p of f.formatToParts(new Date(t))) {
+      if (p.type === "year") j = +p.value; else if (p.type === "month") m = +p.value; else if (p.type === "day") d = +p.value;
     }
-    return n;
+    return Date.UTC(j, m - 1, d) / TAG_MS;
+  };
+  const stunden = new Map(), viertel = new Map();
+  return (t) => {
+    const h = Math.floor(t / STUNDE_MS);
+    let n = stunden.get(h);
+    if (n === undefined) {
+      const a = tagUm(h * STUNDE_MS), b = tagUm((h + 1) * STUNDE_MS - VIERTEL_MS);
+      n = a === b ? a : null; // null: Tageswechsel mitten in der Stunde
+      stunden.set(h, n);
+    }
+    if (n !== null) return n;
+    const v = Math.floor(t / VIERTEL_MS);
+    let w = viertel.get(v);
+    if (w === undefined) viertel.set(v, (w = tagUm(v * VIERTEL_MS)));
+    return w;
   };
 }
 
@@ -133,14 +143,25 @@ export function serien({ kuenstler, tage }, S = SCHWELLEN) {
   return { gesamt: g ? { laenge: g.laenge, von: tagText(g.von), bis: tagText(g.bis) } : null, liste: liste.slice(0, S.maxEintraege), anzahl: liste.length };
 }
 
-/** Künstler, die nach einer langen Pause zurückkamen; je Künstler die größte Rückkehr, die größte zuerst. */
-export function comebacks({ kuenstler }, S = SCHWELLEN) {
+/**
+ * Künstler, die nach einer langen Pause zurückkamen; je Künstler die größte Rückkehr, die größte zuerst.
+ * Lücken im Verlauf (über S.lueckeTage ganz ohne Musik, etwa ein fehlender Export) zählen nicht zur Pause,
+ * sonst wäre nach einer Lücke jeder Künstler ein Comeback.
+ */
+export function comebacks({ kuenstler, tage = [] }, S = SCHWELLEN) {
+  const luecken = [];
+  for (let i = 1; i < tage.length; i++) {
+    const still = tage[i] - tage[i - 1] - 1;
+    if (still > S.lueckeTage) luecken.push({ von: tage[i - 1], bis: tage[i], still });
+  }
+  const inLuecken = (a, b) => { let n = 0; for (const l of luecken) if (l.von >= a && l.bis <= b) n += l.still; return n; };
   const liste = [];
   for (const k of kuenstler) {
     let vorher = 0, beste = null;
     for (let i = 0; i < k.tage.length; i++) {
       if (i > 0) {
-        const pause = k.tage[i] - k.tage[i - 1] - 1;
+        const kalender = k.tage[i] - k.tage[i - 1] - 1;
+        const pause = kalender > S.pauseMinTage ? kalender - inLuecken(k.tage[i - 1], k.tage[i]) : kalender;
         if (pause > S.pauseMinTage && vorher >= S.vorherMinMinuten * 60000) {
           const nachher = summeIm(k, k.tage[i], k.tage[i] + S.nachherFensterTage, i);
           if (nachher >= S.nachherMinMinuten * 60000 && (!beste || nachher > beste.ms)) beste = { ms: nachher, pause, letzter: k.tage[i - 1], zurueck: k.tage[i] };

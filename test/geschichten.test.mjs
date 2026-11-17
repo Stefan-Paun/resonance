@@ -86,6 +86,8 @@ test("Serien: Monats- und Jahreswechsel zählen als Folgetage", () => {
 /** Ein Grundrauschen über 400 Tage legt Anfang und Ende des Verlaufs fest. */
 const B = "2024-01-01";
 const rauschen = () => [s(B, 5, "Rauschen"), s(plus(B, 400), 5, "Rauschen")];
+/** Alle 20 Tage ein Stream: der Verlauf hat keine Lücke über 30 Tage, aber keine Serie. */
+const grundton = (bis = 600) => Array.from({ length: Math.floor(bis / 20) + 1 }, (_, i) => s(plus(B, i * 20), 5, "Grundton"));
 
 test("Entdeckungen: größte je Monat, Schwelle, Anlaufzeit, geblieben / Strohfeuer / offen", () => {
   const streams = [
@@ -123,6 +125,7 @@ test("Entdeckungen: Kapitel erst ab drei Monaten mit einer Entdeckung", () => {
 
 test("Comebacks: Pause über 180 Tage, genau 180 reicht nicht, die größte Rückkehr zuerst", () => {
   const streams = [
+    ...grundton(),
     // „Zurück“: 40 min, dann 181 stille Tage, dann 2 × 60 min in 90 Tagen
     s(B, 40, "Zurück"), s(plus(B, 182), 60, "Zurück"), s(plus(B, 182 + 89), 60, "Zurück"), s(plus(B, 182 + 90), 999, "Zurück"),
     // „Grenze“: genau 180 stille Tage → kein Comeback
@@ -138,6 +141,26 @@ test("Comebacks: Pause über 180 Tage, genau 180 reicht nicht, die größte Rüc
   assert.deepEqual(r.liste.map((c) => [c.name, c.minuten, c.pauseTage]), [["Doppelt", 300, 299], ["Zurück", 120, 181]]);
   assert.deepEqual(r.liste[1], { name: "Zurück", pauseTage: 181, letzter: B, zurueck: plus(B, 182), minuten: 120 });
   assert.equal(r.anzahl, 2);
+});
+
+test("Comebacks: eine Lücke im ganzen Verlauf zählt nicht als Pause", () => {
+  // Tag 0–9 täglich Musik, dann 200 Tage gar nichts (fehlender Export), danach wieder: kein Comeback
+  const streams = [...taeglich(B, 0, 9, 40, "A"), ...taeglich(B, 0, 9, 40, "B"), s(plus(B, 210), 120, "A"), s(plus(B, 210), 120, "B")];
+  assert.equal(comebacks(tageSammeln(streams)).liste.length, 0);
+  // Mit Musik dazwischen (alle 20 Tage ein anderer Künstler) ist es eine echte Pause
+  const mitMusik = [...streams, ...grundton(220)];
+  assert.deepEqual(comebacks(tageSammeln(mitMusik)).liste.map((c) => [c.name, c.pauseTage]), [["A", 200], ["B", 200]]);
+  // Lücke kürzer als die Pause: nur die Lückentage fallen weg (230 Kalendertage − 40 Tage Lücke = 190)
+  const teils = [s(B, 40, "C"), ...grundton(100), s(plus(B, 141), 5, "D"), ...Array.from({ length: 5 }, (_, i) => s(plus(B, 160 + i * 20), 5, "D")), s(plus(B, 231), 90, "C")];
+  const c = comebacks(tageSammeln(teils)).liste.find((x) => x.name === "C");
+  assert.equal(c.pauseTage, 190);
+});
+
+test("Tagesnummer: Zonen mit Viertelstunden-Versatz wechseln den Tag mitten in der Stunde", () => {
+  const nepal = tagNummerFuer("Asia/Kathmandu"); // UTC+5:45 → Mitternacht = 18:15 UTC
+  assert.equal(tagText(nepal(Date.parse("2025-03-01T18:14:00Z"))), "2025-03-01");
+  assert.equal(tagText(nepal(Date.parse("2025-03-01T18:15:00Z"))), "2025-03-02");
+  assert.equal(tagText(nepal(Date.parse("2025-03-01T18:05:00Z"))), "2025-03-01", "zuerst geschlagene Stunde, dann Viertel");
 });
 
 test("geschichtenAuswerten: eigene Schwellwerte und reines JSON", () => {
@@ -193,7 +216,7 @@ const SNAP = {
 /** Ein Verlauf, der alle drei Geschichten hergibt. */
 function vollerVerlauf() {
   return [
-    ...rauschen(),
+    ...rauschen(), ...grundton(400),
     s("2024-03-10", 150, "Groß"), s("2024-05-10", 90, "Neu <b>"), s("2024-07-10", 90, "groß "), s("2024-07-11", 80, "Dritte"),
     ...taeglich("2024-06-01", 0, 6, 3, "Sieben"),
     s(B, 40, "Zurück"), s(plus(B, 200), 120, "Zurück"),
