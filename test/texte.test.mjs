@@ -27,6 +27,10 @@ const kuenstler = { name: "Beispiel", kuenstler: [{ name: "Band" }], erschienen:
 const verlauf = { streams: 1234, gezaehlt: 1000, stunden: 56.7, tage: 40, laengsteSerie: 7, von: "2023-01-01", bis: "2024-01-01" };
 const vergleich = { nameA: "Ana", nameB: "Ben", anzahl: { gemeinsam: 12, nurA: 30, nurB: 25, bruecken: 4 } };
 const prozent = { gesamt: 42, kuenstler: 38, genre: 51 };
+const entdeckung = { name: "A", erster: "2024-02-05", minuten: 75, status: "geblieben", monatIndex: 1, jahr: 2024 };
+const entdeckt = { liste: [entdeckung], monate: 4, staerkste: entdeckung, geblieben: 2, strohfeuer: 1, offen: 1 };
+const serien = { gesamt: { laenge: 43, von: "2024-01-01", bis: "2024-02-12" }, liste: [{ name: "A", laenge: 9, von: "2024-03-01", bis: "2024-03-09" }] };
+const comebacks = { anzahl: 2, liste: [{ name: "A", pauseTage: 200, zurueck: "2024-09-01", minuten: 120 }] };
 const BEISPIELE = {
   "eigener.quelleFehler.keinTitel": ["apple"],
   "eigener.quelleFehler.zeilenMax": [2000000],
@@ -56,6 +60,10 @@ const BEISPIELE = {
   "kapitel.uhrzeiten.text": [{ spitze: { name: "Mo", stunde: 22 } }, 30],
   "kapitel.monate.text": [{ name: "Mai", jahr: 2023, stunden: 80.4 }, 50],
   "kapitel.hoerzeit.text": [{ topKuenstler: [{ name: "A", stunden: 12.3 }], topSongs: [{ name: "S", n: 99 }] }, 15],
+  "kapitel.entdeckungen.text": [entdeckt],
+  "kapitel.serien.text": [serien],
+  "kapitel.comebacks.text": [comebacks],
+  "kapitel.comebacks.tage": [181],
   "ui.ladefehler": ["404"],
   "karte.nurAnzahl": [3],
   "eigener.verlaufStand": [verlauf],
@@ -73,6 +81,9 @@ const ZUSAETZE = [
   ["kapitel.uhrzeiten.text", [{ spitze: { name: "Mo", stunde: 22 } }, 5]],
   ["kapitel.uhrzeiten.text", [{ spitze: { name: "Mo", stunde: 22 } }, 15]],
   ["kapitel.hoerzeit.text", [{ topKuenstler: [], topSongs: [] }, null]],
+  ["kapitel.entdeckungen.text", [{ ...entdeckt, geblieben: 1, strohfeuer: 2, offen: 0 }]],
+  ["kapitel.comebacks.text", [{ ...comebacks, anzahl: 1 }]],
+  ["kapitel.entdeckungen.text", [{ ...entdeckt, geblieben: 0 }]],
 ];
 
 test("Deutsch und Englisch haben dieselbe Schlüsselmenge", () => {

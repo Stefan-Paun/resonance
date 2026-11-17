@@ -178,3 +178,81 @@ test("Leistung: 300 000 Streams über drei Jahre in einem Durchgang", () => {
   assert.ok(g.serien.gesamt.laenge > 1000);
   assert.ok(nr(g.serien.gesamt.bis) - nr(g.serien.gesamt.von) + 1 === g.serien.gesamt.laenge);
 });
+
+// ---------------------------------------------------------------- Kapitel (ohne DOM)
+import { kapitelBauen, geschichtenKapitel } from "../public/kapitel.js";
+import { sterne } from "../public/daten.js";
+import { spracheSetzen, tx } from "../public/texte.js";
+
+const SNAP = {
+  erstellt: "2026-11-01T00:00:00Z",
+  kuenstler: { a: { name: "Groß", tags: [] }, b: { name: "Zurück", tags: [] }, c: { name: "Sieben", tags: [] } },
+  zeitraeume: { "4w": { kuenstler: ["a"], songs: [] }, "6m": { kuenstler: ["a", "b"], songs: [] }, "1y": { kuenstler: ["a", "b", "c"], songs: [] } },
+  zuletzt: [],
+};
+/** Ein Verlauf, der alle drei Geschichten hergibt. */
+function vollerVerlauf() {
+  return [
+    ...rauschen(),
+    s("2024-03-10", 150, "Groß"), s("2024-05-10", 90, "Neu <b>"), s("2024-07-10", 90, "groß "), s("2024-07-11", 80, "Dritte"),
+    ...taeglich("2024-06-01", 0, 6, 3, "Sieben"),
+    s(B, 40, "Zurück"), s(plus(B, 200), 120, "Zurück"),
+  ];
+}
+const bauen = (verlauf) => { const main = { innerHTML: "" }; const k = kapitelBauen(main, SNAP, sterne(SNAP), { verlauf }); return { ids: k.map((x) => x.id), k, html: main.innerHTML }; };
+
+test("Kapitel: mit Verlauf erscheinen Entdeckungen, Serien und Comebacks vor dem Schluss, Sterne werden hervorgehoben", () => {
+  const v = verlaufAuswerten(vollerVerlauf());
+  const { ids, k, html } = bauen(v);
+  assert.deepEqual(ids.slice(-4), ["entdeckungen", "serien", "comebacks", "schluss"]);
+  const e = k.find((x) => x.id === "entdeckungen");
+  assert.ok(e.steuer.fokus.includes("a"), "„Groß“ und „groß “ sind derselbe Stern");
+  assert.equal(new Set(e.steuer.fokus).size, e.steuer.fokus.length);
+  assert.deepEqual(k.find((x) => x.id === "serien").steuer.fokus, ["c"]);
+  assert.deepEqual(k.find((x) => x.id === "comebacks").steuer.fokus, ["b"]);
+  assert.ok(html.includes('data-stern="b"'));
+  assert.ok(html.includes("Neu &lt;b&gt;") && !html.includes("Neu <b>"), "Namen aus der Datei werden escaped");
+  assert.ok(!html.includes("hinweis-verlauf"));
+  assert.ok(html.includes("120 Minuten in drei Monaten"));
+});
+
+test("Kapitel: ohne Verlauf fehlen sie, der Schluss sagt, was nötig wäre", () => {
+  const { ids, html } = bauen(null);
+  assert.ok(!ids.some((id) => ["entdeckungen", "serien", "comebacks"].includes(id)));
+  assert.ok(html.includes(tx().kapitel.geschichten.ohneVerlauf.slice(0, 40)));
+});
+
+test("Kapitel: alter gespeicherter Verlauf ohne Geschichten und zu kurzer Verlauf geben eigene Hinweise", () => {
+  const v = verlaufAuswerten([s(B, 5, "A")]);
+  const { geschichten, ...alt } = v;
+  assert.ok(bauen(alt).html.includes(tx().kapitel.geschichten.alterVerlauf.slice(0, 40)));
+  const kurz = bauen(v);
+  assert.ok(!kurz.ids.includes("serien"));
+  assert.ok(kurz.ids.includes("verlauf"));
+  assert.ok(kurz.html.includes(tx().kapitel.geschichten.zuWenig.slice(0, 40)));
+});
+
+test("Kapitel: Teile einzeln, unbekannte Namen ohne Stern schwenken nur", () => {
+  const g = geschichtenAuswerten([...taeglich(B, 0, 5, 3, "Niemand")]);
+  const k = geschichtenKapitel(g, sterne(SNAP));
+  assert.deepEqual(k.map((x) => x.id), ["serien"]);
+  assert.equal(k[0].steuer.fokus, null);
+  assert.equal(k[0].steuer.pan, true);
+  assert.deepEqual(geschichtenKapitel(null, []), []);
+});
+
+test("Kapitel: Texte in beiden Sprachen mit den konkreten Zahlen", () => {
+  const v = verlaufAuswerten(vollerVerlauf());
+  for (const [code, wort] of [["de", "Tage am Stück"], ["en", "days in a row"]]) {
+    spracheSetzen(code);
+    try {
+      const k = geschichtenKapitel(v.geschichten, sterne(SNAP));
+      assert.equal(k.length, 3);
+      for (const x of k) assert.ok(x.text.length > 40 && !/undefined|NaN|\[object/.test(x.text + x.tabelle.flat().join("")), `${code}: ${x.id}`);
+      const serie = k.find((x) => x.id === "serien");
+      assert.ok(serie.text.includes(wort), `${code}: ${serie.text}`);
+      assert.ok(serie.text.includes("7"), "Länge der Serie steht im Text");
+      assert.ok(k[0].text.includes("150"), "Minuten der stärksten Entdeckung stehen im Text");
+    } finally { spracheSetzen("de"); }
+  }
+});

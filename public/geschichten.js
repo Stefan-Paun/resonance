@@ -163,7 +163,9 @@ export function geschichtenAuswerten(streams, { zone = "Europe/Vienna", schwelle
   const daten = tageSammeln(streams, { zone, minMs: S.minMs });
   const e = entdeckungen(daten, S), s = serien(daten, S), c = comebacks(daten, S);
   return {
-    entdeckungen: e.liste.length >= S.entdeckungMinMonate ? { ...e, liste: e.liste.slice(-S.maxEintraege), monate: e.liste.length } : null,
+    entdeckungen: e.liste.length >= S.entdeckungMinMonate
+      ? { ...e, liste: e.liste.slice(-S.maxEintraege), monate: e.liste.length, staerkste: e.liste.reduce((a, b) => (b.minuten > a.minuten ? b : a)) }
+      : null,
     serien: s.liste.length ? s : null,
     comebacks: c.liste.length ? c : null,
   };
