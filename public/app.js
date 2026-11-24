@@ -47,7 +47,16 @@ let kontextUhr = 0;
 function kontextAbwarten() {
   clearTimeout(kontextUhr);
   if (!kontextWeg || document.hidden) return; // im Hintergrund darf der Browser sich Zeit lassen
-  kontextUhr = setTimeout(() => { if (kontextWeg && !document.hidden) zurListeNachKontextverlust(); }, KONTEXT_GEDULD_MS);
+  kontextUhr = setTimeout(() => {
+    if (!kontextWeg || document.hidden) return;
+    // Ein Neuladen würde einen laufenden Vergleich oder einen nicht gespeicherten eigenen Himmel verwerfen: dann nur melden
+    if (zustandFluechtig()) statusMelden(TU.kontextWeg, true); else zurListeNachKontextverlust();
+  }, KONTEXT_GEDULD_MS);
+}
+function zustandFluechtig() {
+  if (zustand.vergleich) return true;
+  if (!zustand.eigener) return false;
+  try { return !localStorage.getItem("resonanz.snapshot"); } catch { return true; }
 }
 cv.addEventListener("webglcontextlost", (e) => { e.preventDefault(); kontextWeg = true; kontextAbwarten(); });
 cv.addEventListener("webglcontextrestored", () => { kontextWeg = false; clearTimeout(kontextUhr); groesseSetzen(); renderer.render(szene, kamera); });

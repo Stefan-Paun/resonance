@@ -183,3 +183,20 @@ test("Kontextverlust: app.js wartet und wechselt dann für die Sitzung zur Liste
   assert.match(app, /zurListeNachKontextverlust\(\)/);
   assert.match(app, /webglcontextrestored[^\n]*clearTimeout\(kontextUhr\)/);
 });
+
+test("Review-Funde: Tabellenrollen bleiben auch bei Block-Layout, Langtext in Sortierknöpfen, Land per Name", async () => {
+  const daten = aufbereiten(erfunden());
+  const html = listeHtml(daten, {});
+  assert.match(html, /<table class="mess l-tabelle" role="table">/);
+  assert.equal((html.match(/role="rowgroup"/g) || []).length, 2);
+  const zeilen = zeilenHtml(daten.kuenstler);
+  assert.equal((zeilen.match(/role="row"/g) || []).length, daten.gesamt);
+  assert.equal((zeilen.match(/<td /g) || []).length, (zeilen.match(/role="cell"/g) || []).length);
+  assert.match(kopfHtml({ spalte: "4w", richtung: "auf" }), /data-sort="4w">4 W<span class="nur-sr">, Platz in den letzten 4 Wochen<\/span>/);
+  const { suchen } = await import("../public/listendaten.js");
+  const land = suchen(daten.kuenstler, "Österreich");
+  assert.ok(typeof Intl.DisplayNames !== "function" || land.length === daten.gesamt, "alle erfundenen Künstler sind aus AT");
+  assert.equal(suchen(daten.kuenstler, "at").length, daten.gesamt);
+  const app = lies("app.js");
+  assert.match(app, /if \(zustandFluechtig\(\)\) statusMelden\(TU\.kontextWeg, true\); else zurListeNachKontextverlust\(\)/);
+});

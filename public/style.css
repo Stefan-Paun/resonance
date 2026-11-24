@@ -346,6 +346,9 @@ dialog.eigener .status { margin-top: 14px; }
   .scheibe { opacity: .7; }
 }
 
+/* Nur für Screenreader */
+.nur-sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 /* ---------- Ansicht: Schalter Himmel / Liste in der Kartusche */
 .ansicht { margin-top: 10px; display: flex; align-items: center; gap: 0; font-size: 12px; }
 .ansicht-titel { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-3); margin-right: 10px; }

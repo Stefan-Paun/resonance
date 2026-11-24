@@ -23,34 +23,35 @@ export const ersteRichtung = (spalte) => (spalte === "nachbarn" ? "ab" : "auf");
 export function kopfHtml(sortierung, { gruppe = false } = {}) {
   const T = tx().liste;
   const spalten = gruppe ? [...TABELLE, "gruppe"] : TABELLE;
-  return `<tr>${spalten.map((s) => {
+  return `<tr role="row">${spalten.map((s) => {
     const zahl = ZAHL_SPALTEN.has(s) ? ' class="zahl"' : "";
     const titel = T.spaltenLang[s] ? ` title="${esc(T.spaltenLang[s])}"` : "";
-    if (!SPALTEN.includes(s)) return `<th scope="col"${zahl}${titel}>${esc(T.spalten[s])}</th>`;
+    if (!SPALTEN.includes(s)) return `<th scope="col" role="columnheader"${zahl}${titel}>${esc(T.spalten[s])}</th>`;
     const aktiv = sortierung.spalte === s;
     const sort = aktiv ? ` aria-sort="${sortierung.richtung === "ab" ? "descending" : "ascending"}"` : "";
-    return `<th scope="col"${zahl}${sort}${titel}><button type="button" class="l-sort" data-sort="${s}">${esc(T.spalten[s])}</button></th>`;
+    const lang = T.spaltenLang[s] ? `<span class="nur-sr">, ${esc(T.spaltenLang[s])}</span>` : "";
+    return `<th scope="col" role="columnheader"${zahl}${sort}${titel}><button type="button" class="l-sort" data-sort="${s}">${esc(T.spalten[s])}${lang}</button></th>`;
   }).join("")}</tr>`;
 }
 
 /** Zeilen der Tabelle. gruppe: Map id → "a" | "b" | "beide" im Vergleich, namen: { a, b }. */
 export function zeilenHtml(kuenstler, { gruppe = null, namen = null } = {}) {
   const T = tx().liste, TS = T.spalten;
-  if (!kuenstler.length) return `<tr><td colspan="${TABELLE.length + (gruppe ? 1 : 0)}" class="l-leer">${esc(T.keineTreffer)}</td></tr>`;
+  if (!kuenstler.length) return `<tr role="row"><td role="cell" colspan="${TABELLE.length + (gruppe ? 1 : 0)}" class="l-leer">${esc(T.keineTreffer)}</td></tr>`;
   return kuenstler.map((k) => {
     const w = welt(k.welt);
     const nb = k.nachbarn.slice(0, NACHBARN_MAX).map((n) => esc(n.name)).join(", ") + (k.nachbarn.length > NACHBARN_MAX ? ` <span class="leise">${esc(T.mehr(k.nachbarn.length - NACHBARN_MAX))}</span>` : "");
     const platz = (z) => (k.plaetze[z] ?? "–");
     const g = gruppe ? gruppe.get(k.id) : null;
     const gText = g === "beide" ? T.gruppe.beide : g && namen ? namen[g] : "";
-    return `<tr id="l-z-${k.index}" tabindex="-1">`
-      + `<td class="zahl" data-spalte="${esc(TS.rang)}">${k.rang}</td>`
-      + `<th scope="row" data-spalte="${esc(TS.name)}"><button type="button" class="stern-link" data-karte="${k.index}" aria-label="${esc(T.karte(k.name))}">${esc(k.name)}</button></th>`
-      + `<td data-spalte="${esc(TS.welt)}"><i class="punkt" style="--w:${w.farbe}" aria-hidden="true"></i>${esc(weltName(w))}</td>`
-      + `<td class="zahl" data-spalte="${esc(TS.gewicht)}">${k.gewicht}</td>`
-      + ZEITRAEUME.map((z) => `<td class="zahl" data-spalte="${esc(TS[z])}">${platz(z)}</td>`).join("")
-      + `<td class="l-nachbarn" data-spalte="${esc(TS.nachbarn)}">${nb || "–"}</td>`
-      + (gruppe ? `<td data-spalte="${esc(TS.gruppe)}">${esc(gText)}</td>` : "")
+    return `<tr role="row" id="l-z-${k.index}" tabindex="-1">`
+      + `<td role="cell" class="zahl" data-spalte="${esc(TS.rang)}">${k.rang}</td>`
+      + `<th scope="row" role="rowheader" data-spalte="${esc(TS.name)}"><button type="button" class="stern-link" data-karte="${k.index}" aria-label="${esc(T.karte(k.name))}">${esc(k.name)}</button></th>`
+      + `<td role="cell" data-spalte="${esc(TS.welt)}"><i class="punkt" style="--w:${w.farbe}" aria-hidden="true"></i>${esc(weltName(w))}</td>`
+      + `<td role="cell" class="zahl" data-spalte="${esc(TS.gewicht)}">${k.gewicht}</td>`
+      + ZEITRAEUME.map((z) => `<td role="cell" class="zahl" data-spalte="${esc(TS[z])}">${platz(z)}</td>`).join("")
+      + `<td role="cell" class="l-nachbarn" data-spalte="${esc(TS.nachbarn)}">${nb || "–"}</td>`
+      + (gruppe ? `<td role="cell" data-spalte="${esc(TS.gruppe)}">${esc(gText)}</td>` : "")
       + `</tr>`;
   }).join("");
 }
@@ -89,10 +90,10 @@ export function listeHtml(daten, { kapitel = [], grund = null, sortierung = { sp
         <input type="search" id="l-suche" autocomplete="off" spellcheck="false" placeholder="${esc(T.suchePlatzhalter)}" aria-describedby="l-treffer">
         <p id="l-treffer" class="l-treffer" aria-live="polite">${esc(T.treffer(daten.gesamt, daten.gesamt))}</p>
       </div>
-      <table class="mess l-tabelle">
+      <table class="mess l-tabelle" role="table">
         <caption>${esc(T.tabelle)}</caption>
-        <thead>${kopfHtml(sortierung, { gruppe: !!vergleich })}</thead>
-        <tbody>${zeilenHtml(sortieren(daten.kuenstler, sortierung.spalte, sortierung.richtung, { weltName: weltNameVon }), vergleich || {})}</tbody>
+        <thead role="rowgroup">${kopfHtml(sortierung, { gruppe: !!vergleich })}</thead>
+        <tbody role="rowgroup">${zeilenHtml(sortieren(daten.kuenstler, sortierung.spalte, sortierung.richtung, { weltName: weltNameVon }), vergleich || {})}</tbody>
       </table>
     </section>
     <section class="l-teil" id="l-welten" aria-labelledby="l-welten-h">
@@ -176,6 +177,7 @@ export async function listeStarten({ grund = null } = {}) {
     if (zeile && !main.querySelector(`#l-z-${zeile.dataset.zeile}`)) {
       // Zeile durch die Suche ausgeblendet: Suche leeren, dann springt der Anker
       const feld = main.querySelector("#l-suche"); feld.value = ""; zustand.anfrage = "";
+      clearTimeout(liveTimer);
       const n = tabelleNeu(); main.querySelector("#l-treffer").textContent = tx().liste.treffer(n, zustand.daten.gesamt);
     }
     const trotzdem = e.target.closest("button[data-ansicht]");

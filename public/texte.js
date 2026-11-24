@@ -56,6 +56,7 @@ const DE = {
     keinWebgl: "Dein Browser kann den bewegten Himmel gerade nicht zeichnen (kein WebGL). Der Rückblick unten funktioniert trotzdem.",
     ladefehler: (m) => `Der Schnappschuss ließ sich nicht laden (${m}). Seite neu laden hilft meistens.`,
     ansicht: "Ansicht", ansichtHimmel: "Himmel", ansichtListe: "Liste",
+    kontextWeg: "Die Grafikkarte hat den Himmel verloren. Dein Vergleich bzw. dein nicht gespeicherter Himmel bleibt hier offen; der Schalter „Liste“ zeigt denselben Inhalt ohne WebGL.",
   },
   liste: {
     sprung: "Sprungmarken", welten: "Hörwelten", kuenstler: "Alle Künstler", rueckblick: "Rückblick",
@@ -68,7 +69,6 @@ const DE = {
     tabelle: "Alle Künstler. Gewicht: Hörgewicht über alle Zeiträume, der hellste Stern hat 100. Plätze in den Top-Listen je Zeitraum, – heißt nicht in der Liste. Spaltenköpfe sortieren.",
     spalten: { rang: "Rang", name: "Künstler", welt: "Welt", gewicht: "Gewicht", "4w": "4 W", "6m": "6 M", "1y": "1 J", nachbarn: "Verbunden mit", gruppe: "Himmel" },
     spaltenLang: { "4w": "Platz in den letzten 4 Wochen", "6m": "Platz in den letzten 6 Monaten", "1y": "Platz im letzten Jahr" },
-    sortieren: (s) => `Nach ${s} sortieren`,
     karte: (n) => `Sternkarte: ${n}`,
     mehr: (n) => `+${n}`,
     gruppe: { beide: "beide" },
@@ -218,6 +218,7 @@ const EN = {
     keinWebgl: "Your browser can't draw the moving sky right now (no WebGL). The review below still works.",
     ladefehler: (m) => `The snapshot could not be loaded (${m}). Reloading usually helps.`,
     ansicht: "Mode", ansichtHimmel: "Sky", ansichtListe: "List",
+    kontextWeg: "The graphics card lost the sky. Your comparison or unsaved sky stays open here; the “List” switch shows the same content without WebGL.",
   },
   liste: {
     sprung: "Jump to", welten: "Listening worlds", kuenstler: "All artists", rueckblick: "Retrospective",
@@ -230,7 +231,6 @@ const EN = {
     tabelle: "All artists. Weight: listening weight across all periods, the brightest star has 100. Ranks in the top lists per period, – means not in the list. Column headers sort.",
     spalten: { rang: "Rank", name: "Artist", welt: "World", gewicht: "Weight", "4w": "4 wk", "6m": "6 mo", "1y": "1 yr", nachbarn: "Linked with", gruppe: "Sky" },
     spaltenLang: { "4w": "Rank in the last 4 weeks", "6m": "Rank in the last 6 months", "1y": "Rank in the last year" },
-    sortieren: (s) => `Sort by ${s}`,
     karte: (n) => `Star card: ${n}`,
     mehr: (n) => `+${n}`,
     gruppe: { beide: "both" },

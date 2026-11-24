@@ -4,6 +4,7 @@
 
 import { WELTEN } from "./welten.js";
 import { sterne as sterneAus, sternbilder, ZEITRAEUME } from "./daten.js";
+import { landName, sprache_ } from "./texte.js";
 
 export const ANSICHTEN = ["liste", "himmel"];
 export const ANSICHT_KEY = "resonanz.ansicht";
@@ -40,9 +41,9 @@ export function aufbereiten(snapshot, { liste = null } = {}) {
   return { kuenstler, welten, gesamt: kuenstler.length };
 }
 
-/** Vergleich von Namen: ohne Groß/Klein und Akzente, deutsche Sortierung. */
+/** Vergleich von Namen: ohne Groß/Klein und Akzente, Sortierung der aktuellen Sprache. */
 export function vergleicheText(a, b) {
-  return String(a ?? "").localeCompare(String(b ?? ""), "de", { sensitivity: "base", numeric: true });
+  return String(a ?? "").localeCompare(String(b ?? ""), sprache_(), { sensitivity: "base", numeric: true });
 }
 
 /** Spalten der Künstlertabelle, nach denen sortiert werden kann. */
@@ -82,14 +83,14 @@ export function normalisieren(text) {
 
 /**
  * Filtert Künstler nach einer Anfrage. Alle Wörter müssen vorkommen, im Namen oder im Weltnamen
- * (beide Sprachen) oder im Ländercode. Leere Anfrage: alle.
+ * (beide Sprachen), im Ländercode oder im Ländernamen (aktuelle Sprache). Leere Anfrage: alle.
  */
 export function suchen(kuenstler, anfrage) {
   const woerter = normalisieren(anfrage).split(" ").filter(Boolean);
   if (!woerter.length) return [...kuenstler];
   const weltText = new Map(WELTEN.map((w) => [w.id, normalisieren(`${w.name} ${w.en}`)]));
   return kuenstler.filter((k) => {
-    const heu = `${normalisieren(k.name)} ${weltText.get(k.welt) || ""} ${normalisieren(k.land || "")}`;
+    const heu = `${normalisieren(k.name)} ${weltText.get(k.welt) || ""} ${normalisieren(k.land || "")} ${normalisieren(landName(k.land))}`;
     return woerter.every((w) => heu.includes(w));
   });
 }
