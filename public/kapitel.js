@@ -6,10 +6,11 @@ import { tx, weltName, landName, kalendertagKurz } from "./texte.js";
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
 /**
- * Baut die Kapitel in `main` und gibt die Steuerbefehle pro Kapitel zurück.
+ * Baut die Kapitel in `main` (ohne `main`: nur die Daten) und gibt die Steuerbefehle pro Kapitel zurück.
+ * liste: Texte für die Listenansicht (ohne Verweis auf das Armaturenbrett).
  * steuerung: { zeitraum(z), welt(id|null), fokus(ids|null), blick(weltId|null) }
  */
-export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener = false, vergleich = null } = {}) {
+export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener = false, vergleich = null, liste = false } = {}) {
   const zaehlung = weltenZaehlung(sterne).filter((w) => w.anzahl);
   const auf = aufsteiger(snapshot), weg = verblasst(snapshot), db = dauerbrenner(snapshot);
   const la = laender(sterne), jg = jahrgaenge(snapshot, "1y"), zl = zuletzt(snapshot);
@@ -25,7 +26,7 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
   const kapitel = [
     {
       id: "welten", titel: T.welten.titel,
-      text: T.welten.text({ anzahl: groesste.anzahl || 0, name: weltName(groesste) }, sterne.length, anteil),
+      text: (liste ? T.welten.textListe : T.welten.text)({ anzahl: groesste.anzahl || 0, name: weltName(groesste) }, sterne.length, anteil),
       tabelle: zaehlung.map((w) => [`<i class="punkt" style="--w:${w.farbe}"></i>${esc(weltName(w))}`, w.anzahl]),
       spalten: T.welten.spalten,
       steuer: { zeitraum: "1y", welt: null, fokus: null, blick: null, pan: true },
@@ -103,24 +104,33 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
   if (eigener) kapitel[kapitel.length - 1].text = T.schluss.textEigen;
   kapitel[kapitel.length - 1].links.unshift(["#", T.schluss.eigen, "data-eigener"]);
 
-  main.innerHTML = kapitel.map((k, i) => `
-    <section class="kapitel" id="k-${k.id}" data-i="${i}" aria-labelledby="k-${k.id}-h">
-      <div class="tafel">
-        <h2 id="k-${k.id}-h">${k.titel}</h2>
-        <p>${esc(k.text)}</p>
-        ${k.tabelle ? tabelle(k.spalten, k.tabelle) : ""}
-        ${k.listen ? listen(k.listen) : ""}
-        ${k.striche ? striche(k.striche, T) : ""}
-        ${k.links ? `<p class="links">${k.links.map(([h, t, attr]) => attr ? `<a href="${h}" ${attr}>${t}</a>` : `<a href="${h}" target="_blank" rel="noopener">${t}</a>`).join("")}</p>` : ""}
-        ${k.heat ? heatmap(k.heat, T) : ""}
-        ${k.monate ? monate(k.monate, T) : ""}
-        ${k.hinweis ? `<p class="klein hinweis-verlauf">${esc(k.hinweis)}</p>` : ""}
-        ${k.schluss ? `<p class="klein">${esc(T.schluss.klein)}</p>
-        <footer class="recht">${T.schluss.recht.map(([h, t]) => `<a href="${esc(h)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("")}</footer>` : ""}
-      </div>
-    </section>`).join("");
+  if (main) main.innerHTML = kapitelHtml(kapitel);
 
   return kapitel;
+}
+
+/**
+ * HTML der Kapitel. Der Himmel nutzt die Standardwerte (Tafeln, h2); die Listenansicht setzt die Kapitel
+ * eine Ebene tiefer (ebene 3) mit eigenem Präfix für die ids, damit dieselben Texte und Zahlen in beiden stehen.
+ */
+export function kapitelHtml(kapitel, { ebene = 2, praefix = "k-", klasse = "kapitel", tafel = "tafel" } = {}) {
+  const h = `h${ebene}`;
+  return kapitel.map((k, i) => `
+    <section class="${klasse}" id="${praefix}${k.id}" data-i="${i}" aria-labelledby="${praefix}${k.id}-h">
+      <div class="${tafel}">
+        <${h} id="${praefix}${k.id}-h">${k.titel}</${h}>
+        <p>${esc(k.text)}</p>
+        ${k.tabelle ? tabelle(k.spalten, k.tabelle) : ""}
+        ${k.listen ? listen(k.listen, ebene + 1) : ""}
+        ${k.striche ? striche(k.striche, tx().kapitel) : ""}
+        ${k.links ? `<p class="links">${k.links.map(([href, t, attr]) => attr ? `<a href="${href}" ${attr}>${t}</a>` : `<a href="${href}" target="_blank" rel="noopener">${t}</a>`).join("")}</p>` : ""}
+        ${k.heat ? heatmap(k.heat, tx().kapitel) : ""}
+        ${k.monate ? monate(k.monate, tx().kapitel) : ""}
+        ${k.hinweis ? `<p class="klein hinweis-verlauf">${esc(k.hinweis)}</p>` : ""}
+        ${k.schluss ? `<p class="klein">${esc(tx().kapitel.schluss.klein)}</p>
+        <footer class="recht">${tx().kapitel.schluss.recht.map(([href, t]) => `<a href="${esc(href)}" target="_blank" rel="noopener">${esc(t)}</a>`).join("")}</footer>` : ""}
+      </div>
+    </section>`).join("");
 }
 
 /** Kapitel „Ihr zwei“: Zahlen aus dem Vergleich, dazu die Listen. Alle Namen stammen aus fremden Dateien und werden escaped. */
@@ -141,9 +151,9 @@ function ihrZwei({ ergebnis: r }) {
   };
 }
 
-function listen(l) {
+function listen(l, ebene = 3) {
   const keine = tx().vergleich.kapitel.keine;
-  return `<div class="listen">${l.map((x) => `<h3>${esc(x.titel)}</h3>${x.zeilen.length ? `<ul class="vgl-liste">${x.zeilen.map((z) => `<li>${z}</li>`).join("")}</ul>` : `<p class="leise">${esc(keine)}</p>`}`).join("")}</div>`;
+  return `<div class="listen">${l.map((x) => `<h${ebene}>${esc(x.titel)}</h${ebene}>${x.zeilen.length ? `<ul class="vgl-liste">${x.zeilen.map((z) => `<li>${z}</li>`).join("")}</ul>` : `<p class="leise">${esc(keine)}</p>`}`).join("")}</div>`;
 }
 
 const knopf = (k) => `<button type="button" class="stern-link" data-stern="${esc(k.id)}">${esc(k.name)}</button>`;
