@@ -37,6 +37,15 @@ Open `http://127.0.0.1:8742/`. The demo uses the frozen snapshot in `data/snapsh
 - **Strict import:** version, types, size (256 KB) and counts are checked, unknown fields are dropped, control characters and angle brackets are stripped, names are shown via `textContent` or escaped. The other file stays in memory; only the checked copy is stored, and only if you tick "remember" (and is re-checked on every read).
 - **The match** ([`public/vergleich.js`](public/vergleich.js)) is the mean of two cosine similarities, over artist weights and over genre weights, both also shown separately. Artists are matched by id, otherwise by normalised name. Lists: shared, only A, only B, bridges (different artists, same genre). Identical skies give 100 %, disjoint ones 0 %, and swapping A and B changes nothing.
 
+## Accessibility
+
+Everything the sky shows is also available as a **list view**: calm, linear, no WebGL. The *Mode: Sky / List* switch in the cartouche toggles it; the browser remembers the choice (`localStorage`), and `?ansicht=liste` or `?ansicht=himmel` in the address always wins.
+
+- **Automatically** the list starts when the browser has no WebGL, when the graphics context is lost and does not come back within three seconds (then for the current session), or when the system asks for *reduced motion*. A note says why, with an *Open the sky anyway* button. The decision is a pure, tested function (`ansichtWaehlen` in [`public/listendaten.js`](public/listendaten.js)).
+- **Content:** every artist in a table (rank, weight, world, rank per period, linked artists) with sortable columns (buttons in the column headers, `aria-sort`) and a search by name, world or country whose hit count is announced in an `aria-live` region. Below, the worlds as sections and the retrospective with the same chapters, texts and numbers as the sky. Names open the star card. Your own sky, listening history and comparison work the same way.
+- **One source:** list and sky compute from the same functions in `daten.js`; the list never loads `app.js` or three.js (entry point [`public/start.js`](public/start.js)).
+- **Form:** a real heading hierarchy (one h1, parts h2, worlds and chapters h3), skip links, visible amber focus. At 320 px width or 200 % zoom table rows become blocks and nothing scrolls sideways. Text contrast (at least 4.5:1) and the field border (3:1) are recomputed from `style.css` in the tests.
+
 ## Refresh the snapshot (owner)
 
 ```bash

@@ -8,6 +8,7 @@ import { karteOeffnen, karteSchliessen, karteOffen, karteElement } from "./karte
 import { tx, sprache_, weltName } from "./texte.js";
 import { himmelExportieren } from "./austausch.js";
 import { vergleichen, zusammenfuehren } from "./vergleich.js";
+import { zurListeNachKontextverlust } from "./ansicht.js";
 const TU = tx().ui;
 
 const RADIUS = 100;
@@ -39,9 +40,27 @@ function rendererErzeugen() {
 }
 const renderer = rendererErzeugen();
 renderer.setClearColor(0x070914, 1);
-// Verlorener Grafikkontext: Standard verhindern, damit der Browser ihn wiederherstellen darf; danach neu zeichnen
-cv.addEventListener("webglcontextlost", (e) => { e.preventDefault(); kontextWeg = true; });
-cv.addEventListener("webglcontextrestored", () => { kontextWeg = false; groesseSetzen(); renderer.render(szene, kamera); });
+// Verlorener Grafikkontext: Standard verhindern, damit der Browser ihn wiederherstellen darf; danach neu zeichnen.
+// Kommt er nicht binnen KONTEXT_GEDULD_MS (sichtbare Seite) zurück, wechselt die Sitzung zur Listenansicht.
+const KONTEXT_GEDULD_MS = 3000;
+let kontextUhr = 0;
+function kontextAbwarten() {
+  clearTimeout(kontextUhr);
+  if (!kontextWeg || document.hidden) return; // im Hintergrund darf der Browser sich Zeit lassen
+  kontextUhr = setTimeout(() => {
+    if (!kontextWeg || document.hidden) return;
+    // Ein Neuladen würde einen laufenden Vergleich oder einen nicht gespeicherten eigenen Himmel verwerfen: dann nur melden
+    if (zustandFluechtig()) statusMelden(TU.kontextWeg, true); else zurListeNachKontextverlust();
+  }, KONTEXT_GEDULD_MS);
+}
+function zustandFluechtig() {
+  if (zustand.vergleich) return true;
+  if (!zustand.eigener) return false;
+  try { return !localStorage.getItem("resonanz.snapshot"); } catch { return true; }
+}
+cv.addEventListener("webglcontextlost", (e) => { e.preventDefault(); kontextWeg = true; kontextAbwarten(); });
+cv.addEventListener("webglcontextrestored", () => { kontextWeg = false; clearTimeout(kontextUhr); groesseSetzen(); renderer.render(szene, kamera); });
+document.addEventListener("visibilitychange", kontextAbwarten);
 const kamera = new THREE.PerspectiveCamera(62, 1, 0.1, 1000);
 const szene = new THREE.Scene();
 szene.fog = null;
@@ -747,25 +766,6 @@ export function statusMelden(text, fehler = false) {
   status.textContent = text || "";
   status.classList.toggle("fehler", !!fehler);
 }
-
-// ---------------------------------------------------------------- Sprache: statische Texte, Schalter
-function sprachePruefen() {
-  const de = sprache_() === "de";
-  document.documentElement.lang = de ? "de" : "en";
-  document.title = TU.titel;
-  document.querySelector('meta[name="description"]')?.setAttribute("content", TU.beschreibung);
-  for (const el of document.querySelectorAll("[data-t]")) el.textContent = TU[el.dataset.t] ?? el.textContent;
-  for (const el of document.querySelectorAll("[data-t-aria]")) el.setAttribute("aria-label", TU[el.dataset.tAria] ?? el.getAttribute("aria-label"));
-  document.body.dataset.ablage = tx().eigener.ablageGanz;
-  const sw = $("#sprache");
-  if (sw) {
-    sw.textContent = TU.andereSprache; sw.title = TU.andereSpracheTitel; sw.lang = de ? "en" : "de";
-    sw.addEventListener("click", () => {
-      const u = new URL(location.href); u.searchParams.set("lang", de ? "en" : "de"); u.hash = ""; location.assign(u.toString());
-    });
-  }
-}
-sprachePruefen();
 
 // ---------------------------------------------------------------- Start
 async function start() {

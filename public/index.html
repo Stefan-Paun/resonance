@@ -22,8 +22,7 @@
 <link rel="stylesheet" href="style.css">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-6p13ug9Y/2TWPZMF0aIT0xv2TqxNkp62hhuZFDN2uAM='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://accounts.spotify.com https://api.spotify.com https://musicbrainz.org; object-src 'none'; base-uri 'self'; form-action 'self'">
 <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
-<link rel="modulepreload" href="vendor/three.module.min.js">
-<link rel="modulepreload" href="app.js">
+<link rel="modulepreload" href="start.js">
 </head>
 <body>
 <div class="himmel" id="himmel">
@@ -42,6 +41,7 @@
   </dl>
   <p class="status" id="status" role="status" data-t="laden">Lade den Himmel …</p>
   <p class="kart-zeile"><button type="button" class="eigen-knopf" id="eigen-knopf"><span data-t="eigenKnopf">Dein eigener Himmel</span><svg width="12" height="12" viewBox="0 0 12 12" aria-hidden="true"><path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.2"/></svg></button><button type="button" class="sprache" id="sprache" lang="en" title="Switch to English">EN</button></p>
+  <div class="ansicht" id="ansicht" role="group" aria-labelledby="ansicht-titel"><span class="ansicht-titel" id="ansicht-titel" data-t="ansicht">Ansicht</span><button type="button" data-ansicht="himmel" data-t="ansichtHimmel">Himmel</button><button type="button" data-ansicht="liste" data-t="ansichtListe">Liste</button></div>
 </header>
 
 <section class="brett" id="brett" aria-label="Armaturenbrett" data-t-aria="brett">
@@ -70,6 +70,6 @@
 <nav class="fluss" id="fluss" aria-label="Kapitel" data-t-aria="kapitelNav"></nav>
 
 <noscript><p class="noscript">Resonanz braucht JavaScript: der Himmel wird im Browser aus einer JSON-Datei gerechnet. / Resonanz needs JavaScript: the sky is computed in the browser from a JSON file.</p></noscript>
-<script type="module" src="app.js"></script>
+<script type="module" src="start.js"></script>
 </body>
 </html>

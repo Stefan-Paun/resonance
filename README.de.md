@@ -37,6 +37,15 @@ Dann `http://127.0.0.1:8742/` öffnen. Die Demo nutzt den eingefrorenen Schnapps
 - **Strenger Import:** Version, Typen, Größe (256 KB) und Anzahlen werden geprüft, unbekannte Felder fallen weg, Steuerzeichen und spitze Klammern werden entfernt, Namen erscheinen per `textContent` oder escaped. Die fremde Datei bleibt im Speicher; nur die geprüfte Kopie wird abgelegt, und nur mit „merken“ (und bei jedem Lesen erneut geprüft).
 - **Die Übereinstimmung** ([`public/vergleich.js`](public/vergleich.js)) ist der Mittelwert zweier Kosinus-Ähnlichkeiten, über Künstler- und über Genre-Gewichte; beide werden auch einzeln gezeigt. Künstler werden über die Kennung zugeordnet, ersatzweise über den normalisierten Namen. Listen: gemeinsam, nur A, nur B, Brücken (andere Künstler, gleiches Genre). Identische Himmel ergeben 100 %, disjunkte 0 %, und A und B zu vertauschen ändert nichts.
 
+## Barrierefreiheit
+
+Alles, was der Himmel zeigt, gibt es auch als **Listenansicht**: ruhig, linear, ohne WebGL. Der Schalter *Ansicht: Himmel / Liste* in der Kartusche wechselt; die Wahl merkt sich der Browser (`localStorage`), `?ansicht=liste` oder `?ansicht=himmel` in der Adresse geht immer vor.
+
+- **Automatisch** startet die Liste, wenn der Browser kein WebGL kann, wenn der Grafikkontext verloren geht und nicht binnen drei Sekunden zurückkommt (dann für die laufende Sitzung) oder wenn das System *weniger Bewegung* wünscht. Ein Hinweis sagt, warum, mit dem Knopf *Himmel trotzdem öffnen*. Die Entscheidung ist eine reine, getestete Funktion (`ansichtWaehlen` in [`public/listendaten.js`](public/listendaten.js)).
+- **Inhalt:** alle Künstler als Tabelle (Rang, Gewicht, Welt, Plätze je Zeitraum, verbundene Künstler) mit sortierbaren Spalten (Knöpfe in den Spaltenköpfen, `aria-sort`) und einer Suche nach Name, Welt oder Land, deren Trefferzahl ein `aria-live`-Bereich ansagt. Darunter die Welten als Abschnitte und der Rückblick mit denselben Kapiteln, Texten und Zahlen wie im Himmel. Namen öffnen die Sternkarte. Eigener Himmel, Verlauf und Vergleich funktionieren genauso.
+- **Eine Quelle:** Liste und Himmel rechnen aus denselben Funktionen in `daten.js`; die Liste lädt `app.js` und three.js gar nicht erst (Einstieg [`public/start.js`](public/start.js)).
+- **Form:** echte Überschriften-Hierarchie (ein h1, Teile h2, Welten und Kapitel h3), Sprungmarken, sichtbarer Fokus in Bernstein. Bei 320 px Breite oder 200 % Zoom werden Tabellenzeilen zu Blöcken, nichts scrollt waagrecht. Die Textkontraste (mindestens 4,5:1) und der Feldrand (3:1) werden in den Tests aus `style.css` nachgerechnet.
+
 ## Schnappschuss erneuern (Besitzer)
 
 ```bash

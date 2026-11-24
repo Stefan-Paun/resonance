@@ -72,6 +72,11 @@ const BEISPIELE = {
   "konto.fehler": [403, "/me"],
   "konto.genres": [3, 10],
   "konto.tausch": [400],
+  "liste.weltenText": [203, 8],
+  "liste.weltZeile": [12, 6, "Beispiel"],
+  "liste.treffer": [3, 203],
+  "liste.mehr": [4],
+  "kapitel.welten.textListe": [{ anzahl: 5, name: "Rap" }, 20, 25],
 };
 // Zusätzliche Fälle, damit auch die anderen Zweige der Satzbauer laufen.
 const ZUSAETZE = [
@@ -84,6 +89,9 @@ const ZUSAETZE = [
   ["kapitel.entdeckungen.text", [{ ...entdeckt, geblieben: 1, strohfeuer: 2, offen: 0 }]],
   ["kapitel.comebacks.text", [{ ...comebacks, anzahl: 1 }]],
   ["kapitel.entdeckungen.text", [{ ...entdeckt, geblieben: 0 }]],
+  ["liste.weltenText", [1, 1]],
+  ["liste.weltZeile", [1, 100, "Beispiel"]],
+  ["liste.treffer", [203, 203]],
 ];
 
 test("Deutsch und Englisch haben dieselbe Schlüsselmenge", () => {
