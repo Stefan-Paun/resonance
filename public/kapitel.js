@@ -75,7 +75,7 @@ export function kapitelBauen(main, snapshot, sterne, { verlauf = null, eigener =
       id: "schluss", titel: T.schluss.titel,
       text: T.schluss.text,
       links: [
-        ["https://github.com/Stefan-Paun/resonanz", T.schluss.code],
+        ["https://github.com/Stefan-Paun/resonance", T.schluss.code],
         ["https://stefanpaun.page", "stefanpaun.page"],
       ],
       steuer: { zeitraum: "1y", welt: null, fokus: null, blick: "deutschrap" },

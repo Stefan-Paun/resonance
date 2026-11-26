@@ -2,7 +2,7 @@
 
 **Deine Musik als begehbarer Sternenhimmel.** Jeder Künstler ein Stern, jede Hörwelt eine Galaxie, beim Scrollen ein eigener Rückblick. Gebaut aus der Spotify-Web-API und MusicBrainz, gezeichnet im Browser mit three.js. Kein Build, kein Server, nichts wird hochgeladen.
 
-[English version](README.md) · Live: **[stefanpaun.page/resonanz](https://stefanpaun.page/resonanz/)**
+[English version](README.md) · Live: **[stefanpaun.page/resonance](https://stefanpaun.page/resonance/)**
 
 ![Der Himmel: pinke Deutschrap-Galaxie in der Mitte, violettes Nacht & R&B rechts, Armaturenbrett in Bernstein unten](docs/himmel.png)
 
@@ -21,7 +21,7 @@
 ## Starten
 
 ```bash
-git clone https://github.com/Stefan-Paun/resonanz
+git clone https://github.com/Stefan-Paun/resonance
 cd resonanz
 npm start          # python3 -m http.server 8742 --directory public
 npm test           # node --test, keine Abhängigkeiten
